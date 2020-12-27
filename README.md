@@ -1,7 +1,7 @@
 # AgOpenGPS/QtOpenGuidance Autosteer and RTK units
 Status: Draft - to be tested!
 
-These two PCBAs bring all electronic functions for autosteering with the AgOpenGPS / QtOpenGuidance project and an dual RTK-GNSS receiver as a separate unit.
+These two PCBAs bring all electronic functions for autosteering with the AgOpenGPS / QtOpenGuidance project. The dual RTK-GNSS receiver is a separate unit.
 
 This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to BrianTee‘s Nano firmware and the roof top unit to Matthias (MTZ8302) dual-RTK firmware. 
 
@@ -36,3 +36,5 @@ Roof Top Unit:
 - Dual RTK-GNSS receiver
 - BNO085 option
 - ESP32
+
+Please refer to PDFs for details!
