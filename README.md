@@ -1,12 +1,13 @@
 # Autosteer and RTK units for AgOpenGPS/QtOpenGuidance 
 Status: Draft - to be tested!
 
-These two PCBAs bring all electronic functions for autosteering with the AgOpenGPS / QtOpenGuidance project. The dual RTK-GNSS receiver is a separate unit.
+These two PCBAs bring all electronic functions for autosteering with the ![AgOpenGPS](https://github.com/farmerbriantee/AgOpenGPS) / ![QtOpenGuidance](https://github.com/eringerli/QtOpenGuidance) project. The dual RTK-GNSS receiver based on an idea of ![MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32) is a separate unit.
 
-This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to BrianTee‘s Nano firmware and the roof top unit to Matthias (MTZ8302) dual-RTK firmware. 
+This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to BrianTee‘s Nano firmware and the roof top unit to Matthias (MTZ8302) dual-RTK firmware. If the ESP32 option is used, the pin definitions of ![QtOpenGuidance-ESP32](https://github.com/eringerli/esp32-aog) and [MTZ8302](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
+![pic](central_unit/3D.png?raw=true)
 # Functions in-cabin-unit for autosteering
 - integrated Arduino-Nano hardware
 - option for ESP32-Module (Arduino Firmware has to be adapted)
@@ -32,8 +33,8 @@ This connectors are provided:
 - Incremental sensor for steering wheel
 - 2x USB-C (tablet + DC converter/Aux)
 
-# Functions roof top unit for positioning:
 ![pic](roof_top_unit/3D.png?raw=true)
+# Functions roof top unit for positioning:
 - Dual RTK-GNSS receiver
 - BNO085 option
 - based on ESP32 ![Thx to MTZ8302!](https://github.com/mtz8302/AOG_GPS_ESP32)
@@ -56,9 +57,12 @@ The RS485 port is like what is also available with a cheap USB-RS485 stick based
 
 The 4 port USB hub connects the tablet/Notebook to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
 
-USB1    Arduino Nano    ESP32 (if U3 not mounted.)
-USB2    RS485           Internal USB-A (if U5 not mounted)      External USB-C (if U5 not mounted)
-USB3    CANtact         Internal USB-A (e. g. for ESP32 parallel to Nano)
+USB1  Arduino Nano  (XOR)   ESP32 (if U3 not mounted.)
+
+USB2    RS485      (XOR)     Internal USB-A (if U5 not mounted) (XOR)     External USB-C (if U5 not mounted)
+
+USB3    CANtact   (XOR)      Internal USB-A (e. g. for ESP32 parallel to Nano)
+
 USB4    External RTK receiver via M12-D
 
 All voltage and I/O functions are equipped with LEDs.
@@ -116,9 +120,12 @@ Die RS-485-Schnittstelle entspricht dem, was ein preiswerter USB-RS485-Stick auf
 
 Der 4-Port-USB-Hub verbindet das Tablet/Notebook zum RTK-GNSS-Empfänger und wahlweise zum Nano bzw. ESP32, der CANtact-Hardware, der RS-485-Schnittstelle bzw. internen 2 USB-A-Buchsen einer externen USB-C-Buchse. Folgende Alternativen sind mit den 4 Ports möglich:
 
-USB1    Arduino Nano      ESP32 (wenn U3 nicht bestückt)
-USB2    RS485             Interne USB-A (wenn U5 nicht bestückt)    Externe USB-C (wenn U5 nicht bestückt)
-USB3    CANtact           Interne USB-A (z. B. für ESP32 plus Nano)
+USB1    Arduino Nano   (XOR)   ESP32 (wenn U3 nicht bestückt)
+
+USB2    RS485       (XOR)      Interne USB-A (wenn U5 nicht bestückt)   (XOR) Externe USB-C (wenn U5 nicht bestückt)
+
+USB3    CANtact  (XOR)         Interne USB-A (z. B. für ESP32 plus Nano)
+
 USB4    RTK-Empfänger
 
 Alle Spannungen und I/O-Funktionen verfügen über Leuchtdioden.
@@ -130,6 +137,8 @@ Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ e
 # Component Sources:
 
 M12/M8	    digikey, Reichelt, Aliexpress
+
 PushIn		  Weidmüller (www.weidmueller.com) 1290030000 + 1277270000 via Conrad/digikey
+
 ESP32 MINI	Aliexpress
 
