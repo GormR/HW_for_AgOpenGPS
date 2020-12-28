@@ -142,5 +142,7 @@ PushIn:		  Weidmueller [S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmu
 
 ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=esp32+mini)
 
-Housing: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
+Housing Central Unit: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
+
+Housing Rooftop Unit: [Amazon](http://www.amazon.de/dp/B076KJZJN5/)
 
