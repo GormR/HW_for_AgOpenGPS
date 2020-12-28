@@ -35,7 +35,7 @@ This connectors are provided:
 - Incremental sensor for steering wheel
 - 2x USB-C (tablet + DC converter/Aux)
 
-![pic](roof_top_unit/3D.png?raw=true)
+![pic](rooftop_unit/3D.png?raw=true)
 # Functions roof top unit for positioning:
 - Dual RTK-GNSS receiver
 - BNO085 option
