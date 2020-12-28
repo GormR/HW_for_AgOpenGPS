@@ -5,7 +5,7 @@ These two PCBAs bring all electronic functions for autosteering with the ![AgOpe
 
 ![pic](Overview.png?raw=true)
 
-This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and the roof top unit to [MTZ8302's dual-RTK firmware](https://github.com/mtz8302/AOG_GPS_ESP32). If the ESP32 option is used for the autosteer unit, the pin definitions of [QtOpenGuidance-ESP32](https://github.com/eringerli/esp32-aog) and [MTZ8302](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
+This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and the rooftop unit to [MTZ8302's dual-RTK firmware](https://github.com/mtz8302/AOG_GPS_ESP32). If the ESP32 option is used for the autosteer unit, the pin definitions of [QtOpenGuidance-ESP32](https://github.com/eringerli/esp32-aog) and [MTZ8302](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
@@ -136,7 +136,7 @@ Tablets mit USB-C-Schnittstelle können mit einem einzigen Kabel für Daten und 
 
 Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt. Der Export nach Altium ist ungeprüft. 
 
-# Component Sources:
+# Component Sources (examples):
 
 M12/M8:	    [digikey](https://www.digikey.com), [Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1)
 
@@ -147,4 +147,6 @@ ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=
 Housing Central Unit: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
 
 Housing Rooftop Unit: [Amazon](http://www.amazon.de/dp/B076KJZJN5/)
+
+RTK receiver: [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html)
 
