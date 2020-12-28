@@ -1,4 +1,4 @@
-# AgOpenGPS/QtOpenGuidance Autosteer and RTK units
+# Autosteer and RTK units for AgOpenGPS/QtOpenGuidance 
 Status: Draft - to be tested!
 
 These two PCBAs bring all electronic functions for autosteering with the AgOpenGPS / QtOpenGuidance project. The dual RTK-GNSS receiver is a separate unit.
@@ -37,4 +37,63 @@ Roof Top Unit:
 - BNO085 option
 - ESP32
 
-Please refer to PDFs for details!
+# Functional Description (to be continued..)
+
+The Arduino part including roll sensor, ADC and digital inputs is a copy of what BrianTee sugested. Many thanks for his great work!
+
+An ESP32 MINI module is mountable alternatively. In that case, the Arduino firmware has to be adapted and the Nano has to send to reset mode by using a jumper (pins 5+6 of P1).   With an ESP32, one CAN2.0 and the RS485 port is usable e. g. for external relay modules via ModbusRTU. Wifi and Bluetooth may also be used.
+
+The motor driver is the one of the IBT-2. It comes with separated 2-channel power lines at the power plug, so that a double-pole switch with positively opening contacts may be used for safe switch-off. This is especially mandatory for hydraulic steering. Furthermore, a DCDC converter may be used to generate 24V for driving the common Phidgets-Motor with increased dynamic.
+
+The fifth pin of the power plug may either be used for a protected digital output (jumper on 1-2 of J8) or as on-switching signal (jumper on 2-3 of J8). No high currents have to be switched – a small SPST switch is ok. A switch inside the housing would be connected to 3-4 of J8. If an external switch is used to cut of the supply directly, apply a jumper to 2-3 of J8.
+
+All digital inputs are protected and made of constant current sinks. Therefore, the input is inverted, so that either NC pushbuttons may be used or the Arduino firmware may be modified.
+
+The hardware of the CANtact project based on the Nexperia µC LPC54616 is optionally mountable and may provide two CAN2.0 ports under control of the tablet. For details please visit https://cantact.io/cantact-pro/users-guide.html. One the two ports may alternativly driven by the ESP32.
+
+The RS485 port is like what is also available with a cheap USB-RS485 stick based on a CH340 driver. 
+
+The 4 port USB hub connects the tablet/Notebook to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
+
+USB1    Arduino Nano    ESP32 (if U3 not mounted.)
+USB2    RS485           Internal USB-A (if U5 not mounted)      External USB-C (if U5 not mounted)
+USB3    CANtact         Internal USB-A (e. g. for ESP32 parallel to Nano)
+USB4    External RTK receiver via M12-D
+
+All voltage and I/O functions are equipped with LEDs.
+
+Tablets with USB-C plug may be connected with a single USB-C wire for power and data, when a 12V USB-C DC converter is connected to the 2nd USB plug. Both USB-C plugs are mounted on a piggyback PCB on top of the M8 plugs.
+
+The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. The Altium export has not been checked. 
+
+# Zusammenfassung
+
+Dieser Leiterplattenentwurf integriert mit Ausnahme des RTK-GNSS-Empfängers alle elektronischen Funktionen, die für einen automatische Lenkung der Projekte AgOpenGPS und QtOpenGuidance notwendig sind. So ist es möglich, auch die zweikanalige RTK-Einheit von Matthias (MTZ8302) zu verwenden. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern, auf der der aktuelle Stand der Arduino-Firmware von BrianTee kann unverändert verwendet werden. 
+
+Besonderer Wert wurde auf ein robustes Gehäuse und insbesondere robuste Steckverbinder und Kabel gelegt. Es sind M12/M8-Steckverbinder gerade oder abgewinkelt vorgesehen. Alternativ sind über auch steckbare PushIn-Steckverbinder bestückbar.
+
+Folgende Funktionen sind vorgesehen:
+- integrierte Arduino-Nano-Hardware
+- Option für ESP32-Leiterplatte (Arduino-Firmware muss angepasst werden)
+- ADC (ADS1115) für Lenkwinkelsensor
+- Neigungssensor (MMA8452)
+- Motortreiber (H-Brücke wie IBT-2) mit zweikanaliger Abschaltung
+- geschützte Digitaleingänge (als Konstantstromsenke)
+- USB-Hub (4-port)
+- Spannungsversorgung auch für Tablet/Notebook via USB-C
+- integrierte CANtact-Hardware (2x CAN2.0)
+- virtueller serieller Port für RS485/ModbusRTU
+- ganz viele Leuchtdioden
+
+Folgende Anschlüsse sind vorgesehen:
+- Stromversorgung 12V/24V (optional für Motor)
+- USB-C zu Tablet/Notebook
+- Lenkwinkelsensor
+- Digitaleingänge
+- USB via M12-D - Kabel zu RTK-GNSS-Einheit
+- Lenkradmotor bzw. Hydraulikeinheit
+- 2x CAN2.0
+- RS485/ModbusRTU
+- Inkrementalgeber für Lenkradsensor
+- 2x USB-C (Tablet + DC-Wandler/Aux)
+
