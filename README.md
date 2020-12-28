@@ -33,7 +33,7 @@ This connectors are provided:
 - 2x USB-C (tablet + DC converter/Aux)
 
 # Functions roof top unit for positioning:
-![pic](AgOpenGPS/tree/main/roof_top_unit/3D.pgn?raw=true)
+![pic](AgOpenGPS/tree/main/roof_top_unit/3D.png?raw=true)
 - Dual RTK-GNSS receiver
 - BNO085 option
 - based on ESP32 ![Thx to MTZ8302!](https://github.com/mtz8302/AOG_GPS_ESP32)
