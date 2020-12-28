@@ -57,13 +57,13 @@ The RS485 port is like what is also available with a cheap USB-RS485 stick based
 
 The 4 port USB hub connects the tablet/Notebook to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
 
-USB1  Arduino Nano  (XOR)   ESP32 (if U3 not mounted.)
+USB1:  Arduino Nano  (XOR)   ESP32 (if U3 not mounted.)
 
-USB2    RS485      (XOR)     Internal USB-A (if U5 not mounted) (XOR)     External USB-C (if U5 not mounted)
+USB2:    RS485      (XOR)     Internal USB-A (if U5 not mounted) (XOR)     External USB-C (if U5 not mounted)
 
-USB3    CANtact   (XOR)      Internal USB-A (e. g. for ESP32 parallel to Nano)
+USB3:    CANtact   (XOR)      Internal USB-A (e. g. for ESP32 parallel to Nano)
 
-USB4    External RTK receiver via M12-D
+USB4:    External RTK receiver via M12-D
 
 All voltage and I/O functions are equipped with LEDs.
 
@@ -120,13 +120,13 @@ Die RS-485-Schnittstelle entspricht dem, was ein preiswerter USB-RS485-Stick auf
 
 Der 4-Port-USB-Hub verbindet das Tablet/Notebook zum RTK-GNSS-Empfänger und wahlweise zum Nano bzw. ESP32, der CANtact-Hardware, der RS-485-Schnittstelle bzw. internen 2 USB-A-Buchsen einer externen USB-C-Buchse. Folgende Alternativen sind mit den 4 Ports möglich:
 
-USB1    Arduino Nano   (XOR)   ESP32 (wenn U3 nicht bestückt)
+USB1:    Arduino Nano   (XOR)   ESP32 (wenn U3 nicht bestückt)
 
-USB2    RS485       (XOR)      Interne USB-A (wenn U5 nicht bestückt)   (XOR) Externe USB-C (wenn U5 nicht bestückt)
+USB2:    RS485       (XOR)      Interne USB-A (wenn U5 nicht bestückt)   (XOR) Externe USB-C (wenn U5 nicht bestückt)
 
-USB3    CANtact  (XOR)         Interne USB-A (z. B. für ESP32 plus Nano)
+USB3:    CANtact  (XOR)         Interne USB-A (z. B. für ESP32 plus Nano)
 
-USB4    RTK-Empfänger
+USB4:    RTK-Empfänger
 
 Alle Spannungen und I/O-Funktionen verfügen über Leuchtdioden.
 
@@ -136,9 +136,9 @@ Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ e
 
 # Component Sources:
 
-M12/M8	    digikey, Reichelt, Aliexpress
+M12/M8:	    ![digikey](www.digikey.com), ![Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1)
 
-PushIn		  Weidmüller (www.weidmueller.com) 1290030000 + 1277270000 via Conrad/digikey
+PushIn:		  Weidmueller ![S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1290030000) + ![B2CF 3.50/04/180 SN OR BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1277270000) via ![Conrad](www.conrad.com)/![digikey](www.digikey.com)
 
-ESP32 MINI	Aliexpress
+ESP32 MINI:	![Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=esp32+mini)
 
