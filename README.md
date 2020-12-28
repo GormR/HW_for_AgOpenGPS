@@ -66,7 +66,7 @@ Tablets with USB-C plug may be connected with a single USB-C wire for power and 
 
 The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. The Altium export has not been checked. 
 
-# Zusammenfassung
+# (German copy) Zusammenfassung
 
 Dieser Leiterplattenentwurf integriert mit Ausnahme des RTK-GNSS-Empfängers alle elektronischen Funktionen, die für einen automatische Lenkung der Projekte AgOpenGPS und QtOpenGuidance notwendig sind. So ist es möglich, auch die zweikanalige RTK-Einheit von Matthias (MTZ8302) zu verwenden. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern, auf der der aktuelle Stand der Arduino-Firmware von BrianTee kann unverändert verwendet werden. 
 
@@ -96,4 +96,39 @@ Folgende Anschlüsse sind vorgesehen:
 - RS485/ModbusRTU
 - Inkrementalgeber für Lenkradsensor
 - 2x USB-C (Tablet + DC-Wandler/Aux)
+
+# Im Detail (wird fortlaufend ergänzt)
+
+Der Arduino-Nano-Teil einschließlich der Neigungssensoren, des ADC und der Eingänge entspricht dem von BrianTee entwickelten Schaltplan. An dieser Stelle sei ihm für seine hervorragende Arbeit gedankt!
+
+Eine ESP32-Leiterplatte ist alternativ bestückbar. In diesem Fall muss die Arduino-Software angepasst werden und der Nano dauerhaft im Reset-Zustand gehalten werden (Jumper auf 5, 6 von P1). Mit einem ESP32 steht dann hardwaremäßig auch ein CAN2.0 und ein RS485-Port zur Verfügung sowie Wifi und Bluetooth.
+
+Der Motortreiber entspricht dem IBT-2. Er verfügt über eine getrennte, zweikanalig ausgeführte Stromversorgung am Spannungsversorgungsstecker, sodass hier ein geeigneter zweikanaliger zwangsöffnender Sicherheitsschalter angeschlossen werden kann. Insbesondere bei Hydraulikeinbindung ist dies zwingend. Auch kann so ein DC/DC-Wandler 12V > 24V vorgeschaltet werden, um eine höhere Lenkdynamik z. B. für den beliebten Phidgets-Motor zu erreichen.
+
+Die 5. Leitung des Spannungsversorgungssteckers kann entweder mit einem geschützten Digitalausgang belegt werden (Jumper auf 1-2 von J8) oder für den Ein-Schalter verwendet werden (Jumper auf 2-3 von J8). Es wird keine Leistung geschaltet – ein kleiner Schalter reicht. Ein Schalter im Gehäuse wird an die 3-4 von J8 angeschlossen. Wird ein externer Leistungsschalter verwendet, müssen diese Kontakte mit einem Jumper überbrückt werden.
+
+Die Digitaleingänge sind als Konstantstromsenke ausgeführt. Dadurch ist die Logik allerdings invertiert, also bitte Öffnerkontakte verwenden oder die Arduino-Firmware entsprechend anpassen.
+
+Die Hardware des CANtact-Projektes auf Basis des Nexperia-µC LPC54616 ist optional bestückbar und stellt dann 2 CAN2.0-Schnittstellen zur Verfügung. Details siehe https://cantact.io/cantact-pro/users-guide.html. Eine der beiden CAN2.0-Schnittstellen kann alternativ auch mit dem ESP32 angesteuert werden.
+
+Die RS-485-Schnittstelle entspricht dem, was ein preiswerter USB-RS485-Stick auf Basis einen CH340 leistet. 
+
+Der 4-Port-USB-Hub verbindet das Tablet/Notebook zum RTK-GNSS-Empfänger und wahlweise zum Nano bzw. ESP32, der CANtact-Hardware, der RS-485-Schnittstelle bzw. internen 2 USB-A-Buchsen einer externen USB-C-Buchse. Folgende Alternativen sind mit den 4 Ports möglich:
+
+USB1    Arduino Nano      ESP32 (wenn U3 nicht bestückt)
+USB2    RS485             Interne USB-A (wenn U5 nicht bestückt)    Externe USB-C (wenn U5 nicht bestückt)
+USB3    CANtact           Interne USB-A (z. B. für ESP32 plus Nano)
+USB4    RTK-Empfänger
+
+Alle Spannungen und I/O-Funktionen verfügen über Leuchtdioden.
+
+Tablets mit USB-C-Schnittstelle können mit einem einzigen Kabel für Daten und Stromversorgung angeschlossen werden, wenn ein 12V-USB-C-Ladeadapter an die zweite USB-C-Buchse angeschlossen wird. Die beiden USB-C-Buchsen sind auf Huckepack-Leiterplatten über den M8-Steckverbindern angeordnet.
+
+Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt. Der Export nach Altium ist ungeprüft. 
+
+# Component Sources:
+
+M12/M8	    digikey, Reichelt, Aliexpress
+PushIn		  Weidmüller (www.weidmueller.com) 1290030000 + 1277270000 via Conrad/digikey
+ESP32 MINI	Aliexpress
 
