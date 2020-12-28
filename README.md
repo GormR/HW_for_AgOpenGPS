@@ -7,7 +7,7 @@ This setup does not include new functions but provides a robust, monolitic unit 
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
-This functions are provided:
+# Functions in-cabin-unit for autosteering
 - integrated Arduino-Nano hardware
 - option for ESP32-Module (Arduino Firmware has to be adapted)
 - ADC (ADS1115) for wheel angle sensor (WAS)
@@ -32,10 +32,11 @@ This connectors are provided:
 - Incremental sensor for steering wheel
 - 2x USB-C (tablet + DC converter/Aux)
 
-Roof Top Unit:
+# Functions roof top unit for positioning:
+![pic](AgOpenGPS/tree/main/roof_top_unit/3D.pgn?raw=true)
 - Dual RTK-GNSS receiver
 - BNO085 option
-- ESP32
+- based on ESP32 ![Thx to MTZ8302!](https://github.com/mtz8302/AOG_GPS_ESP32)
 
 # Functional Description (to be continued..)
 
