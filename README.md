@@ -10,6 +10,7 @@ This setup does not include new functions but provides a robust, monolitic unit 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
 ![pic](central_unit/3D.png?raw=true)
+[Project link](https://oshwlab.com/GoRoNb/agopengps-main-box)
 # Functions in-cabin-unit for autosteering
 - integrated Arduino-Nano hardware
 - option for ESP32-Module (Arduino Firmware has to be adapted)
