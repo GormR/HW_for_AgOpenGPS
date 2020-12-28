@@ -51,7 +51,7 @@ The fifth pin of the power plug may either be used for a protected digital outpu
 
 All digital inputs are protected and made of constant current sinks. Therefore, the input is inverted, so that either NC pushbuttons may be used or the Arduino firmware may be modified.
 
-The hardware of the CANtact project based on the Nexperia µC LPC54616 is optionally mountable and may provide two CAN2.0 ports under control of the tablet. For details please visit https://cantact.io/cantact-pro/users-guide.html. One the two ports may alternativly driven by the ESP32.
+The hardware of the ![CANtact project](https://cantact.io/cantact-pro/users-guide.html) based on the Nexperia µC LPC54616 is optionally mountable and may provide two CAN2.0 ports under control of the tablet. One the two ports may alternativly driven by the ESP32.
 
 The RS485 port is like what is also available with a cheap USB-RS485 stick based on a CH340 driver. 
 
@@ -114,7 +114,7 @@ Die 5. Leitung des Spannungsversorgungssteckers kann entweder mit einem geschüt
 
 Die Digitaleingänge sind als Konstantstromsenke ausgeführt. Dadurch ist die Logik allerdings invertiert, also bitte Öffnerkontakte verwenden oder die Arduino-Firmware entsprechend anpassen.
 
-Die Hardware des CANtact-Projektes auf Basis des Nexperia-µC LPC54616 ist optional bestückbar und stellt dann 2 CAN2.0-Schnittstellen zur Verfügung. Details siehe https://cantact.io/cantact-pro/users-guide.html. Eine der beiden CAN2.0-Schnittstellen kann alternativ auch mit dem ESP32 angesteuert werden.
+Die Hardware des ![CANtact-Projektes](https://cantact.io/cantact-pro/users-guide.html) auf Basis des Nexperia-µC LPC54616 ist optional bestückbar und stellt dann 2 CAN2.0-Schnittstellen zur Verfügung. Eine der beiden CAN2.0-Schnittstellen kann alternativ auch mit dem ESP32 angesteuert werden.
 
 Die RS-485-Schnittstelle entspricht dem, was ein preiswerter USB-RS485-Stick auf Basis einen CH340 leistet. 
 
@@ -136,9 +136,9 @@ Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ e
 
 # Component Sources:
 
-M12/M8:	    ![digikey](www.digikey.com), ![Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1)
+M12/M8:	    ![digikey](https://www.digikey.com), ![Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1)
 
-PushIn:		  Weidmueller ![S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1290030000) + ![B2CF 3.50/04/180 SN OR BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1277270000) via ![Conrad](www.conrad.com)/![digikey](www.digikey.com)
+PushIn:		  Weidmueller ![S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1290030000) + ![B2CF 3.50/04/180 SN OR BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1277270000) via ![Conrad](https://www.conrad.com)/![digikey](https://www.digikey.com)
 
 ESP32 MINI:	![Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=esp32+mini)
 
