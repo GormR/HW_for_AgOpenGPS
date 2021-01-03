@@ -24,7 +24,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - USB and power supply for tablet/notebook via one USB-C (external DC adapter needed)
 - integrated CANtact hardware (2x CAN2.0)
 - virtual serial port for RS485/ModbusRTU
-- may LEDs
+- many LEDs
 
 This connectors are provided:
 - Supply 12V/24V (optional for motor)
@@ -39,13 +39,16 @@ This connectors are provided:
 - 2x USB-C (tablet + DC converter/Aux)
 - QWIIC connector
 
+
+
+
 ![pic](rooftop_unit/3D.png?raw=true)
 [Project link](https://easyeda.com/GoRoNb/autosteer-for-agopengps_copy_copy_copy_copy)
 # Functions roof top unit for positioning (only THT):
 - Dual RTK-GNSS receiver
 - BNO085 option (as CMPS14 board)
 - QWIIC connector
-- based on ESP32 [Thx to MTZ8302!](https://github.com/mtz8302/AOG_GPS_ESP32) and ![Jeep1945](https://github.com/Jeep1945/Dualheading) (pinning taken from Jeep1945)
+- based on ESP32 [Thx to MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32) and ![Jeep1945](https://github.com/Jeep1945/Dualheading) (pinning taken from Jeep1945)
 - RS232 output option for sprayer (NMEA string output or speed pulse)
 - SPI connector for those who like to use an Ethernet shield
 - 3 LEDs, 2 key inputs
