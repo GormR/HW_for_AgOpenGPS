@@ -16,10 +16,13 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - option for ESP32-Module (Arduino Firmware has to be adapted)
 - ADC (ADS1115) for wheel angle sensor (WAS)
 - roll sensor (MMA8452)
+- BNO085 option (as CMPS14 board)
 - motor driver (H-bridge of IBT-2) with 2-channel switch-off
 - current feedback from motor driver (may be used to quit autosteering on driver interaction)
 - 3 protected digital inputs (2oo3 usable as analog inputs on ESP32)
 - one optional digital protected 12V output
+- mounting holes for Ardusimple board(s)
+- mounting holes for rooftop unit board (for dual-RTK)
 - USB hub (4-port)
 - USB and power supply for tablet/notebook via one USB-C (external DC adapter needed)
 - integrated CANtact hardware (2x CAN2.0)
@@ -38,6 +41,7 @@ This connectors are provided:
 - Incremental sensor for steering wheel
 - 2x USB-C (tablet + DC converter/Aux)
 - QWIIC connector
+- internal USB connectors
 
 
 
