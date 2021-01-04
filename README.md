@@ -1,4 +1,4 @@
-# Autosteer and RTK units for AgOpenGPS/QtOpenGuidance 
+# Autosteer and RTK units for AgOpenGPS/QtOpenGuidance  
 Status: Draft - to be tested!
 
 These two PCBAs bring all electronic functions for autosteering with the ![AgOpenGPS](https://github.com/farmerbriantee/AgOpenGPS) / ![QtOpenGuidance](https://github.com/eringerli/QtOpenGuidance) project. The dual RTK-GNSS receiver, based on an idea of ![MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32), is a separate unit.
@@ -11,18 +11,20 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 
 ![pic](central_unit/3D.png?raw=true)
 [Project link](https://oshwlab.com/GoRoNb/agopengps-main-box)
-# Functions in-cabin-unit for autosteering
+# Functions in-cabin-unit for autosteering (all SMD + THT connectors)
 - integrated Arduino-Nano hardware
 - option for ESP32-Module (Arduino Firmware has to be adapted)
 - ADC (ADS1115) for wheel angle sensor (WAS)
 - roll sensor (MMA8452)
 - motor driver (H-bridge of IBT-2) with 2-channel switch-off
-- protected digital inputs (as constant current sink)
+- current feedback from motor driver (may be used to quit autosteering on driver interaction)
+- 3 protected digital inputs (2oo3 usable as analog inputs on ESP32)
+- one optional digital protected 12V output
 - USB hub (4-port)
-- power supply also for tablet/notebook via USB-C
-- integrated CANtact dardware (2x CAN2.0)
+- USB and power supply for tablet/notebook via one USB-C (external DC adapter needed)
+- integrated CANtact hardware (2x CAN2.0)
 - virtual serial port for RS485/ModbusRTU
-- may LEDs
+- many LEDs
 
 This connectors are provided:
 - Supply 12V/24V (optional for motor)
@@ -35,13 +37,21 @@ This connectors are provided:
 - RS485/ModbusRTU
 - Incremental sensor for steering wheel
 - 2x USB-C (tablet + DC converter/Aux)
+- QWIIC connector
+
+
+
 
 ![pic](rooftop_unit/3D.png?raw=true)
 [Project link](https://easyeda.com/GoRoNb/autosteer-for-agopengps_copy_copy_copy_copy)
-# Functions roof top unit for positioning:
+# Functions roof top unit for positioning (only THT):
 - Dual RTK-GNSS receiver
-- BNO085 option
-- based on ESP32 ![Thx to MTZ8302!](https://github.com/mtz8302/AOG_GPS_ESP32)
+- BNO085 option (as CMPS14 board)
+- QWIIC connector
+- based on ESP32 [Thx to MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32) and ![Jeep1945](https://github.com/Jeep1945/Dualheading) (pinning taken from Jeep1945)
+- RS232 output option for sprayer (NMEA string output or speed pulse)
+- SPI connector for those who like to use an Ethernet shield
+- 3 LEDs, 2 key inputs
 
 # Functional Description (to be continued..)
 
