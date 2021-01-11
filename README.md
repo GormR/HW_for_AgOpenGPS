@@ -29,7 +29,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - virtual serial port for RS485/ModbusRTU
 - many LEDs
 
-This connectors are provided:
+These [connectors](central_unit/Connectors.pdf) are provided:
 - Supply 12V/24V (optional for motor)
 - USB-C to tablet/notebook
 - Wheel angle sensor (WAS)
