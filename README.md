@@ -43,7 +43,7 @@ These #[connections](central_unit/Connections.pdf) are provided:
 - QWIIC connector
 - internal USB connectors
 
-
+----------------------------------------------------------------------------------------------------------------------------
 
 
 ![pic](rooftop_unit/3D.png?raw=true)
