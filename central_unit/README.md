@@ -149,5 +149,7 @@ ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=
 
 Housing: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
 
+RTK receiver: [Bynav](https://www.bynav.com/en/products/gnss-boards/c1.html)
+
 RTK receiver: [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html)
 
