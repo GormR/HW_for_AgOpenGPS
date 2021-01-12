@@ -1,15 +1,11 @@
-# Autosteer and RTK units for AgOpenGPS/QtOpenGuidance  
+# Central Unit AgOpenGPS/QtOpenGuidance  
 Status: Draft - to be tested!
 
-These two PCBAs bring all electronic functions for autosteering with the ![AgOpenGPS](https://github.com/farmerbriantee/AgOpenGPS) / ![QtOpenGuidance](https://github.com/eringerli/QtOpenGuidance) project. The dual RTK-GNSS receiver, based on an idea of ![MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32), is a separate unit.
-
-![pic](Overview.png?raw=true)
-
-This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and the rooftop unit to [MTZ8302's dual-RTK firmware](https://github.com/mtz8302/AOG_GPS_ESP32). If the ESP32 option is used for the autosteer unit, the pin definitions of [esp32-aog](https://github.com/eringerli/esp32-aog) and [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
+This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip). If the ESP32 option is used, the pin definitions of [esp32-aog](https://github.com/eringerli/esp32-aog) and [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
-![pic](central_unit/3D.png?raw=true)
+![pic](3D.png?raw=true)
 [Project link](https://oshwlab.com/GoRoNb/agopengps-main-box)
 # Functions in-cabin-unit for autosteering (all SMD + THT connectors)
 - integrated Arduino-Nano hardware
@@ -22,6 +18,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - 3 protected digital inputs (2oo3 usable as analog inputs on ESP32)
 - one optional digital protected 12V output
 - mounting holes for Ardusimple board(s)
+- connector for Bynav-C1 board
 - mounting holes for rooftop unit board (for dual-RTK)
 - USB hub (4-port)
 - USB and power supply for tablet/notebook via one USB-C (external DC adapter needed)
@@ -29,7 +26,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - virtual serial port for RS485/ModbusRTU
 - many LEDs
 
-These #[connections](central_unit/Connections.pdf) are provided:
+These #[connections](Connections.pdf) are provided:
 - Supply 12V/24V (optional for motor)
 - USB-C to tablet/notebook
 - Wheel angle sensor (WAS)
@@ -42,20 +39,10 @@ These #[connections](central_unit/Connections.pdf) are provided:
 - 2x USB-C (tablet + DC converter/Aux)
 - QWIIC connector
 - internal USB connectors
+- internal Bynav-C1 connector
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-
-![pic](rooftop_unit/3D.png?raw=true)
-[Project link](https://easyeda.com/GoRoNb/autosteer-for-agopengps_copy_copy_copy_copy)
-# Functions roof top unit for positioning (only THT):
-- Dual RTK-GNSS receiver
-- BNO085 option (as CMPS14 board)
-- QWIIC connector
-- based on ESP32 [Thx to MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32) and ![Jeep1945](https://github.com/Jeep1945/Dualheading) (pinning taken from Jeep1945)
-- RS232 output option for sprayer (NMEA string output or speed pulse)
-- SPI connector for those who like to use an Ethernet shield
-- 3 LEDs, 2 key inputs
 
 # Functional Description (to be continued..)
 
@@ -81,7 +68,7 @@ USB2:    RS485      (XOR)     Internal USB-A (if U5 not mounted) (XOR)     Exter
 
 USB3:    CANtact   (XOR)      Internal USB-A (e. g. for ESP32 parallel to Nano)
 
-USB4:    External RTK receiver via M12-D
+USB4:    External RTK receiver via M12-D/Bynav-C1 board
 
 All voltage and I/O functions are equipped with LEDs.
 
@@ -160,9 +147,7 @@ PushIn:		  Weidmueller [S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmu
 
 ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=esp32+mini)
 
-Housing Central Unit: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
-
-Housing Rooftop Unit: [Amazon](http://www.amazon.de/dp/B076KJZJN5/)
+Housing: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
 
 RTK receiver: [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html)
 
