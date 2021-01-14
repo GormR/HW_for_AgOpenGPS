@@ -82,7 +82,7 @@ Steering systems have to meet at least the agricultural performance level AgrPL 
 
 Especially with hydraulic control, the vehicle may likely get uncontrollable on a failure of the valve-controlling electronic which may result in fatal casualties or serious injuries!
 
-For AgOpenGPS, the required safety level may be archieved by the absense of power for the valve/motor controlling unit. This function must have at least the same safety/performance level.
+For AgOpenGPS, the required safety level may be archieved by the fail-safe absense of power for the valve/motor controlling unit. This function must have at least the same safety/performance level.
 
 The mandatory application for approval may base on the following arguments based on ISO 13849: 
 
