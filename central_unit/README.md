@@ -76,6 +76,23 @@ Tablets with USB-C plug may be connected with a single USB-C wire for power and 
 
 The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. The Altium export has not been checked. 
 
+# Functional Safety Advice
+
+Steering systems have to meet at least the agricultural performance level AgrPL d acc. UN ECE R79 (see professional systems like [this](www.mobil-elektronik.com/uploads/media/Prospekt_Brochure_ME_Agricultural_Vehicles_ENG.pdf))!
+
+Especially with hydraulic control, the vehicle may likely get uncontrollable on a failure of the valve-controlling electronic which may result in fatal casualties or serious injuries!
+
+For AgOpenGPS, the required safety level may be archieved by the absense of power for the valve/motor controlling unit. This function must have at least the same safety/performance level.
+
+The mandatory application for approval may base on the following arguments based on ISO 13849: 
+
+- emergency-stop key meets IEC 60947-5-5/ISO 13850, in line with fuse meeting IEC60269-1 (both acc. to table D.3, ISO 13849-2)
+- use of MELF type resistors for all 8.2kOhm resistors to meet table D.14, ISO 13849-2
+- module is mounted inside a IP54 housing (acc. table D.5, ISO 13849-2)
+- wiring acc. IEC 60204-1 (acc. table D.4, ISO 13849-2) 
+- measure against tin whiskers are taken (acc. D.2.2, ISO 13849-2), e. g. use of 60/40 solder paste
+- futhermore the software shall check the values of the signal „safesense“
+
 # (German copy) Zusammenfassung
 
 Dieser Leiterplattenentwurf integriert mit Ausnahme des RTK-GNSS-Empfängers alle elektronischen Funktionen, die für einen automatische Lenkung der Projekte AgOpenGPS und QtOpenGuidance notwendig sind. So ist es möglich, auch die zweikanalige RTK-Einheit von Matthias (MTZ8302) zu verwenden. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern, auf der der aktuelle Stand der Arduino-Firmware von BrianTee kann unverändert verwendet werden. 
