@@ -19,6 +19,20 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 
 [Documentation Central Unit](rooftop_unit/README.md)
 
+# Order How-To JLCPCB
+- browse to [JLCPCB](https://jlcpcb.com) and click "Quote now"
+- upload Gerber file (either for [Centrol unit](central_unit/production_data/Gerber_Central_Unit_AgOpenGPS.zip) or [Rooftop Unit](rooftop_unit/production_data/Gerber_Rooftop_Unit_AgOpenGPS.zip)). The Gerber of the central unit is too big for a preview, so you also have to enter the DIMENSIONS in the next line after the upload process has fully finished: 150 x 92mm²
+- enter the number of PCBs to order: 5, 10, 15, etc
+- if you like, you may change the color of the solder mask printing. But not all colors are available for SMD manufacturing!
+- for the central unit check switch "SMT assembly" and "Assemble top layer"
+- Accept terms and click "NEXT" (you may log in now)
+- Upload [BOM](central_unit/production_data/BOM_Central%20Unit%20for%20AgOpenGPS.csv) and [Pick and Place file](central_unit/production_data/PickAndPlace_Central_Unit_AgOpenGPS.csv)
+- click NEXT
+- browse through the list and see, what is not confirmed. For some you may find 2nd sources, some maybe not available from stock in that moment, some like the Nexperia controller are unavailable and some like connectors are not supported yet
+- click NEXT
+- check if all components are placed correctly (e. g. rotation information is sometimes incorrect in the libraries)
+- order
+
 # (German copy) Zusammenfassung
 
 Dieser Leiterplattenentwurf integriert mit Ausnahme des RTK-GNSS-Empfängers alle elektronischen Funktionen, die für einen automatische Lenkung der Projekte AgOpenGPS und QtOpenGuidance notwendig sind. So ist es möglich, auch die zweikanalige RTK-Einheit von Matthias (MTZ8302) zu verwenden. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern, auf der der aktuelle Stand der Arduino-Firmware von BrianTee kann unverändert verwendet werden. 
