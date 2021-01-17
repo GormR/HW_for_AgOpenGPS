@@ -25,6 +25,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - integrated CANtact hardware (2x CAN2.0)
 - virtual serial port for RS485/ModbusRTU
 - many LEDs
+- Ethernet/UDP option via shield (see folder "ethernet_adapter")
 
 These #[connections](Connections.pdf) are provided:
 - Supply 12V/24V (optional for motor)
@@ -40,6 +41,7 @@ These #[connections](Connections.pdf) are provided:
 - QWIIC connector
 - internal USB connectors
 - internal Bynav-C1 connector
+- connector to Ethernet shield
 
 ----------------------------------------------------------------------------------------------------------------------------
 
