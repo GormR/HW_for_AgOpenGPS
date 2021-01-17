@@ -8,6 +8,7 @@ This setup does not include new functions but provides a robust, monolitic unit 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). 
 
 ![pic](3D.png?raw=true)
+
 [Project link](https://easyeda.com/GoRoNb/autosteer-for-agopengps_copy_copy_copy_copy)
 # Functions roof top unit for positioning (only THT):
 - Dual RTK-GNSS receiver
