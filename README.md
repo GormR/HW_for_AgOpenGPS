@@ -19,6 +19,8 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 
 [Documentation Central Unit](rooftop_unit/README.md)
 
+[Documentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
+
 # Order How-To JLCPCB
 - browse to [JLCPCB](https://jlcpcb.com) and click "Quote now"
 - upload Gerber file (either for [Centrol unit](central_unit/production_data/Gerber_Central_Unit_AgOpenGPS.zip) or [Rooftop Unit](rooftop_unit/production_data/Gerber_Rooftop_Unit_AgOpenGPS.zip)). The Gerber of the central unit is too big for a preview, so you also have to enter the DIMENSIONS in the next line after the upload process has fully finished: 150 x 92mm²
