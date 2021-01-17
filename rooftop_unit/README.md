@@ -18,6 +18,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - RS232 output option for sprayer (NMEA string output or speed pulse)
 - SPI connector for those who like to use an Ethernet shield
 - 3 LEDs, 2 key inputs
+- option for W5500 Ethernet board for UDP
 
 The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. The Altium export has not been checked. 
 
@@ -38,4 +39,6 @@ ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=
 Housing Rooftop Unit: [Amazon](http://www.amazon.de/dp/B076KJZJN5/)
 
 RTK receiver: [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html)
+
+Ethernet: [W5500 board](https://de.aliexpress.com/item/32598945210.html)
 
