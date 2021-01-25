@@ -43,12 +43,13 @@ The following functions are provided:
     Output impedance: 1kOhm
 
 Optional connectors:
-- I/O with push-in
-- QWIIC 
+- I/O with push-in (see picture underneath)
+- I/O with 2.54mm pin headers (24 DI + 24 DO)
+- QWIIC to further I²C devices
 - 2x to IBT-2 module
 - to RS-232 module
-- CAN
-- RS-485 (e. g. Modbus)
+- CAN (driver already provided onboard)
+- RS-485 (e. g. Modbus; driver already provided onboard)
 - Ethernet/UDP w/ W5500 shield
 
 The I/O area is user-defined by a matrix:
