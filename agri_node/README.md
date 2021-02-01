@@ -6,7 +6,7 @@ Status: Work in progress!
 
 The AgriNode is designed as an inexpensive base board for an ESP32 module, optimized for agricultural/automotive use.
 
-Apart from the connectors and modules, the board may be ordered completely SMD-assembled e. g. from JLCPCB for less than US$80 for 10 PCBs (tax not included).
+Apart from the connectors and modules, the board may be ordered completely SMD-assembled e. g. from JLCPCB for about US$80 for 10 PCBs (tax and shipping not included).
 
 The following functions are provided:
 
