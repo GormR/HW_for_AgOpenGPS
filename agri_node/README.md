@@ -6,7 +6,7 @@ Status: Work in progress!
 
 The AgriNode is designed as an inexpensive base board for an ESP32 module, optimized for agricultural/automotive use.
 
-Apart from the connectors and modules, the board may be ordered completely SMD-assembled e. g. from JLCPCB for less than US$80 for 10 PCBs (tax not included).
+Apart from the connectors and modules, the board may be ordered completely SMD-assembled e. g. from JLCPCB for about US$80 for 10 PCBs (tax and shipping not included).
 
 The following functions are provided:
 
@@ -34,13 +34,21 @@ The following functions are provided:
     Input hight, if output > 4.5V min.
     Impedance: 4.7kOhm // 10kOhm clamping to 5V
 
-- 7x fast digital outputs Dout0..6
+- 6x fast digital outputs Dout1..6
     Output voltage 0V/5V
     Output impedance: 1kOhm
 
 - 24x digital outputs Dout8..31
     Output voltage 0V/5V
     Output impedance: 1kOhm
+    
+- 1x output digital or analog DAC
+    Output voltage 0V..12V
+    Output impedance: 150Ohm
+
+- 1x digital output Dout0
+    Output voltage 0V/12V
+    Output impedance: 150Ohm
 
 Optional connectors:
 - I/O with push-in (see picture underneath)
