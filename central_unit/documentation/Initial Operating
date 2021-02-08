@@ -1,0 +1,22 @@
+- mount all SMD components
+- mount all pin headers
+- mount all connectors
+
+- slowly increase input voltage with current limit of 100mA; 0mA till about 4V, 20mA @ 4.5V (check 3.3V!), 12mA @ 12V (check that 5V does not rise up!)
+
+- connect USB
+
+- connect Arduino Uno board and flash bootloader (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP)
+
+- debugging option: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
+
+- flash BrianTee's Arduino code
+
+- connect devices and test
+
+
+
+
+
+
+
