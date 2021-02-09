@@ -1,0 +1,6 @@
+V1.3
+- first prototype
+
+V1.4
+- U14 added to support 6/2 valves
+- R103 and R105 added to decouple Atmel and ESP32
