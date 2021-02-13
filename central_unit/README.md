@@ -20,7 +20,8 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 ![pic](documentation/Full_M8_M12.jpg?raw=true)
 ![pic](documentation/Full_PushIn.jpg?raw=true)
 
-# 150x92mm² SMD: 72 different parts, 252 parts overall
+# 150 x 92mm² 
+SMD: 72 different parts, 252 parts overall
 
 [Project link](https://oshwlab.com/GoRoNb/agopengps-main-box)
 
