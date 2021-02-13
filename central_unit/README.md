@@ -70,7 +70,11 @@ The 4 port USB hub connects the tablet/Notebook to the RTK-GNSS receiver and to 
 
 - USB3:    CANtact   (XOR)      Internal USB-A (e. g. for ESP32 parallel to Nano)
 
-- USB4:    External RTK receiver via M12-D (if U19 not mounted) (XOR) Bynav-C1 board 
+- USB4:    External RTK receiver via M12-D (if U19 not mounted) (XOR) Bynav-C1 board (XOR) internal USB:
+
+Option1: USB via M12-D: U19, R100, R101 not mounted
+Option2: I²C via M12-D, serial device for RS232 - converter or Bynav RTK receiver @ U16: R43, R46 not mounted
+Option3: I²C via M12-D, additional internal USB (USB1): R43, R46, U19 not mounted
 
 All voltage and I/O functions are equipped with LEDs.
 
