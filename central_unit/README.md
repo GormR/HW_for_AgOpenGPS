@@ -1,11 +1,24 @@
 # Central Unit AgOpenGPS/QtOpenGuidance  
-Status: Draft - to be tested!
+Tested yet:
+- USB hub
+- Atmel section with I/Os needed for AOG
+- connection to Ethernet
+- power supply
+- motor driver
+- WAS input
+- RS485 / Modbus
+Still untested:
+- CAN
+- ESP32 option
+- Bynav option
+
 
 This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip). If the ESP32 option is used, the pin definitions of [esp32-aog](https://github.com/eringerli/esp32-aog) and [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
 ![pic](3D.png?raw=true)
+#150x92mm² SMD: 72 different parts, 252 overall
 [Project link](https://oshwlab.com/GoRoNb/agopengps-main-box)
 # Functions in-cabin-unit for autosteering (all SMD + THT connectors)
 - integrated Arduino-Nano hardware
