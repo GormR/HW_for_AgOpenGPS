@@ -18,8 +18,12 @@ This setup does not include new functions but provides a robust, monolitic unit 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
 ![pic](documentation/Full_M8_M12.jpg?raw=true)
+![pic](documentation/Full_PushIn?raw=true)
+
 #150x92mm² SMD: 72 different parts, 252 overall
+
 [Project link](https://oshwlab.com/GoRoNb/agopengps-main-box)
+
 # Functions in-cabin-unit for autosteering (all SMD + THT connectors)
 - integrated Arduino-Nano hardware
 - option for ESP32-Module (Arduino Firmware has to be adapted)
