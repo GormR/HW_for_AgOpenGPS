@@ -21,7 +21,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 ![pic](documentation/Full_PushIn.jpg?raw=true)
 
 # 150 x 92 mm² 
-2-layer, 1,6mm thickness, technology: 0.15mm/0.15mm/0.3mm; SMD assembly: 72 different parts, 252 parts overall, THT: only 2.54mm headers and plugs of your choice
+2-layer 35µm, 1,6mm thickness, technology: 0.15mm/0.15mm/0.3mm; SMD assembly: 72 different parts, 252 parts overall, THT: only 2.54mm headers and plugs of your choice
 
 [Link to EasyEDA project](https://oshwlab.com/GoRoNb/agopengps-main-box)
 
