@@ -43,7 +43,7 @@ These #[connections](Connections.pdf) are provided:
 - internal Bynav-C1 connector
 - connector to Ethernet shield
 
-Some functions are shown in [my video](https://www.youtube.com/watch?v=BdSSeIprusM). [German version](https://www.youtube.com/watch?v=w10TqOEIxdU).
+Some functions are shown in [my english](https://www.youtube.com/watch?v=BdSSeIprusM) or [German video.](https://www.youtube.com/watch?v=w10TqOEIxdU).
 
 ----------------------------------------------------------------------------------------------------------------------------
 
