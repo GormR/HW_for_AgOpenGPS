@@ -1,6 +1,6 @@
 # Central Unit AgOpenGPS/QtOpenGuidance  
 Tested yet:
-- USB hub
+- USB hub, USB devices, USB-C PD
 - Atmel section with I/Os needed for AOG
 - connection to Ethernet
 - power supply
