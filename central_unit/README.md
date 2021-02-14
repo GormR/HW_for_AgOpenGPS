@@ -60,6 +60,7 @@ These #[connections](Connections.pdf) are provided:
 - internal USB connectors
 - internal Bynav-C1 connector
 - connector to [Ethernet shield](https://de.aliexpress.com/item/32548974618.html) - cut out "clkout" pin before connecting!!
+- option to control a 6/2 valve (rename "xU14" to "U14" and delete R59, R76 and F7 in BOM; make a solder joint underneat CN18 to connect signal "+SERVO" to "-MOTOR").
 
 Some functions are shown in [my English](https://www.youtube.com/watch?v=BdSSeIprusM) or [German video.](https://www.youtube.com/watch?v=w10TqOEIxdU).
 
