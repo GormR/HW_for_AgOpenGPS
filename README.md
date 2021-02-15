@@ -30,7 +30,7 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 - Accept terms and click "NEXT" (you may log in now)
 - Upload [BOM](central_unit/production_data/BOM_Central%20Unit%20for%20AgOpenGPS.csv) and [Pick and Place file](central_unit/production_data/PickAndPlace_Central_Unit_AgOpenGPS.csv)
 - click NEXT
-- browse through the list and see, what is not confirmed. For some you may find 2nd sources, some maybe not available from stock in that moment, some like the Nexperia controller are unavailable and some like connectors are not supported yet
+- browse through the list and see, what is not confirmed. For some you may find 2nd sources, some maybe not available from stock in that moment, some like the Nexperia controller are unavailable and some like connectors are not supported yet (see my [video](https://www.youtube.com/watch?v=dLczChhmDCY) how to solder the USB-C receptacle)
 - click NEXT
 - check if all components are placed correctly (e. g. rotation information is sometimes incorrect in the libraries)
 - order
