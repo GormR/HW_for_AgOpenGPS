@@ -83,7 +83,7 @@ The hardware of the ![CANtact project](https://cantact.io/cantact-pro/users-guid
 
 The RS485 port is like what is also available with a cheap USB-RS485 stick based on a CH340 driver. 
 
-The 4 port USB hub connects the tablet/Notebook to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
+The 4 port USB hub connects the tablet/Notebook via either CN2 (PushIn) or CN8/CN13/TO_PC (USB-C) to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
 
 - USB1:  Arduino Nano Clone  (XOR)   ESP32 (if U3 not mounted.)
 
