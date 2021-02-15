@@ -91,7 +91,7 @@ The 4 port USB hub connects the tablet/Notebook via either CN2 (PushIn) or CN8/C
 
 - USB3:    CANtact   (XOR)      Internal USB-A (e. g. for ESP32 parallel to Nano)
 
-- USB4:    External RTK receiver via M12-D (if U19 not mounted) (XOR) Bynav-C1 board (XOR) internal USB (e. g. for Ardusimple via [USB cable](https://de.aliexpress.com/item/4000533815530.html):
+- USB4:    External RTK receiver via M12-D (if U19 not mounted) (XOR) Bynav-C1 board (XOR) internal USB (e. g. for Ardusimple via [USB cable](https://de.aliexpress.com/item/4000533815530.html)):
 
 Option1: USB via M12-D: U19, R100, R101 not mounted
 
