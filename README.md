@@ -37,13 +37,28 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 
 # (German copy) Zusammenfassung
 
+Für ein Autosteering-System benötigt man mindestens
+- einen Laptop oder Tablet/Convertable mit Windows + Ladegerät für 12V
+- einen RTK-Empfänger mit Antenne, bevorzugt auf ublox-Basis (z. B. [Ardusimple](https://www.ardusimple.com/product/simplertk2b-basic-starter-kit-ip65/))
+- einen [Lenkradmotor](https://agopengps.discourse.group/t/dc-motor-model/784)
+- eine Ansteuerelektronik wie die hier beschriebene Zentraleinheit
+
 Dieser Leiterplattenentwurf integriert mit Ausnahme des RTK-GNSS-Empfängers alle elektronischen Funktionen, die für einen automatische Lenkung der Projekte AgOpenGPS und QtOpenGuidance notwendig sind. So ist es möglich, auch die zweikanalige RTK-Einheit von Matthias (MTZ8302) zu verwenden. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern, auf der der aktuelle Stand der Arduino-Firmware von BrianTee kann unverändert verwendet werden. 
 
 Besonderer Wert wurde auf ein robustes Gehäuse und insbesondere robuste Steckverbinder und Kabel gelegt. Es sind M12/M8-Steckverbinder gerade oder abgewinkelt vorgesehen. Alternativ sind über auch steckbare PushIn-Steckverbinder bestückbar.
 
 Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt. Der Export nach Altium ist ungeprüft. 
 
-[Dokumentation Central Unit](central_unit/README.md)
+[Dokumentation Zentraleinheit](central_unit/README.md)
 
-[Dokumentation Central Unit](rooftop_unit/README.md)
+[Dokumentation Dacheinheit (optional)](rooftop_unit/README.md)
 
+# Bestellhinweise
+1. SMD-bestückte Leiterplatte bestellen, z. B. beim JLCPCB für ca. 35€ wie oben im englischen Teil beschrieben. Deutschsprachige Alternativen: PCB-Pool, Aisler. Vorsicht bei JLCPCB: Es werden nur die Bauteile bestückt, die zum Bestellzeitpunkt verfügbar sind (wird aber deutlich angezeigt - Liste kann auch heruntergeladen werden).
+2. Je nach gewünschter Verkabelungsvariante entweder M8 + M12-Steckverbinder und Kabel bestellen oder PushIn-Buchsen und Stecker 
+3. Gewünschte Zusatzmodule bestellen, z. B. Lagesensor CMPS14 als (verbesserte) Alternative zum Onboard-Lagesensor MMA8452, zweiter RTK-Empfänger, ESP32 für CAN oder Dual-RTK, hier ebenfalls beschriebene Dacheinheit, RS232-Schnittstellenwandler, etc
+4. Kleinkram wie Schrauben, (USB-) Kabel, Kunststoffabstandshülsen etc bestellen
+
+Selbst gelötet werden die Steckverbinder wie unter 2. beschrieben (einfache zu löten). 
+
+Weitere Hinweise finden sich zum Teil bei den einzelnen Baugruppen.
