@@ -1,10 +1,12 @@
 # Central Unit AgOpenGPS/QtOpenGuidance  
+(Informationen in deutscher Sprache unten)
+
 Tested yet:
 - USB hub, USB devices, USB-C PD
 - Atmel section with I/Os needed for AOG
 - connection to Ethernet
 - power supply
-- motor driver
+- motor driver incl. current feedback
 - WAS input
 - RS485 / Modbus
 
