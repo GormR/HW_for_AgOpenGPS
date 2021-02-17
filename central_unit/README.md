@@ -68,8 +68,11 @@ These [connections](Connections.pdf) are provided:
 
 Some functions are shown in [my English](https://www.youtube.com/watch?v=BdSSeIprusM) or [German video.](https://www.youtube.com/watch?v=w10TqOEIxdU).
 
-----------------------------------------------------------------------------------------------------------------------------
+Further information are also provided in the upper folder.
 
+There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://agopengps.discourse.group/t/smd-pcb-project-for-an-all-in-one-compact-pcb-for-aog-qog/3640). 
+
+----------------------------------------------------------------------------------------------------------------------------
 
 # Functional Description (to be continued..)
 
@@ -185,21 +188,30 @@ USB4:    RTK-Empfänger
 
 Alle Spannungen und I/O-Funktionen verfügen über Leuchtdioden.
 
+Neben den I/O-Steckverbindern sollte mindestens P1 (Stiftleiste 2x5pol RM 2,54mm) bestückt werden, um die initiale Programmierung mit Hilfe eines Arduino Uno durchführen zu können. Notfalls können dort aber auch Kabel an- und nach erfolgter Programmierung wieder abgelötet werden. Je nach Einschaltoption wird noch J8 (Stiftleiste 1x4pol RM 2,54mm) und ein Jumper benötigt.
+
 Tablets mit USB-C-Schnittstelle können mit einem einzigen Kabel für Daten und Stromversorgung angeschlossen werden, wenn ein 12V-USB-C-Ladeadapter an die zweite USB-C-Buchse angeschlossen wird. Die beiden USB-C-Buchsen sind auf Huckepack-Leiterplatten über den M8-Steckverbindern angeordnet.
 
 Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt. Der Export nach Altium ist ungeprüft. 
 
-# Component Sources (examples):
+Weitere allgemeine Informationen finden sich auch im übergeordneten Ordner.
 
-M12/M8:	    [digikey](https://www.digikey.com), [Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1) - [Reichelt list](https://www.reichelt.de/my/1816987)
+Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenGPSGerman) und im [mehrsprachigen Forum](https://agopengps.discourse.group/t/smd-pcb-project-for-an-all-in-one-compact-pcb-for-aog-qog/3640). 
+
+Speziell zur Leiterplatteninbetriebnahme gibt es auch ein [Video](https://www.youtube.com/watch?v=w10TqOEIxdU).
+
+# Component Sources (examples) / Beispiele Bezugsquellen:
+
+M12/M8, general components:	    [digikey](https://www.digikey.com), [Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1) - [Reichelt list](https://www.reichelt.de/my/1816987)
 
 PushIn:		  Weidmueller [S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1290030000) + [B2CF 3.50/04/180 SN OR BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1277270000) via [Conrad](https://www.conrad.com)/[digikey](https://www.digikey.com)
 
 ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=esp32+mini)
 
-Housing: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
+Housing for M8/M12 option: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
 
-RTK receiver: [Bynav](https://www.bynav.com/en/products/gnss-boards/c1.html)
-
-RTK receiver: [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html)
+RTK receiver: 
+- [Ardusimple]()
+- [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html) 
+- [Bynav](https://www.bynav.com/en/products/gnss-boards/c1.html) (special software needed! / benötigt besondere Software!)
 
