@@ -7,6 +7,7 @@ Tested yet:
 - motor driver
 - WAS input
 - RS485 / Modbus
+
 Still untested:
 - CAN
 - ESP32 option
@@ -56,6 +57,7 @@ These [connections](Connections.pdf) are provided:
 - RS485/ModbusRTU
 - Incremental sensor for steering wheel
 - 2x USB-C (tablet + DC converter/Aux)
+- Pixhawk connector (to Ardusimple, RS232 converter or any I²C/serial equipment)
 - QWIIC connector
 - internal USB connectors
 - internal Bynav-C1 connector
@@ -95,7 +97,7 @@ The 4 port USB hub connects the tablet/Notebook via either CN2 (PushIn) or CN8/C
 
 Option1: USB via M12-D: U19, R100, R101 not mounted
 
-Option2: I²C via M12-D, serial device for RS232 - converter or Bynav RTK receiver @ U16: R43, R46 not mounted
+Option2: I²C via M12-D, serial device for RS232 - converter or Ardusimple @ ARDU1 or Bynav RTK receiver @ U16: R43, R46 not mounted
 
 Option3: I²C via M12-D, additional internal USB (USB1): R43, R46, U19 not mounted
 
