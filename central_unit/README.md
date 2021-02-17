@@ -211,7 +211,7 @@ ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=
 Housing for M8/M12 option: [Aliexpress](https://de.aliexpress.com/item/32967598546.html)
 
 RTK receiver: 
-- [Ardusimple]()
-- [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html) 
+- [Ardusimple](https://www.ardusimple.com/product/simplertk2b-basic-starter-kit-ip65/) (state-of-the-art receiver - mounting holes provided / Standardempfänger - Montagelöcher hierfür sind vorgesehen)
+- [GNSS store](https://www.gnss.store/gnss-gps-modules/105-ublox-zed-f9p-rtk-gnss-receiver-board-with-sma-base-or-rover.html) (same type of receiver - especially for rooftop unit / gleicher Empfänger - gute Lösung für die Dacheinheit)
 - [Bynav](https://www.bynav.com/en/products/gnss-boards/c1.html) (special software needed! / benötigt besondere Software!)
 
