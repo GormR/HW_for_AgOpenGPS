@@ -159,8 +159,12 @@ Folgende Anschlüsse sind vorgesehen:
 - RS485/ModbusRTU
 - Inkrementalgeber für Lenkradsensor
 - 2x USB-C (Tablet + DC-Wandler/Aux)
+- Pixhawk als Alterantive zu USB für das Ardusimple-Board, aber auch für allgemeine I²C/serielle Anwendungen
+- QWIIC für I²C-Kram
 
-# Im Detail (wird fortlaufend ergänzt)
+# Im Detail 
+
+(wird fortlaufend ergänzt, allerdings meistens zunächst der englische Teil)
 
 Der Arduino-Nano-Teil einschließlich der Neigungssensoren, des ADC und der Eingänge entspricht dem von BrianTee entwickelten Schaltplan. An dieser Stelle sei ihm für seine hervorragende Arbeit gedankt!
 
