@@ -1,5 +1,5 @@
 # Central Autosteer Unit and Rooftop Unit for AgOpenGPS/QtOpenGuidance  
-Status: Draft - to be tested!
+(Informationen in deutscher Sprache unten)
 
 These two units bring all electronic functions for autosteering with the ![AgOpenGPS](https://github.com/farmerbriantee/AgOpenGPS) / ![QtOpenGuidance](https://github.com/eringerli/QtOpenGuidance) project. 
 
