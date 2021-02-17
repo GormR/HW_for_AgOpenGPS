@@ -100,6 +100,8 @@ The 4 port USB hub connects the tablet/Notebook via either CN2 (PushIn) or CN8/C
 
 - USB4:    External RTK receiver via M12-D (if U19 not mounted) (XOR) Bynav-C1 board (XOR) internal USB (e. g. for Ardusimple via [USB cable](https://de.aliexpress.com/item/4000533815530.html) + [Antenna pigtail](https://de.aliexpress.com/item/4000245307369.html)):
 
+Concerning USB4:
+
 Option1: USB via M12-D: U19, R100, R101 not mounted
 
 Option2: I²C via M12-D, serial device for RS232 - converter or Ardusimple @ ARDU1 or Bynav RTK receiver @ U16: R43, R46 not mounted
@@ -182,13 +184,21 @@ Die RS-485-Schnittstelle entspricht dem, was ein preiswerter USB-RS485-Stick auf
 
 Der 4-Port-USB-Hub verbindet das Tablet/Notebook zum RTK-GNSS-Empfänger und wahlweise zum Nano bzw. ESP32, der CANtact-Hardware, der RS-485-Schnittstelle bzw. internen 2 USB-A-Buchsen einer externen USB-C-Buchse. Folgende Alternativen sind mit den 4 Ports möglich:
 
-USB1:    Arduino Nano   (XOR)   ESP32 (wenn U3 nicht bestückt)
+- USB1:  Arduino Nano Clone  (ODER)   ESP32 (wenn U3 nicht bestückt ist - ggf. auslöten mit Heißluft und Pinzette)
 
-USB2:    RS485       (XOR)      Interne USB-A (wenn U5 nicht bestückt)   (XOR) Externe USB-C (wenn U5 nicht bestückt)
+- USB2:    RS485      (ODER)     Interner USB-A (wenn U5 nicht bestückt ist) (ODER)     Externer USB-C (wenn U5 nicht bestückt ist)
 
-USB3:    CANtact  (XOR)         Interne USB-A (z. B. für ESP32 plus Nano)
+- USB3:    CANtact   (ODER)      Interne USB-A (z. B. für ESP32 parallel zu Nano)
 
-USB4:    RTK-Empfänger
+- USB4:    Externer RTK-Empfänger via M12-D (wenn U19 nicht bestückt ist) (ODER) Bynav-C1 Empfänger (ODER) interne USB (z. B. für Ardusimple via [USB cable](https://de.aliexpress.com/item/4000533815530.html) + [Antenna pigtail](https://de.aliexpress.com/item/4000245307369.html)):
+
+Zu USB4:
+
+Option1: USB via M12-D: U19, R100, R101 nicht bestücken/auslöten
+
+Option2: I²C via M12-D, serieller Konverter für z. B. RS232 ODER Ardusimple @ ARDU1 (Pixhawk-Kabel) ODER Bynav RTK receiver @ U16: R43, R46 nicht bestücken/auslöten
+
+Option3: I²C via M12-D, zusätzliche interne USB-A-Buchse (USB1): R43, R46, U19 nicht bestücken/auslöten
 
 Alle Spannungen und I/O-Funktionen verfügen über Leuchtdioden.
 
