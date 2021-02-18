@@ -17,7 +17,7 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 
 [Documentation Central Unit](central_unit/README.md)
 
-[Documentation Central Unit](rooftop_unit/README.md)
+[Documentation Rooftop Unit](rooftop_unit/README.md)
 
 [Documentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
 
