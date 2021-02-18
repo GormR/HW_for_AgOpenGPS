@@ -4,3 +4,7 @@ V1.3
 V1.4
 - U14 added to support 6/2 valves
 - R103 and R105 added to decouple Atmel and ESP32
+
+V1.5
+- Pixhawk connector to Ardusimple added
+- Option switching of M12-GNSS via jumpers (R43, R46, R100, R101 deleted)
