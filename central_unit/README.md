@@ -67,7 +67,7 @@ These [connections](Connections.pdf) are provided:
 - option to control a 6/2 valve (rename "xU14" to "U14" and delete R59, R76 and F7 in BOM; make a solder joint underneat CN18 to connect signal "+SERVO" to "-MOTOR").
 
 # Initial Operation Instructions
-1. if applicable: assemble missing SMD parts
+1. if applicable: [assemble missing SMD parts](https://www.youtube.com/watch?v=dLczChhmDCY)
 2. assemble alls THT parts: pin headers and connectors
 3. connect 3-4 @ J8 (on)
 4. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
@@ -230,7 +230,7 @@ Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenG
 Speziell zur Leiterplatteninbetriebnahme gibt es auch ein [Video](https://www.youtube.com/watch?v=w10TqOEIxdU).
 
 # Erstinbetriebnahme
-1. Ggf. fehlende SMD-Bauteile nachbestücken
+1. Ggf. fehlende SMD-Bauteile [nachbestücken](https://www.youtube.com/watch?v=dLczChhmDCY)
 2. gewünschte Stiftleisten und Stecker auflöten
 3. Pins 3-4 @ J8 brücken (on)
 4. langsam die Spannung an CN4/POWER mit einer Strombegrenzung von 100mA hochregeln und gleichzeit die 5V-Spannung im Auge behalten (Eingangsstrom: 0mA bis ca. 4V, 20mA @ 4.5V, 12mA @ 12V; +5V darf nicht über 5,1V ansteigen!)
