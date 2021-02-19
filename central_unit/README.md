@@ -67,13 +67,15 @@ These [connections](Connections.pdf) are provided:
 - option to control a 6/2 valve (rename "xU14" to "U14" and delete R59, R76 and F7 in BOM; make a solder joint underneat CN18 to connect signal "+SERVO" to "-MOTOR").
 
 # Initial Operation Instructions
-1. connect 3-4 @ J8 (on)
-2. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
-3. check +3.3V (should be in the range 3.2..3.4V)
-4. connect Arduino Uno board and flash bootloader via P1 (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
-5. disconnect Uno board and connect USB (either CN2 or CN13/CN8/USB-C): The PC should display a new USB hub at least one several serial device 
-6. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software
-7. connect WAS, buttons, motor and do a test with AgOpenGPS
+1. if applicable: assemble missing SMD parts
+2. assemble alls THT parts: pin headers and connectors
+3. connect 3-4 @ J8 (on)
+4. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
+5. check +3.3V (should be in the range 3.2..3.4V)
+6. connect Arduino Uno board and flash bootloader via P1 (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
+7. disconnect Uno board and connect USB (either CN2 or CN13/CN8/USB-C): The PC should display a new USB hub at least one several serial device 
+8. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software
+9. connect WAS, buttons, motor and do a test with AgOpenGPS
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
@@ -228,16 +230,20 @@ Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenG
 Speziell zur Leiterplatteninbetriebnahme gibt es auch ein [Video](https://www.youtube.com/watch?v=w10TqOEIxdU).
 
 # Erstinbetriebnahme
-1. Pins 3-4 @ J8 brücken (on)
-2. langsam die Spannung an CN4/POWER mit einer Strombegrenzung von 100mA hochregeln und gleichzeit die 5V-Spannung im Auge behalten (Eingangsstrom: 0mA bis ca. 4V, 20mA @ 4.5V, 12mA @ 12V; +5V darf nicht über 5,1V ansteigen!)
-3. +3.3V überprüfen (sollte im Bereich 3.2..3.4V sein)
-4. Arduino-Uno-Board mit P1 verbinden und Bootloader flashen (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
-5. Uno-Board abstöpseln
-6. über USB mit einem PC verbinden (entweder über CN2 oder CN13/CN8/USB-C): Der PC muss einen neuen Hub und mindestens eine neue serielle Schnittstelle anzeigen; bei mehrereren ist die des Arduino meistens die erste)
-7. [BrianTee's Arduino-Code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) wie gewohnt mit der Arduino-Software flashen
-8. Lenkwinkelsensor (auch als WAS oder LWS bezeichnet), Schalter, Motor anschliessen und mit AgOpenGPS testen
+1. Ggf. fehlende SMD-Bauteile nachbestücken
+2. gewünschte Stiftleisten und Stecker auflöten
+3. Pins 3-4 @ J8 brücken (on)
+4. langsam die Spannung an CN4/POWER mit einer Strombegrenzung von 100mA hochregeln und gleichzeit die 5V-Spannung im Auge behalten (Eingangsstrom: 0mA bis ca. 4V, 20mA @ 4.5V, 12mA @ 12V; +5V darf nicht über 5,1V ansteigen!)
+5. +3.3V überprüfen (sollte im Bereich 3.2..3.4V sein)
+6. Arduino-Uno-Board mit P1 verbinden und Bootloader flashen (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
+7. Uno-Board abstöpseln
+8. über USB mit einem PC verbinden (entweder über CN2 oder CN13/CN8/USB-C): Der PC muss einen neuen Hub und mindestens eine neue serielle Schnittstelle anzeigen; bei mehrereren ist die des Arduino meistens die erste)
+9. [BrianTee's Arduino-Code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) wie gewohnt mit der Arduino-Software flashen
+10. Lenkwinkelsensor (auch als WAS oder LWS bezeichnet), Schalter, Motor anschliessen und mit AgOpenGPS testen
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
+
+Aktuell (2/2021) nicht bei JLCPCB bestückbar: U2, U10 (jeweils Lager leer), U11 (nicht bei LCSC verfügbar) und Steckverbinder (prinzipiell)
 
 # Hinweis zur Funktionalen Sicherheit
 
