@@ -4,7 +4,7 @@
 # Minimal system
 ![pic](central_unit/documentation/Minimal_System.png?raw=true)
 - Tablet/Laptop with Windows
-- control electronic (e. g. this [central unit](central_unit)
+- control electronic (e. g. this [central unit](central_unit))
 - Ardusimple RTK reciever with antenna (or equivalent)
 - Motor
 - Mechanical parts and cables
