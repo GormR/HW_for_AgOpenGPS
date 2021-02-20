@@ -1,6 +1,14 @@
 # Central Autosteer Unit and Rooftop Unit for AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
 
+# Minimal system
+![pic](central_unit/documentation/Minimal_System.jpg?raw=true)
+- Tablet/Laptop with Windows
+- control electronic (e. g. this [central unit](central_unit)
+- Ardusimple RTK reciever with antenna (or equivalent)
+- Motor
+- Mechanical parts and cables
+
 These two units bring all electronic functions for autosteering with the ![AgOpenGPS](https://github.com/farmerbriantee/AgOpenGPS) / ![QtOpenGuidance](https://github.com/eringerli/QtOpenGuidance) project. 
 
 The main unit is contains all functions for autosteering and also includes an 4-port USB hub.
