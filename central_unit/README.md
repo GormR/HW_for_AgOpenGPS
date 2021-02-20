@@ -268,11 +268,11 @@ Alle Daten diese Repositories stehen unter der CERN Open-Hardware-Lizenz 1.2. Je
 
 M12/M8, general components:	    [digikey](https://www.digikey.com), [Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1) - [Reichelt list](https://www.reichelt.de/my/1816987), [cable e. g.](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=9457610150) 
 
-(see [THT-BOM](production_data) for further information)
+(see [BOM-THT](production_data) for further information)
 
 PushIn:		  Weidmueller [S2C-SMT 3.50/04/180G 3.5SN BK BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1290030000) + [B2CF 3.50/04/180 SN OR BX](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1277270000) via [Conrad](https://www.conrad.com)/[digikey](https://www.digikey.com)
 
-(see [THT-BOM](production_data) for further information)
+(see [BOM-THT](production_data) for further information)
 
 ESP32 MINI:	[Aliexpress](https://de.aliexpress.com/wholesale?catId=0&SearchText=esp32+mini)
 
