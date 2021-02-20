@@ -266,7 +266,7 @@ Alle Daten diese Repositories stehen unter der CERN Open-Hardware-Lizenz 1.2. Je
 
 # Component Sources (examples) / Beispiele Bezugsquellen:
 
-M12/M8, general components:	    [digikey](https://www.digikey.com), [Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1) - [Reichelt list](https://www.reichelt.de/my/1816987), [cable e. g.](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=9457610150) 
+M12/M8, general components:	    [Mouser](https://www.mouser.com/Connectors/Circular-Connectors/Circular-Metric-Connectors/_/N-76q5i?Keyword=conec&FS=True), [Reichelt](https://www.reichelt.de/de/en/sensor-actor-connectors-c7505.html?MANUFACTURER=CONEC&START=0&OFFSET=16&LANGUAGE=EN&&r=1) - [Reichelt list](https://www.reichelt.de/my/1816987), [cable e. g.](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=9457610150) 
 
 (see [BOM-THT](production_data) for further information)
 
