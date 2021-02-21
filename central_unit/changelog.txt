@@ -8,3 +8,6 @@ V1.4
 V1.5
 - Pixhawk connector to Ardusimple added
 - Option switching of M12-GNSS via jumpers (R43, R46, R100, R101 deleted)
+
+V1.6
+- Bugfix USB-C: pulldown resistors R43 and R46 added, Q7 turned
