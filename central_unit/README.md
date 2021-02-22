@@ -14,6 +14,7 @@ Still untested:
 - CAN
 - ESP32 option
 - Bynav option
+- USB-C PD and data in parallel
 
 
 This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip). If the ESP32 option is used, the pin definitions of [esp32-aog](https://github.com/eringerli/esp32-aog) and [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32) must be adapted.
