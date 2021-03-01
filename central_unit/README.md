@@ -128,6 +128,12 @@ Tablets with USB-C plug may be connected with a single USB-C wire for power and 
 
 The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. The Altium export has not been checked. 
 
+Milling the aluminum housing, if using M8/M12 (see [drawings](mechanical_data)):
+- let the CNC machine drill the 4 holes
+- fix the cover with 4 screws M2.5x15
+- mill the holes and the counterboring (tool: D=2mm, feed: 300mm/min, 12000RPM, advance: 2mm)
+- repeat this step for the other cover
+
 # Functional Safety Advice
 
 Steering systems have to meet at least the agricultural performance level AgrPL d acc. UN ECE R79 (see professional systems like [this](https://www.mobil-elektronik.com/uploads/media/Prospekt_Brochure_ME_Agricultural_Vehicles_ENG.pdf))!
@@ -245,6 +251,12 @@ Speziell zur Leiterplatteninbetriebnahme gibt es auch ein [Video](https://www.yo
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
 Aktuell (2/2021) nicht bei JLCPCB bestückbar: U2, U10 (jeweils Lager leer), U11 (nicht bei LCSC verfügbar) und Steckverbinder (prinzipiell)
+
+Fräsen des Alugehäuses, falls M8/M12 verwendet werden (siehe auch [Zeichnungen](mechanical_data)):
+- mit der CNC-Maschine 4 Löcher bohren
+- Seitenteil mit 4 Schrauben M2.5x15 dort befestigen
+- Löcher und Senkung fräsen (Fräser: D=2mm, Vorschub: 300mm/min, 12000RPM, Zustellung: 2mm)
+- Mit dem anderen Seitenteil die anderen Fräsdaten verwenden
 
 # Hinweis zur Funktionalen Sicherheit
 
