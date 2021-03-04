@@ -11,3 +11,8 @@ V1.5
 
 V1.6
 - Bugfix USB-C: pulldown resistors R43 and R46 added, Q7 turned
+
+V1.7
+- CN3 added
+- M8/M12 shifted by 3.4mm overall
+
