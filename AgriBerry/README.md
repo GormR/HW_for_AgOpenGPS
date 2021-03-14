@@ -34,6 +34,11 @@ It is designed as a robust, monolitic unit  that may be manufactured by professi
 
 [Link to EasyEDA project](https://oshwlab.com/GoRoNb/AgriNode). Estimated price of a single PCB assembly @ JLC: $35 
 
+Key electronical components:
+- ADC: [ADS1115IDGSR](https://www.ti.com/lit/gpn/ADS1113)
+- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf)
+- CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - see [this project](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
+
 # Software architecture (suggestion)
 
 ![pic](AgriBerry_software_structure.jpeg?raw=true)
@@ -99,6 +104,12 @@ Besonderer Wert wurde ein industriell automatisch fertigbares kompaktes Design m
 - Formfaktor for HifiBerry Kunststoffgehäuse
 
 Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt.
+
+Schlüsselkomponenten:
+- ADC: [ADS1115IDGSR](https://www.ti.com/lit/gpn/ADS1113)
+- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf)
+- CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - see [this project](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
+
 
 Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenGPSGerman) und im [mehrsprachigen Forum](https://agopengps.discourse.group/t/agriberry-hardware-draft/4357). 
 
