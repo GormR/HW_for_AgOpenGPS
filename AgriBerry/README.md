@@ -46,7 +46,7 @@ It is designed as a robust, monolitic unit  that may be manufactured by professi
 8. insert micro-SD card with software image
 9. connect WAS, buttons, motor and do a test 
 
-There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://agopengps.discourse.group/t/smd-pcb-project-for-an-all-in-one-compact-pcb-for-aog-qog/3640). 
+There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://agopengps.discourse.group/t/agriberry-hardware-draft/4357). 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -99,7 +99,7 @@ Besonderer Wert wurde ein industriell automatisch fertigbares kompaktes Design m
 
 Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt.
 
-Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenGPSGerman) und im [mehrsprachigen Forum](https://agopengps.discourse.group/t/smd-pcb-project-for-an-all-in-one-compact-pcb-for-aog-qog/3640). 
+Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenGPSGerman) und im [mehrsprachigen Forum](https://agopengps.discourse.group/t/agriberry-hardware-draft/4357). 
 
 # Erstinbetriebnahme
 1. Ggf. fehlende SMD-Bauteile [nachbestücken](https://www.youtube.com/watch?v=dLczChhmDCY)
