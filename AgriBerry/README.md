@@ -35,8 +35,8 @@ It is designed as a robust, monolitic unit  that may be manufactured by professi
 [Link to EasyEDA project](https://oshwlab.com/GoRoNb/AgriNode). Estimated price of a single PCB assembly @ JLC: $35 
 
 Key electronical components:
-- ADC: [ADS1115IDGSR](https://www.ti.com/lit/gpn/ADS1113)
-- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf)
+- ADC: [ADS1115](https://www.ti.com/lit/gpn/ADS1113) - see [this project](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115)
+- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf) - see [this project](https://robot-electronics.co.uk/htm/raspberry_pi_examples.htm)
 - CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - see [this project](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
 
 # Software architecture (suggestion)
@@ -106,9 +106,9 @@ Besonderer Wert wurde ein industriell automatisch fertigbares kompaktes Design m
 Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt.
 
 Schlüsselkomponenten:
-- ADC: [ADS1115IDGSR](https://www.ti.com/lit/gpn/ADS1113)
-- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf)
-- CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - see [this project](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
+- ADC: [ADS1115](https://www.ti.com/lit/gpn/ADS1113) - z. B. [in diesem Projekt](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115)
+- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf) - z. B. [in diesem Projekt](https://robot-electronics.co.uk/htm/raspberry_pi_examples.htm)
+- CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - z. B. [in diesem Projekt](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
 
 
 Hilfestellung gibt es auch in der  [deutschsprachigen Nutzergruppe](t.me/AGOpenGPSGerman) und im [mehrsprachigen Forum](https://agopengps.discourse.group/t/agriberry-hardware-draft/4357). 
