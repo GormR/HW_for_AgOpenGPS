@@ -36,7 +36,7 @@ It is designed as a robust, monolitic unit  that may be manufactured by professi
 
 Key electronical components:
 - ADC: [ADS1115](https://www.ti.com/lit/gpn/ADS1113) - see [this project](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115)
-- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf) - see [this project](https://robot-electronics.co.uk/htm/raspberry_pi_examples.htm)
+- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf) - see [this project](https://robot-electronics.co.uk/htm/raspberry_pi_examples.htm), [this projekt](http://www.pibits.net/code/mma8452q-accelerometer-and-raspberry-pi-example.php) resp.
 - CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - see [this project](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
 
 # Software architecture (suggestion)
@@ -107,7 +107,7 @@ Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ e
 
 Schlüsselkomponenten:
 - ADC: [ADS1115](https://www.ti.com/lit/gpn/ADS1113) - z. B. [in diesem Projekt](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115)
-- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf) - z. B. [in diesem Projekt](https://robot-electronics.co.uk/htm/raspberry_pi_examples.htm)
+- IMU: [CMPS14](https://www.robotshop.com/en/tilt-compensated-magnetic-compass-cmps14.html) or [MMA8452](https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf) - z. B. [in diesem Projekt](https://robot-electronics.co.uk/htm/raspberry_pi_examples.htm) bzw. [in diesem Projekt](http://www.pibits.net/code/mma8452q-accelerometer-and-raspberry-pi-example.php)
 - CAN: [MCP2515](https://www.microchip.com/wwwproducts/en010406) - z. B. [in diesem Projekt](https://vimtut0r.com/2017/01/17/can-bus-with-raspberry-pi-howtoquickstart-mcp2515-kernel-4-4-x/)
 
 
