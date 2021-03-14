@@ -96,7 +96,7 @@ Besonderer Wert wurde ein industriell automatisch fertigbares kompaktes Design m
 # Hardwarefeatures:
 - Ardusimple aufsteckbar
 - analoge and digitale Eingänge
-- Motor/Vetiltreiber incl. Hilfausgang für 8/2
+- Motor/Ventiltreiber incl. Hilfausgang für 8/2
 - Pi Stromversorgung aus 14V nom.
 - RS485(Modbus) z. B. für Relaismodule (section control, etc.)
 - 2 CAN
