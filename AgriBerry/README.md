@@ -32,7 +32,7 @@ It is designed as a robust, monolitic unit  that may be manufactured by professi
 # 59.5 x 91 mm² 
 2-layer 35µm, 1,6mm thickness, technology: 0.15mm/0.15mm/0.3mm; SMD assembly: about 70 different parts, 180 parts overall, THT: only 2.54mm connectors
 
-[Link to EasyEDA project](https://oshwlab.com/GoRoNb/AgriNode). Estimated price of a single PCB assembly @ JLC: $35 
+[Link to EasyEDA project](https://oshwlab.com/GoRoNb/AgriNode). Estimated price of a single PCB assembly @ JLC: < $30, minimal version: < $20 @ a batch of 10 
 
 Key electronical components:
 - ADC: [ADS1115](https://www.ti.com/lit/gpn/ADS1113) - see [this project](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115)
