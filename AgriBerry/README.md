@@ -27,6 +27,7 @@ The user should benefit from the ease of simplicity:
 It is designed as a robust, monolitic unit  that may be manufactured by professionel EMS providers. 
 
 ![pic](3D.png?raw=true)
+(Annotation: The female connectors has to be mounted on the bottom side)
 
 # 59.5 x 91 mm² 
 2-layer 35µm, 1,6mm thickness, technology: 0.15mm/0.15mm/0.3mm; SMD assembly: about 70 different parts, 180 parts overall, THT: only 2.54mm connectors
