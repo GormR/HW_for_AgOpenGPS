@@ -25,7 +25,7 @@
   #define WAS_ZERO 3193    
 
   //#################################### CMPS14 settings ########################################
-  #define BNO80 1      // set to 1 for CMPS14                                                  ##
+  #define BNO80 0      // set to 1 for CMPS14                                                  ##
   #define myTwist 45   // twist of CMPS14 around vertical axis (range: 0..359)                 ##
                        // Example: 45 => CMPS14 heading is twisted 45° CCW vs tractor heading) ##
   //#############################################################################################
