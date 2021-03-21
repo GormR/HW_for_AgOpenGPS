@@ -18,5 +18,6 @@ V1.7
 - J5, R97 removed (never needed)
 - C1: 1uF => 0.1uF (just because the datasheet tells so - no malfunction known)
 - C44 => R100 (otherwise the SMPS doesn't switch off)
+- Q9, Q10 added to minimize influence for non-buffered WASs
 
 
