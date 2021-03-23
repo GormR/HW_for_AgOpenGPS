@@ -1,0 +1,8 @@
+V1.0
+- first prototype
+
+V1.1
+- SCLK and _CS @ 74HC595 swapped
+- H11, H12 moved
+- default level for DI3 inverted (due to bootstrap option of that pin; has to be idle @ startup
+
