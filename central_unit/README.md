@@ -17,7 +17,7 @@ Still untested:
 - USB-C PD and data in parallel
 
 
-This setup does not include new functions but provides a robust, monolitic unit that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and to the [improved version](code). If the ESP32 option is used, download [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32).
+This setup does not include new functions but provides a robust, monolitic unit that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and to my [improved version](code/Autosteer_USB_CMPS14_low_jitter_twistable/). If the ESP32 option is used, download [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32).
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
