@@ -20,4 +20,9 @@ V1.7
 - C44 => R100 (otherwise the SMPS doesn't switch off)
 - Q9, Q10 added to minimize influence for non-buffered WASs
 
+V1.8
+- pinning of ESP32 set as https://github.com/mtz8302/AOG_Autosteer_ESP32
+- USB-C receptacles THT now to ease soldering
+- necessary pin headers are part of the JLCPCB BOM now
+
 
