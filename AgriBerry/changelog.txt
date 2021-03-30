@@ -1,3 +1,6 @@
 V1.0
 - first prototype
 
+V1.1
+- some mechanical mods
+
