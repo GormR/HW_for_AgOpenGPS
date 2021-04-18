@@ -716,9 +716,9 @@
         ],
         "BBox": {
           "x": 0,
-          "y": -1150,
+          "y": -1150.1,
           "width": 1632,
-          "height": 1149.5
+          "height": 1149.7
         },
         "colors": {}
       }
@@ -1302,9 +1302,9 @@
         ],
         "BBox": {
           "x": 0,
-          "y": -1150,
+          "y": -1150.1,
           "width": 1632,
-          "height": 1150.2
+          "height": 1149.7
         },
         "colors": {}
       }
@@ -1718,8 +1718,6 @@
           "N~1250~-780~0~#0000ff~A/WkSw~gge1072~start~1252~-782.5~helvetica~7pt~0",
           "LIB~1035~-750~package`C0603`BOM_Supplier`LCSC`BOM_Supplier Part`C327087`BOM_Manufacturer`YAGEO`BOM_Manufacturer Part`CC0603JRX7R8BB104`nameAlias`Capacitance`Contributor`LCSC`spicePre`C`spiceSymbolName`CC0603JRX7R8BB104`~270~0~ggeab51496370e0add3~9796ce52d844439588f46357e429be00~31f9aab5a8b5407eb61691e2bc96eac3~0~~yes~yes#@$T~N~1001.78125~-736.77~0~#000080~Arial~~~~~comment~100nF~1~start~gge1079~0~#@$T~P~1006.4453125~-746.76~0~#000080~Arial~~~~~comment~C33~1~start~gge1081~0~#@$PL~1043 -748 1027 -748~#A00000~1~0~none~gge1083~0#@$P~show~0~1~1035~-730~270~gge1084~0^^1035~-730^^M 1035 -740 v 10~#800^^0~1035~-744~270~1~start~~~#800^^0~1031~-736~270~1~end~~~#800^^0~1035~-717^^0~M 1038 -720 L 1035 -723 L 1032 -720#@$PL~1035 -760 1035 -752~#A00000~1~0~none~gge1091~0#@$PL~1027 -752 1043 -752~#A00000~1~0~none~gge1092~0#@$P~show~0~2~1035~-770~90~gge1093~0^^1035~-770^^M 1035 -760 v -10~#800^^0~1035~-756~270~2~end~~~#800^^0~1031~-764~270~2~start~~~#800^^0~1035~-783^^0~M 1032 -780 L 1035 -777 L 1038 -780#@$PL~1035 -748 1035 -740~#A00000~1~0~none~gge1100~0",
           "LIB~995~-750~package`C0603`BOM_Supplier`LCSC`BOM_Supplier Part`C327087`BOM_Manufacturer`YAGEO`BOM_Manufacturer Part`CC0603JRX7R8BB104`nameAlias`Capacitance`Contributor`LCSC`spicePre`C`spiceSymbolName`CC0603JRX7R8BB104`~270~0~gge65437b4263d70aeb~9796ce52d844439588f46357e429be00~31f9aab5a8b5407eb61691e2bc96eac3~0~~yes~yes#@$T~N~958.25~-737.75~0~#000080~Arial~~~~~comment~100nF~1~start~gge1103~0~#@$T~P~967.3828125~-746.76~0~#000080~Arial~~~~~comment~C9~1~start~gge1105~0~#@$PL~1003 -748 987 -748~#A00000~1~0~none~gge1107~0#@$P~show~0~1~995~-730~270~gge1108~0^^995~-730^^M 995 -740 v 10~#800^^0~995~-744~270~1~start~~~#800^^0~991~-736~270~1~end~~~#800^^0~995~-717^^0~M 998 -720 L 995 -723 L 992 -720#@$PL~995 -760 995 -752~#A00000~1~0~none~gge1115~0#@$PL~987 -752 1003 -752~#A00000~1~0~none~gge1116~0#@$P~show~0~2~995~-770~90~gge1117~0^^995~-770^^M 995 -760 v -10~#800^^0~995~-756~270~2~end~~~#800^^0~991~-764~270~2~start~~~#800^^0~995~-783^^0~M 992 -780 L 995 -777 L 998 -780#@$PL~995 -748 995 -740~#A00000~1~0~none~gge1124~0",
-          "LIB~1125~-885~nameAlias`Resistance (Ohms)`package`R0603`BOM_Supplier`LCSC`BOM_Manufacturer`RALEC`BOM_Manufacturer Part`RTT03222JTP`BOM_Supplier Part`C103203`spicePre`R`spiceSymbolName`RTT03100JTP`~~0~gged3dc94d6bfdbcb98~e8901072611c4b309f15829075c906c5~59e4e613ad6f40cead6c2d47588dd29c~0~~yes~yes#@$T~N~1116.1875~-892~0~#000080~Arial~~~~~comment~2k2~1~start~gge1127~0~#@$T~P~1116.1875~-901.15~0~#000080~Arial~~~~~comment~R13~1~start~gge1129~0~#@$P~show~1~2~1145~-885~0~gge1131~0^^1145~-885^^M 1145 -885 h -10~#000000^^0~1130~-882~0~2~end~~~#000000^^0~1140~-886~0~2~start~~~#000000^^0~1138~-885^^0~M 1135 -888 L 1132 -885 L 1135 -882#@$P~show~1~1~1105~-885~180~gge1138~0^^1105~-885^^M 1105 -885 h 10~#000000^^0~1120~-882~0~1~start~~~#000000^^0~1110~-886~0~1~end~~~#000000^^0~1112~-885^^0~M 1115 -882 L 1118 -885 L 1115 -888#@$R~1115~-889~~~20~8~#880000~1~0~none~gge1145~0~",
-          "LIB~1125~-870~nameAlias`Resistance (Ohms)`package`R0603`BOM_Supplier`LCSC`BOM_Manufacturer`RALEC`BOM_Manufacturer Part`RTT03222JTP`BOM_Supplier Part`C103203`spicePre`R`spiceSymbolName`RTT03100JTP`~~0~gge2431b1d38af12b75~e8901072611c4b309f15829075c906c5~59e4e613ad6f40cead6c2d47588dd29c~0~~yes~yes#@$T~N~1117.484375~-846.84~0~#000080~Arial~~~~~comment~2k2~1~start~gge1148~0~#@$T~P~1119.0078125~-856.85~0~#000080~Arial~~~~~comment~R5~1~start~gge1150~0~#@$P~show~1~2~1145~-870~0~gge1152~0^^1145~-870^^M 1145 -870 h -10~#000000^^0~1130~-867~0~2~end~~~#000000^^0~1140~-871~0~2~start~~~#000000^^0~1138~-870^^0~M 1135 -873 L 1132 -870 L 1135 -867#@$P~show~1~1~1105~-870~180~gge1159~0^^1105~-870^^M 1105 -870 h 10~#000000^^0~1120~-867~0~1~start~~~#000000^^0~1110~-871~0~1~end~~~#000000^^0~1112~-870^^0~M 1115 -867 L 1118 -870 L 1115 -873#@$R~1115~-874~~~20~8~#880000~1~0~none~gge1166~0~",
           "W~1475 -865 1365 -865~#008800~1~0~none~gge1168~0",
           "N~1065~-870~0~#0000ff~WAS_N~gge1201~start~1067~-872.5~helvetica~7pt~0",
           "N~1145~-870~0~#0000ff~WAS_0V~gge1228~start~1147~-872.5~helvetica~7pt~0",
@@ -1910,6 +1908,8 @@
           "W~1265 -855 1265 -850~#008800~1~0~none~gge3875~0",
           "F~part_netLabel_gnD~1225~-855~0~gge3877~~0^^1225~-855^^GND~#000000~1211.8984375~-825.93~0~start~1~Times New Roman~9pt~flag_gge321^^PL~1225 -845 1225 -855~#000000~1~0~transparent~gge3881~0^^PL~1216 -845 1234 -845~#000000~1~0~transparent~gge3882~0^^PL~1219 -843 1231 -843~#000000~1~0~transparent~gge3883~0^^PL~1222 -841 1228 -841~#000000~1~0~transparent~gge3884~0^^PL~1224 -839 1226 -839~#000000~1~0~transparent~gge3885~0",
           "W~1225 -855 1225 -865~#008800~1~0~none~gge3886~0",
+          "LIB~1125~-870~package`R0603`BOM_Supplier`LCSC`BOM_Manufacturer`RALEC`BOM_Manufacturer Part`RTT03103JTP`nameAlias`Resistance (Ohms)`BOM_Supplier Part`C103210`spicePre`R`spiceSymbolName`RTT03103JTP`~~0~gge4a0e531f7de5a148~e8901072611c4b309f15829075c906c5~b9dca3546b4b4e08ae69767a47845cec~0~~yes~yes#@$T~N~1133.1328125~-846.84375~0~#000080~Arial~~~~~comment~10K~1~end~gge3893~0~#@$T~P~1130.9375~-856.8515625~0~#000080~Arial~~~~~comment~R5~1~end~gge3895~0~#@$P~show~1~2~1145~-870~0~gge3897~0^^1145~-870^^M 1145 -870 h -10~#000000^^0~1130~-867~0~2~end~~~#000000^^0~1140~-871~0~2~start~~~#000000^^0~1138~-870^^0~M 1135 -873 L 1132 -870 L 1135 -867#@$P~show~1~1~1105~-870~180~gge3904~0^^1105~-870^^M 1105 -870 h 10~#000000^^0~1120~-867~0~1~start~~~#000000^^0~1110~-871~0~1~end~~~#000000^^0~1112~-870^^0~M 1115 -867 L 1118 -870 L 1115 -873#@$R~1115~-874~~~20~8~#880000~1~0~none~gge3911~0~",
+          "LIB~1125~-885~package`R0603`BOM_Supplier`LCSC`BOM_Manufacturer`RALEC`BOM_Manufacturer Part`RTT03103JTP`nameAlias`Resistance (Ohms)`BOM_Supplier Part`C103210`spicePre`R`spiceSymbolName`RTT03103JTP`~~0~ggefd510ef0d06a6515~e8901072611c4b309f15829075c906c5~b9dca3546b4b4e08ae69767a47845cec~0~~yes~yes#@$T~N~1133.1328125~-846.84375~0~#000080~Arial~~~~~comment~10K~1~end~gge3917~0~#@$T~P~1133.53125~-891.8515625~0~#000080~Arial~~~~~comment~R13~1~end~gge3919~0~#@$P~show~1~2~1145~-885~0~gge3921~0^^1145~-885^^M 1145 -885 h -10~#000000^^0~1130~-882~0~2~end~~~#000000^^0~1140~-886~0~2~start~~~#000000^^0~1138~-885^^0~M 1135 -888 L 1132 -885 L 1135 -882#@$P~show~1~1~1105~-885~180~gge3928~0^^1105~-885^^M 1105 -885 h 10~#000000^^0~1120~-882~0~1~start~~~#000000^^0~1110~-886~0~1~end~~~#000000^^0~1112~-885^^0~M 1115 -882 L 1118 -885 L 1115 -888#@$R~1115~-889~~~20~8~#880000~1~0~none~gge3935~0~",
           "J~1075~-220~2.5~#CC0000~gge79~0",
           "J~1075~-260~2.5~#CC0000~gge82~0",
           "J~895~-315~2.5~#CC0000~gge91~0",
@@ -1970,7 +1970,7 @@
           "x": 0.3,
           "y": -1150,
           "width": 1632,
-          "height": 1149.4
+          "height": 1149.5
         },
         "colors": {}
       }
