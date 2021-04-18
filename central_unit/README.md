@@ -2,7 +2,7 @@
 (Informationen in deutscher Sprache unten)
 
 Tested yet:
-- USB hub, USB devices, USB-C PD
+- USB hub, USB devices, USB-C 
 - Atmel section with I/Os needed for AOG
 - connection to Ethernet
 - power supply
@@ -14,8 +14,9 @@ Still untested:
 - CAN
 - ESP32 option
 - Bynav option
-- USB-C PD and data in parallel
 
+Not working:
+- USB-C PD and data in parallel
 
 This setup does not include new functions but provides a robust, monolitic unit that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and to my [improved version](code/Autosteer_USB_CMPS14_low_jitter_twistable/). If the ESP32 option is used, download [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32).
 
