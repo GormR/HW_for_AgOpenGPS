@@ -95,12 +95,11 @@
   BNO080 bno08x;
 
   //cmps14 values  # GoRoNb
-  #define CMPS11_ADDRESS 0x60   // Address of CMPS11 shifted right one bit for arduino wire library
+  #define CMPS14_ADDRESS 0x60   // Address of CMPS14 shifted right one bit for arduino wire library
   unsigned char high_bearing, low_bearing, high_roll, low_roll;
   char pitch8;
   int bearing16, roll16, pitch16, cosinus, sinus;
   long roll32;
-  float lastXeRoll = 0;
   int mysine[] = {0,17,35,51,63,81,94,105,114,121,125,127,126,123,118,110,100,88,74,59,43,26,8,-9,-27,-44,-60,-75,-89,-101,-111,-119,-124,-127,-128,-126,-122,-115,-106,-95,-82,-68,-52,-36,-18};
 
   float bno08xHeading = 0;
@@ -529,7 +528,7 @@
         
         if (useCMPS)
         {
-          Wire.beginTransmission(CMPS11_ADDRESS);  //starts communication with CMPS14
+          Wire.beginTransmission(CMPS14_ADDRESS);  //starts communication with CMPS14
           Wire.write(CMPS14_BearingReg);           //Sends the register we wish to start reading from (Bearing16 + Pitch8)
           Wire.endTransmission();
           // Request 3 bytes from the CMPS11: 16 bit bearing, 8 bit pitch

@@ -25,4 +25,8 @@ V1.8
 - USB-C receptacles THT now to ease soldering
 - necessary pin headers are part of the JLCPCB BOM now
 
+V1.9
+- bugfix Q8: Gate was on the wrong pin
+- Q12 added to minimize braking effect in H bridge
+
 
