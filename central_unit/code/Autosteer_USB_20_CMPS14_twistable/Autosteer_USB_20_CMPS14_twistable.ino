@@ -1,4 +1,3 @@
-<<<<<<< HEAD
   /*
   * USB Autosteer code For AgOpenGPS
   * 4 Feb 2021, Brian Tischler
@@ -532,8 +531,8 @@
           Wire.beginTransmission(CMPS14_ADDRESS);  //starts communication with CMPS14
           Wire.write(CMPS14_BearingReg);           //Sends the register we wish to start reading from (Bearing16 + Pitch8)
           Wire.endTransmission();
-          // Request 3 bytes from the CMPS11: 16 bit bearing, 8 bit pitch
-          Wire.requestFrom(CMPS11_ADDRESS, 3);       
+          // Request 3 bytes from the CMPS14: 16 bit bearing, 8 bit pitch
+          Wire.requestFrom(CMPS14_ADDRESS, 3);       
 
           if(Wire.available() <= 3);      // Wait for all bytes to come back
           high_bearing = Wire.read();
@@ -546,11 +545,11 @@
           AOG[7] = (uint8_t) bearing16;
           AOG[8] = (uint8_t)(bearing16 >> 8);
       
-          Wire.beginTransmission(CMPS11_ADDRESS);  //starts communication with CMPS14
+          Wire.beginTransmission(CMPS14_ADDRESS);  //starts communication with CMPS14
           Wire.write(CMPS14_RollReg);              //Sends the register we wish to start reading from (Roll16)
           Wire.endTransmission();
-          // Request 2 bytes from the CMPS11: 16 bit roll
-          Wire.requestFrom(CMPS11_ADDRESS, 2);       
+          // Request 2 bytes from the CMPS14: 16 bit roll
+          Wire.requestFrom(CMPS14_ADDRESS, 2);       
       
           if(Wire.available() <= 2);      // Wait for all bytes to come back
           high_roll = Wire.read();
@@ -1510,4 +1509,3 @@
   //TCCR1B = TCCR1B & B11111000 | B00000011;    // set timer 1 divisor to    64 for PWM frequency of   490.20 Hz (The DEFAULT)
   //TCCR1B = TCCR1B & B11111000 | B00000100;    // set timer 1 divisor to   256 for PWM frequency of   122.55 Hz
   //TCCR1B = TCCR1B & B11111000 | B00000101;    // set timer 1 divisor to  1024 for PWM frequency of    30.64 Hz
->>>>>>> 505d8042ff5eecd7e0f3431d51f0bf0091cdc10b
