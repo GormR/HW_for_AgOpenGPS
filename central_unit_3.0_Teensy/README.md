@@ -1,5 +1,6 @@
 # Central Unit V 3.0 AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
+![pic](3D.png?raw=true)
 
 This project includes all hardware function that are needed to run AgOpenGPS on one board. A 2nd board is only needed for Section Control, which can be placed inside the same housing. This setup uses the Teensy 4.1 board as control unit and is therefore not compatible with Brian's code. Nevertheless, there is software for Teensy (I'll add links later...)
 
