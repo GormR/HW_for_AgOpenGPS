@@ -1,37 +1,23 @@
-# Central Unit V 2.0 AgOpenGPS/QtOpenGuidance  
+# Central Unit V 3.0 AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
 
-This project includes all hardware function that are needed to run AgOpenGPS on one board. A 2nd board is only needed for Section Control, which can be placed inside the same housing. This setup does not include new functions but provides a robust, monolitic unit that may be manufactured by professionel EMS providers. The central unit V2.0 is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and to my [improved version](code/Autosteer_USB_CMPS14_low_jitter_twistable/). The ESP32 option is compatible with MTZ8002's code as long as USB is used. The project is an update of the Central Unit V1.x which may still be used for single-RTK AgOpenGPS setups w/o limitations.
+This project includes all hardware function that are needed to run AgOpenGPS on one board. A 2nd board is only needed for Section Control, which can be placed inside the same housing. This setup uses the Teensy 4.1 board as control unit and is therefore not compatible with Brian's code. Nevertheless, there is software for Teensy (I'll add links later...)
 
-![pic](documentation/Structure_USB.png?raw=true)
+![pic](documentation/Structure_Teensy.png?raw=true)
 
-The [drawings/Structure_USB.png](block diagram) for USB shows the 4-port USB hub on the left side providing 4 links:
-
-1. virtual COM-Port for Atmel (Steering; provides Arduino Nano functionalities)
-2. RTK-GNSS for positioning; either one directly connected Ardusimple board or the ESP32 via a virtual COM port like suggested by [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32).
-3. virtual COM port for Section Control (routed to a connector to the Section Control module (see subfolder here in Github, please)
-4. USB receptacle for general propose (e. g. 5G stick, external MEMS, etc)
-
-![pic](documentation/Structure_Ethernet_WiFi.png?raw=true)
-
-For [drawings/Structure_Ethernet_WiFi.png](Ethernet), the W5500 has to be mounted and the software has to be adapted. Possibles solutions are both a  single-µC solution and a dual-core solution with ESP32 and Atmel, in which the ESP32 has to distribute the data sets. In that case, the 12V-to-5V power supply must be mounted, too, to generate the power for the logic. The same is true for WiFi.
-
-![pic](documentation/Structure_all.png?raw=true)
-
-The [drawings/Structure_all.png](full block diagram) looks a little bit ugly. All components can be mounted anyway and the choice of the final setup can be made later on. By placing the USB receptacle for the Ardusimple, the virtual COM-Port for dual-RTK is automatically deactivated e. g. 
+The [drawings/Structure_Teensy.png](full block diagram) is simple, because all controlling functions can be integrated inside the NXP controller, which is very powerfull. It would even be possible to run the complete AgOpenGPS on it and just provide a webbased interface for the tablet/mobile phone.
 
 Functions' overview:
 
-- USB hub, USB devices, USB-C 
-- Atmel section with I/Os needed for AOG
+- I/Os needed for AOG
 - connection to Ethernet
+- USB host and device interfaces
 - power supply
 - motor driver incl. current feedback
+- socket for one or two RTK units (Ardusimple)
 - WAS input
 - RS485 / Modbus
-- CAN
-- ESP32 option
-
+- 3 CAN
 
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
@@ -42,11 +28,10 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 # 160 x 100 mm² 
 2-layer 35µm, 1,6mm thickness, technology: 0.15mm/0.15mm/0.3mm; SMD assembly: 72 different parts, 252 parts overall, THT: only 2.54mm headers and plugs of your choice
 
-[Link to EasyEDA project](https://easyeda.com/GoRoNb/aog_io-box). The pick-and-place data in the [production data](production_data) is already rotated correctly for JLC.
+[Link to EasyEDA project](https://easyeda.com/GoRoNb/agopengps-main-box_copy). The pick-and-place data in the [production data](production_data) is already rotated correctly for JLC.
 
 # Functions in-cabin-unit for autosteering (all SMD + THT connectors)
-- integrated Arduino-Nano hardware
-- ESP32-Module (Arduino Firmware has to be adapted)
+- Teensy socket
 - ADC (ADS1115) for wheel angle sensor (WAS)
 - BNO085 option (as CMPS14 board)
 - motor driver (H-bridge of IBT-2) with 2-channel switch-off
@@ -54,12 +39,10 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - 2 protected digital inputs (WORK usable as analog input, too)
 - one optional digital optoisolated output
 - mounting holes for RKT unit board(s) (for dual-RTK)
-- USB hub (4-port)
-- CAN via ESP32
-- virtual serial port for RS485/ModbusRTU
+- 3 CAN 
 - many LEDs
 - Ethernet/UDP option 
-- WIFI option via ESP32
+- WIFI option via Wifi-Stick
 
 These [connections](Connections.pdf) are provided:
 - Supply 12V/24V (optional for motor)
@@ -81,10 +64,7 @@ These [connections](Connections.pdf) are provided:
 2. assemble alls THT parts: pin headers and connectors
 3. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
 4. check +3.3V (should be in the range 3.2..3.4V)
-5. connect Arduino Uno board and flash bootloader via P1 (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
-6. disconnect Uno board and connect USB (either CN2 or CN13/CN8/USB-C): The PC should display a new USB hub at least one several serial device 
-7. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software
-8. connect WAS, buttons, motor and do a test with AgOpenGPS
+5. connect WAS, buttons, motor and do a test with AgOpenGPS
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
@@ -96,27 +76,15 @@ There is also an [English user group](t.me/agopengpsinternational) and a [multil
 
 # Functional Description (to be continued..)
 
-The Arduino part including roll sensor, ADC and digital inputs is a copy of what BrianTee sugested. Many thanks for his great work!
+The part including roll sensor, ADC and digital inputs is a copy of what BrianTee sugested. Many thanks for his great work!
 
-An ESP32 module is mountable to provide dual-RTK and CAN. 
+Dual-RTK and up to 3 CANs are provided. 
 
 The motor driver is the one of the IBT-2. It comes with separated 2-channel power lines at the power plug, so that a double-pole switch with positively opening contacts may be used for safe switch-off. This is especially mandatory for hydraulic steering. Furthermore, a DCDC converter may be used to generate 24V for driving the common Phidgets-Motor with increased dynamic.
 
 The fifth pin of the power plug may either be used for a protected digital output (jumper on 1-2 of J8) or as on-switching signal (jumper on 2-3 of J8). No high currents have to be switched – a small SPST switch is ok. A switch inside the housing would be connected to 3-4 of J8. If an external switch is used to cut of the supply directly, apply a jumper to 2-3 of J8.
 
 All digital inputs are protected and made of constant current sinks. Therefore, the input is inverted, so that either NC pushbuttons may be used or the Arduino firmware may be modified.
-
-The RS485 port is like what is also available with a cheap USB-RS485 stick based on a CH340 driver. 
-
-The 4 port USB hub connects the tablet/Notebook via either CN2 (PushIn) or CN8/CN13/TO_PC (USB-C) to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
-
-- USB1:  Arduino Nano Clone  
-
-- USB2:  ESP32 - dual-RTK or single Ardusimple RTK board
-
-- USB3:  Section control PCB addon
-
-- USB4:    External 
 
 All voltage and I/O functions are equipped with LEDs.
 
@@ -149,40 +117,26 @@ The mandatory application for approval may base on the following arguments based
 
 # (German copy) Zusammenfassung
 
-Dieses Projekt fasst alle Hardwarefunktionen, die zum Betrieb von AgOpenGPS notwendig sind, auf einem Board zusammen. Lediglich für Section Control kann eine weitere Leiterplatte hinzugefügt werden, die wahlweise aber auch im selben Gehäuse untergebracht werden kann. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern, auf der der aktuelle Stand der Arduino-Firmware von BrianTee kann unverändert verwendet werden. Dieses Projekt ist der Nachfolger den Central-Unit 1.x, die nach wie vor für single-RTK-Anwendungen ohne Einschränkungen verwendet werden kann.
+Dieses Projekt fasst alle Hardwarefunktionen, die zum Betrieb von AgOpenGPS notwendig sind, auf einem Board zusammen. Lediglich für Section Control kann eine weitere Leiterplatte hinzugefügt werden, die wahlweise aber auch im selben Gehäuse untergebracht werden kann. Ziel war es nicht, neue Hardwarefunktionen bereitzustellen, sondern eine robuste, monolitische, von professionellen Bestückern herstellbaren Einheit zu entwicklern. Es wird ein Teensy-µC-Board verwendet, das wesentlich leistungsfähiger als Arduino-Boards ist und alle notwendigen Funktionen aufnehmen kann bis hin zur vollständigen Integration von AgOpenGPS (in dem Fall würde das User-Interface als Website auf einem Tablet/Handy dargestellt). Das Board ist _nicht_ zu Brians Software kompatible. Die bestehenden Teensy-Implementierungen muss ich noch verlinken.
 
 Es werden alle Steuerungsfunktionen für DC-Motoren und Hydraulikventile bereitgestellt, sowie die dafür notwendige Sensorik. Eine Anbindung ist über USB (beforzugt), Ethernet und WiFi möglich. Die Software von Brian und MTZ kann ohne Änderungen übernommen werden, wenn USB verwendet wird. 
 
-![pic](documentation/Structure_USB.png?raw=true)
+![pic](documentation/Structure_Teensy.png?raw=true)
 
-Das [drawings/Structure_USB.png](Blockschaltbild) für USB zeigt links den mit dem Tablet verbundenen 4-fach USB-Hub, der folgende 4 Schnittstellen bereitstellt:
-
-1. virtueller COM-Port für Atmel (Lenkung; entspricht der Funktionalität eines Arduino Nano)
-2. RTK-GNSS zur Ortsbestimmung; entweder wird über USB direkt ein Ardusimple-Board angesprochen oder über einen virtuellen COM-Port ein ESP32 entsprechen dem Vorschlag von [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32).
-3. virtueller COM-Port für Section Control (wird auf einen Steckverbinder geführt für externes Section-Control-Modul (siehe Unterordner hier im Github)
-4. eine USB-Buchse für allgemeine Verwendung (z. B. 5G-Stick, externen MEMS, etc)
-
-![pic](documentation/Structure_Ethernet_WiFi.png?raw=true)
-
-Für [drawings/Structure_Ethernet_WiFi.png](Ethernet) muss der W5500 bestückt werden und die Software angepasst werden. Es ist dann sowohl eine single-µC-Lösung mit dem ESP32 als auch eine kombinierte ESP32/Atmel-Lösung möglich, bei der der ESP32 die Daten zentral verteilen muss. Zusätzlich muss das Schaltnetzteil bestückt werden, da ja die Logikspannung nun aus 12V erzeugt werden muss. Gleiches gilt für eine WLAN-Anbindung.
-
-![pic](documentation/Structure_all.png?raw=true)
-
-Durch die vielfältigen Optionen sieht das [drawings/Structure_all.png](Gesamtblockschaltbild) recht unübersichtlich aus. Es können aber alle Bauteile bestückt werden und zu einem späteren Zeitpunkt die genaue Topologie festgelegt werden. Z. B. wird durch Bestücken der USB-Buchse für einen Ardusimple automatisch der zugeordnete virtuelle COM-Port für dual-RTK deaktiviert.
+Durch den Einsatz des Teensy als zentralen µC ergibt sich eine einfache Struktur. 
 
 Besonderer Wert wurde auf ein robustes Gehäuse und insbesondere robuste Steckverbinder und Kabel gelegt. Es sind M12/M8-Steckverbinder gerade oder abgewinkelt vorgesehen. Alternativ sind über auch steckbare PushIn-Steckverbinder bestückbar.
 
 Folgende Funktionen sind vorgesehen:
 
-- integrierte Arduino-Nano-Hardware
-- ESP32 für dual-RTK
+- Teensy-Steckplatz
+- Steckplätze für (dual-)RTK
 - ADC (ADS1115) für Lenkwinkelsensor
 - Neigungssensor (BNO085/CMPS14)
 - Motortreiber (H-Brücke wie IBT-2) mit zweikanaliger Abschaltung
 - geschützte Digitaleingänge (als Konstantstromsenke)
-- USB-Hub (4-port)
-- CAN2.0 via ESP32
-- virtueller serieller Port für RS485/ModbusRTU
+- CAN2.0 (max 3 Schnittstellen)
+- RS485/ModbusRTU
 - ganz viele Leuchtdioden
 
 Folgende Anschlüsse sind vorgesehen:
@@ -202,27 +156,19 @@ Folgende Anschlüsse sind vorgesehen:
 
 (wird fortlaufend ergänzt, allerdings meistens zunächst der englische Teil)
 
-Der Arduino-Nano-Teil einschließlich der Neigungssensoren, des ADC und der Eingänge entspricht dem von BrianTee entwickelten Schaltplan. An dieser Stelle sei ihm für seine hervorragende Arbeit gedankt!
-
-Eine ESP32-Leiterplatte ist alternativ bestückbar. In diesem Fall muss die Arduino-Software angepasst werden und der Nano dauerhaft im Reset-Zustand gehalten werden (Jumper auf 5, 6 von P1). Mit einem ESP32 steht dann hardwaremäßig auch ein CAN2.0 und ein RS485-Port zur Verfügung sowie Wifi und Bluetooth.
-
 Der Motortreiber entspricht dem IBT-2. Er verfügt über eine getrennte, zweikanalig ausgeführte Stromversorgung am Spannungsversorgungsstecker, sodass hier ein geeigneter zweikanaliger zwangsöffnender Sicherheitsschalter angeschlossen werden kann. Insbesondere bei Hydraulikeinbindung ist dies zwingend. Auch kann so ein DC/DC-Wandler 12V > 24V vorgeschaltet werden, um eine höhere Lenkdynamik z. B. für den beliebten Phidgets-Motor zu erreichen.
 
 Die 5. Leitung des Spannungsversorgungssteckers kann entweder mit einem geschützten Digitalausgang belegt werden (Jumper auf 1-2 von J8) oder für den Ein-Schalter verwendet werden (Jumper auf 2-3 von J8). Es wird keine Leistung geschaltet – ein kleiner Schalter reicht. Ein Schalter im Gehäuse wird an die 3-4 von J8 angeschlossen. Wird ein externer Leistungsschalter verwendet, müssen diese Kontakte mit einem Jumper überbrückt werden.
 
 Die Digitaleingänge sind als Konstantstromsenke ausgeführt. Dadurch ist die Logik allerdings invertiert, also bitte Öffnerkontakte verwenden oder die Arduino-Firmware entsprechend anpassen.
 
-Die Hardware des [CANtact-Projektes](https://cantact.io/cantact-pro/users-guide.html) auf Basis des Nexperia-µC LPC54616 ist optional bestückbar und stellt dann 2 CAN2.0-Schnittstellen zur Verfügung. Eine der beiden CAN2.0-Schnittstellen kann alternativ auch mit dem ESP32 angesteuert werden.
-
-Die RS-485-Schnittstelle entspricht dem, was ein preiswerter USB-RS485-Stick auf Basis einen CH340 leistet. 
-
 Alle Spannungen und I/O-Funktionen verfügen über Leuchtdioden.
 
 Neben den I/O-Steckverbindern sollte mindestens P1 (Stiftleiste 2x5pol RM 2,54mm) bestückt werden, um die initiale Programmierung mit Hilfe eines Arduino Uno durchführen zu können. Notfalls können dort aber auch Kabel an- und nach erfolgter Programmierung wieder abgelötet werden. Je nach Einschaltoption wird noch J8 (Stiftleiste 1x4pol RM 2,54mm) und ein Jumper benötigt.
 
-Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt. 
+Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt.
 
-[Link zum EasyEDA-Projekt](https://easyeda.com/GoRoNb/aog_io-box)
+[Link zum EasyEDA-Projekt](https://easyeda.com/GoRoNb/agopengps-main-box_copy).
 
 Weitere allgemeine Informationen finden sich auch im übergeordneten Ordner.
 
@@ -235,11 +181,7 @@ Speziell zur Leiterplatteninbetriebnahme gibt es auch ein [Video](https://www.yo
 2. gewünschte Stiftleisten und Stecker auflöten
 3. langsam die Spannung an CN4/POWER mit einer Strombegrenzung von 100mA hochregeln und gleichzeit die 5V-Spannung im Auge behalten (Eingangsstrom: 0mA bis ca. 4V, 20mA @ 4.5V, 12mA @ 12V; +5V darf nicht über 5,1V ansteigen!)
 4. +3.3V überprüfen (sollte im Bereich 3.2..3.4V sein)
-5. Arduino-Uno-Board mit P1 verbinden und Bootloader flashen (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
-6. Uno-Board abstöpseln
-7. über USB mit einem PC verbinden (entweder über CN2 oder CN13/CN8/USB-C): Der PC muss einen neuen Hub und mindestens eine neue serielle Schnittstelle anzeigen; bei mehrereren ist die des Arduino meistens die erste)
-8. [BrianTee's Arduino-Code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) wie gewohnt mit der Arduino-Software flashen
-9. Lenkwinkelsensor (auch als WAS oder LWS bezeichnet), Schalter, Motor anschliessen und mit AgOpenGPS testen
+5. Lenkwinkelsensor (auch als WAS oder LWS bezeichnet), Schalter, Motor anschliessen und mit AgOpenGPS testen
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
