@@ -1,7 +1,7 @@
 # Central Autosteer Unit and Rooftop Unit for AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
 
-# Minimal system
+# Minimal system (description not up to date... see Central-Unit descriptions..
 ![pic](central_unit/documentation/Minimal_System.png?raw=true)
 - Tablet/Laptop with Windows
 - control electronic (e. g. this [central unit](central_unit))
