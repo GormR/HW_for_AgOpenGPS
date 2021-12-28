@@ -1,8 +1,6 @@
 # Section Control Unit AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
 
-! This description is a draft and needs improvement...  ;) !
-
 This project is a section control unit for AgOpenGPS. It is intended to be used together with the Central Unit 2.0 or Central Unit 3.0 (=Teensy) in the same or a separate housing (can be found here in Git as well). It may connected by either Ethernet, WiFi or RS485.
 
 Brian's Concept only provided drivers for the sections w/o the possibility of manual interference. In that case, no rocker switches will be mounted, and the unit may also be located directly on the trailer.
