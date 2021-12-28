@@ -61,32 +61,22 @@ Finally, the steer and work switches may be used for AgOpenGPS steering, if this
 
 [Link to EasyEDA project](https://oshwlab.com/GoRoNb/aog_io-box_copy). The pick-and-place data in the [production data](production_data) is already rotated correctly for JLC.
 
-# Functions in-cabin-unit for autosteering (all SMD + THT connectors)
+# Functions in-cabin-unit for section control
 - integrated Arduino-Nano hardware
-- ESP32-Module 
+- ESP32-Module option
 - 8 valve outputs (relays)
 - mounting holes
 - USB-C / WiFi / RS485 / (Ethernet)
-- CAN via ESP32
 - virtual serial port for RS485/ModbusRTU
 - many LEDs
 - Ethernet/UDP option 
 - WIFI option via ESP32
 
 These [connections](Connections.pdf) are provided:
-- Supply 12V/24V (optional for motor)
+- Supply 12V/24V (optional)
 - USB-C to tablet/notebook
-- Wheel angle sensor (WAS)
-- Digital inputs
-- USB for 5G stick for IMU
-- Steering wheel motor / hydraulic unit
-- CAN2.0
 - RS485/ModbusRTU
-- Incremental sensor for steering wheel
 - USB-C
-- QWIIC connector
-- internal USB connectors
-- RJ45 for Ethernet
 
 # Initial Operation Instructions
 1. if applicable: [assemble missing SMD parts](https://www.youtube.com/watch?v=dLczChhmDCY)
