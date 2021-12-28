@@ -80,19 +80,18 @@ These [connections](Connections.pdf) are provided:
 
 # Initial Operation Instructions
 1. if applicable: [assemble missing SMD parts](https://www.youtube.com/watch?v=dLczChhmDCY)
-2. assemble alls THT parts: pin headers and connectors
-3. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
-4. check +3.3V (should be in the range 3.2..3.4V)
-5. connect Arduino Uno board and flash bootloader via P1 (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
-6. disconnect Uno board and connect USB (either CN2 or CN13/CN8/USB-C): The PC should display a new USB hub at least one several serial device 
-7. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software
-8. connect WAS, buttons, motor and do a test with AgOpenGPS
+2. assemble all THT parts: pin headers and connectors
+3. Atmel µC: apply 5V e. g. via USB (current should be about 22mA w/o U10, U11, U12 and U14). ESP32: Slowly increase input voltage on USB and with current limit of 100mA while checking the 3.3V voltage; +3.3V must not rise up to more than 3.4V!If U250 is mounted: Slowly increase input voltage on 12V input with jumpers "ON1" and "ON2" closed: 0mA@7V, 17mA@8V (Atmel), 15mA@12V, 9mA@20V; 3.3V must not rise up to more than 3.4V, 5V not to 5.1V. 
+4. connect Arduino Uno board and flash bootloader via "PRGBOOT" (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
+5. disconnect Uno board and connect USB (if available): The PC should display a new USB virtual serial device based on CH340 
+6. flash Atmel/ESP32 via Arduino software
+7. connect sensors, etc do a test with AgOpenGPS
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
 Further information are also provided in the upper folder.
 
-There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://agopengps.discourse.group/t/smd-pcb-project-for-an-all-in-one-compact-pcb-for-aog-qog/3640). 
+There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://discourse.agopengps.com/t/section-control-for-the-central-unit/7779/10?u=goronb). 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -147,13 +146,13 @@ Zu guter Letzt gibt es noch die beiden Schalter STEER und WORK, die direkt mit d
 # Erstinbetriebnahme
 1. Ggf. fehlende SMD-Bauteile [nachbestücken](https://www.youtube.com/watch?v=dLczChhmDCY)
 2. gewünschte Stiftleisten und Stecker auflöten
-3. langsam die Spannung an CN4/POWER mit einer Strombegrenzung von 100mA hochregeln und gleichzeit die 5V-Spannung im Auge behalten (Eingangsstrom: 0mA bis ca. 4V, 20mA @ 4.5V, 12mA @ 12V; +5V darf nicht über 5,1V ansteigen!)
+3. langsam die Spannung an USB mit einer Strombegrenzung von 100mA bis max. 5V hochregeln und gleichzeit die 3.3V-Spannung im Auge behalten
 4. +3.3V überprüfen (sollte im Bereich 3.2..3.4V sein)
-5. Arduino-Uno-Board mit P1 verbinden und Bootloader flashen (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
+5. Arduino-Uno-Board mit "PRGBOOT" verbinden und Bootloader flashen (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP) 
 6. Uno-Board abstöpseln
-7. über USB mit einem PC verbinden (entweder über CN2 oder CN13/CN8/USB-C): Der PC muss einen neuen Hub und mindestens eine neue serielle Schnittstelle anzeigen; bei mehrereren ist die des Arduino meistens die erste)
-8. [BrianTee's Arduino-Code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) wie gewohnt mit der Arduino-Software flashen
-9. Lenkwinkelsensor (auch als WAS oder LWS bezeichnet), Schalter, Motor anschliessen und mit AgOpenGPS testen
+7. über USB mit einem PC verbinden: Der PC muss einen neue virtuelle serielle Schnittstelle auf CH340-Basis anzeigen)
+8. Code wie gewohnt mit der Arduino-Software flashen
+9. Sensoren anschliessen und mit AgOpenGPS testen
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
