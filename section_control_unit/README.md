@@ -96,7 +96,7 @@ There is also an [English user group](t.me/agopengpsinternational) and a [multil
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-# Functional Description (to be continued..)
+# Übersicht
 
 Bei diesem Board handelt es sich um eine Section-Control-Steuerung für AgOpenGPS. Sie kann zusammen mit der Central Unit 2.0 oder Central Unit 3.0 (=Teensy) in einem Gehäuse verbaut werden oder eben auch nicht. Ein Anbindung über Ethernet, WiFi oder RS485 ist auch möglich.
 
