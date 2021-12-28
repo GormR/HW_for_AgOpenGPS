@@ -21,7 +21,7 @@ This setup does not include new functions but provides a robust, monolitic unit 
 
 Special focus is given to the robust housing and industrial PushIn connetors. 
 
-#Detailed Description
+# Detailed Description
 
 In general, you can build up this unit as one (no need for the HDMI connector) or divide into a control unit that includes the µC and a power unit that might be directly on the trailer. On the power unit, you need all the parts from the schematic scheet "Machine Section Control" + parts around U3 (12V sensor supply if needed) only, and for the conrol unit on the other hand, you don't need that parts. The HDMI connector is needed on both PCBs for sure.
 
@@ -117,7 +117,7 @@ MTZ8302 bzw WEder schlagen ergänzend die Möglichkeit einer alternativen Handst
 Die Software von Brian läuft auf dem Atmel ohne große Änderungen. Die Software von MTZ8302 muss allerdings angepasst werden, da an einem Pin sowohl die passende section aktiviert wird, als auch der zugeordnete Schalter zurückgelesen wird.
 
 
-#Schaltungsbeschreibung (Copy of English text)
+# Schaltungsbeschreibung (Copy of English text)
 
 Die Teilbreitensteuerung kann als eine Einheit aufgebaut werden (bei der dann keine HDMI-Buchse benötigt wird) oder in Kontrolleinheit und Leistungsteil getrennt werden, falls man z. B. den Leistungsteil direkt auf dem Spritzenanhänger anbringen möchte. Für den Leistungsteil muss nur alles bestückt sein, was sich auf dem Schaltplanblatt "Machine Section Control" befindet + die Bauteile um U3 (Sensorversorgung 12V falls benötigt). Auf dem Controlboard werden diese Teile dann nicht benötigt. Die HDMI-Buchse muss natürlich auf beiden drauf sein..
 
