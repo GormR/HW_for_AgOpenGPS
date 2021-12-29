@@ -1,7 +1,9 @@
 # Section Control Unit AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
+Top view:
 ![pic](3D_top.png?raw=true)
 
+Bottom view:
 ![pic](3D_bottom.png?raw=true)
 
 This project is a section control unit for AgOpenGPS. It is intended to be used together with the Central Unit 2.0 or Central Unit 3.0 (=Teensy) in the same or a separate housing (can be found here in Git as well). It may connected by either Ethernet, WiFi or RS485.
