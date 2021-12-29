@@ -39,6 +39,7 @@ No matter what µC you wanna use, I follow Matthias' idea, that a manual control
 In order to safe wires, the signals for pressure up/down and slope control are tristate signals: "0", high-impedance, "1". With the help of the comparators U1 and U2, this is tranfered into 2 bits each for the relay control again. U1 and U2 have open collector outputs, so that they can sink the relay driving transistors connected to 12V directly. Same priciple as with Q1..Q8.
 
 Mind that there is intentionally no connection between the USB voltage and the power stage supply voltage. In case, your tablet is fully isolated from the tractor power system (e. g. by using an power inverter + AC/DC charger or running from battery), you need to close jumper "ON1" to connect 0V (USB) with 0V (power stage).
+![pic](documentation/JumperON1.jpg?raw=true)
 
 The relays do the power driving. Yes, old style, but simple and available right now. They can control electromagnetic valves (power on = flow on) or motor-controlled valves (one polarity = flow on, other polarity = flow off). For that, set one solder bridge on the board (on top side, between REL2 and REL3).
 
