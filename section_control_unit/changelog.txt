@@ -1,3 +1,9 @@
 V1.0
-- first release (untested)
+- first release 
+- USB lines crossed (workaround: cut both lines underneath D15; reconnect one on top and the other on bottom)
+
+V1.1
+- USB lines corrected
+
+
 
