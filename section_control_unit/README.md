@@ -1,9 +1,12 @@
 # Section Control Unit AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
+![pic](3D.png?raw=true)
 
 This project is a section control unit for AgOpenGPS. It is intended to be used together with the Central Unit 2.0 or Central Unit 3.0 (=Teensy) in the same or a separate housing (can be found here in Git as well). It may connected by either Ethernet, WiFi or RS485.
 
 Brian's Concept only provided drivers for the sections w/o the possibility of manual interference. In that case, no rocker switches will be mounted, and the unit may also be located directly on the trailer.
+
+![pic](documentation/BlockDiagram.png?raw=true)
 
 MTZ8302 and WEder suggested a manual steering option in addition, so in general the functions provided by a Müller-Elektronik  control plus AgOpenGPS integration. To use that one or two of this PCB can be used, because both functions can either be provided on a single board or divided into two boards, of wich one contains the rocker switches and the µC and the other one (e. g. located on the trailer) the relays (and optionally another µC). If using a single µC-dual PCB solution, both units are conneced via a HDMI cable. If using two µC, options are USB, RS485, Ethernet or WiFi. 
 
@@ -86,6 +89,9 @@ These [connections](Connections.pdf) are provided:
 5. disconnect Uno board and connect USB (if available): The PC should display a new USB virtual serial device based on CH340 
 6. flash Atmel/ESP32 via Arduino software
 7. connect sensors, etc do a test with AgOpenGPS
+
+Connection for initial programming:
+![pic](documentation/InitialProgramming.png?raw=true)
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
