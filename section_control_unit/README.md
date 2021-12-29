@@ -36,6 +36,8 @@ No matter what µC you wanna use, I follow Matthias' idea, that a manual control
 
 In order to safe wires, the signals for pressure up/down and slope control are tristate signals: "0", high-impedance, "1". With the help of the comparators U1 and U2, this is tranfered into 2 bits each for the relay control again. U1 and U2 have open collector outputs, so that they can sink the relay driving transistors connected to 12V directly. Same priciple as with Q1..Q8.
 
+Mind that there is intentionally no connection between the USB voltage and the power stage supply voltage. In case, your tablet is fully isolated from the tractor power system (e. g. by using an power inverter + AC/DC charger or running from battery), you need to close jumper "ON1" to connect 0V (USB) with 0V (power stage).
+
 The relays do the power driving. Yes, old style, but simple and available right now. They can control electromagnetic valves (power on = flow on) or motor-controlled valves (one polarity = flow on, other polarity = flow off). For that, set one solder bridge on the board (on top side, between REL2 and REL3).
 
 All actuators are connected to the connectors next to the relays. Suggestest type: [Weidmueller LSF-SMT 5.08/02/90 3.5SN](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1824810000) or [Weidmueller LSF-SMT 5.00/02/135 3.5SN](https://catalog.weidmueller.com/catalog/Start.do?localeId=en&ObjectID=1884340000). Or the China ones in the BOM, but don't complain... ;)
@@ -121,6 +123,8 @@ Die Teilbreitensteuerung kann als eine Einheit aufgebaut werden (bei der dann ke
 Kern der Schaltung ist entweder ein Atmel µC (U26), wie von [Brian vorgeschlagen](https://github.com/farmerbriantee/AgOpenGPS/tree/master/Support/RateControl) oder ein ESP32 (U6), wenn man [Matthias' Vorschlag](https://github.com/mtz8302/AOG_SectionControl_ESP32) folgt. Möchte man eine automatische Handneigungsverstellung mit Ultraschallsensoren nutzen, muss ein ESP32 verwendet werden. Wenn ein ESP32 benutze wird, wird X3 nicht benötigt und kann in der BOM gelöscht werden, um Bestückkosten zu sparen. Nicht beide µC bestücken!!
 
 Unabhängig vom verwendeten µC stimme ich mit Matthias überein, dass eine manuelle Kontrolle der Teilbreiten und damit ein Betrieb ohne AgOpenGPS jederzeit möglich sein sollte. Acht Teilbreiten sind maximal möglich (mit Geschwindigkeitssensor sieben). SW1..SW8 sind An-Aus-An-Taster und schalten zwischen "1" (über Gesamtschalter), "0" und Automatikbetrieb um. Dazu kann der µC seine I/Os kurz auf Eingang umschalten und dann den Zustand zurücklesen, der in den Kondensatoren C1..C8 "gespeichert" wird. R1 und Q1 (am Beispiel der ersten Teilbreite) bilden eine Konstantspannungssenke mit hoher Gleichtaktfestigkeit und trennen somit den von USB versorgten Bereich (µC und Co) vom Leistungsteil, so dass Fehler im Leistungsteil nicht am µC oder Tablet zerstören können.
+
+Deshalb sind die Versorgungsspannungen von USB und Leistungsendstufe bewusst unverbunden. Wenn also das Tablet vollkommen potentialfrei betrieben wird (z. B. Akkubetrieb oder Steckernetzteil + 230V-Inverter), muss Jumper "ON1" geschlossen sein, damit die Relais angesteuert werden können.
 
 Um Verbindungsleitungen zu sparen, werden für die Druck- und Hangneigungsverstellung 3 Zustände pro Draht übertragen: "0", hochohmig, "1". Mit Hilfe der Komparatoren U1 und U2, die open-collector-Ausgänge haben, werden dann wieder die jeweils 2 Relais angesteuert genauso wie die Teilbreiten über Q1..Q8.
 
