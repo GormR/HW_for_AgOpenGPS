@@ -38,7 +38,7 @@ No matter what µC you wanna use, I follow Matthias' idea, that a manual control
 
 In order to safe wires, the signals for pressure up/down and slope control are tristate signals: "0", high-impedance, "1". With the help of the comparators U1 and U2, this is tranfered into 2 bits each for the relay control again. U1 and U2 have open collector outputs, so that they can sink the relay driving transistors connected to 12V directly. Same priciple as with Q1..Q8.
 
-Mind that there is intentionally no connection between the USB voltage and the power stage supply voltage. In case, your tablet is fully isolated from the tractor power system (e. g. by using an power inverter + AC/DC charger or running from battery), the 12V LED will now light when the 5V LED is lighting and you need to close jumper "ON1" to connect 0V (USB) with 0V (power stage).
+Mind that there is intentionally no connection between the USB voltage and the power stage supply voltage. In case, your tablet is fully isolated from the tractor power system (e. g. by using an power inverter + AC/DC charger or running from battery), the 12V LED will now light even if 12V is connected and the 5V LED is lighting; you need to close jumper "ON1" to connect 0V (USB) with 0V (power stage):
 
 ![pic](documentation/JumperON1.jpg?raw=true)
 
@@ -128,7 +128,7 @@ Kern der Schaltung ist entweder ein Atmel µC (U26), wie von [Brian vorgeschlage
 
 Unabhängig vom verwendeten µC stimme ich mit Matthias überein, dass eine manuelle Kontrolle der Teilbreiten und damit ein Betrieb ohne AgOpenGPS jederzeit möglich sein sollte. Acht Teilbreiten sind maximal möglich (mit Geschwindigkeitssensor sieben). SW1..SW8 sind An-Aus-An-Taster und schalten zwischen "1" (über Gesamtschalter), "0" und Automatikbetrieb um. Dazu kann der µC seine I/Os kurz auf Eingang umschalten und dann den Zustand zurücklesen, der in den Kondensatoren C1..C8 "gespeichert" wird. R1 und Q1 (am Beispiel der ersten Teilbreite) bilden eine Konstantspannungssenke mit hoher Gleichtaktfestigkeit und trennen somit den von USB versorgten Bereich (µC und Co) vom Leistungsteil, so dass Fehler im Leistungsteil nicht am µC oder Tablet zerstören können.
 
-Deshalb sind die Versorgungsspannungen von USB und Leistungsendstufe bewusst unverbunden. Wenn also das Tablet vollkommen potentialfrei betrieben wird (z. B. Akkubetrieb oder Steckernetzteil + 230V-Inverter), wird die 12V-LED nicht leuchten, wenn die 5V LED leuchtet, und es muss Jumper "ON1" geschlossen sein.
+Deshalb sind die Versorgungsspannungen von USB und Leistungsendstufe bewusst unverbunden. Wenn also das Tablet vollkommen potentialfrei betrieben wird (z. B. Akkubetrieb oder Steckernetzteil + 230V-Inverter), wird selbst bei angeschlossenen 12V die 12V-LED nicht leuchten, wenn die 5V LED leuchtet, und es muss Jumper "ON1" geschlossen sein (Bild):
 
 ![pic](documentation/JumperON1.jpg?raw=true)
 
