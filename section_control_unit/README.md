@@ -1,6 +1,8 @@
 # Section Control Unit AgOpenGPS/QtOpenGuidance  
 (Informationen in deutscher Sprache unten)
-![pic](3D.png?raw=true)
+![pic](3D_top.png?raw=true)
+
+![pic](3D_bottom.png?raw=true)
 
 This project is a section control unit for AgOpenGPS. It is intended to be used together with the Central Unit 2.0 or Central Unit 3.0 (=Teensy) in the same or a separate housing (can be found here in Git as well). It may connected by either Ethernet, WiFi or RS485.
 
@@ -91,7 +93,7 @@ These [connections](Connections.pdf) are provided:
 7. connect sensors, etc do a test with AgOpenGPS
 
 Connection for initial programming:
-![pic](documentation/InitialProgramming.png?raw=true)
+![pic](documentation/InitialProgramming.jpg?raw=true)
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
