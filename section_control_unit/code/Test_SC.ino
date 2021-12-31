@@ -207,6 +207,10 @@ void loop()  //Loop triggers every sec
 
   relayLo ^= 0xff;  // toggle all relays
 
+  uint8_t myRel = GetSetRelays();
+
+  delay(400);
+  
   // print the results to the Serial Monitor:
   Serial.print("Pressure = ");
   Serial.print(pressureValue);
@@ -214,13 +218,11 @@ void loop()  //Loop triggers every sec
   if (mainSwitch > 100)  Serial.print("on");
   else                   Serial.print("off");
   Serial.print("\t Relays: ");
-  uint8_t myRel = GetSetRelays();
   Serial.println(myRel);
-  ledModule.setPatternAt(0, PATTERNS[(myRel>>6) & 0x03]);
-  ledModule.setPatternAt(1, PATTERNS[(myRel>>4) & 0x03]);
-  ledModule.setPatternAt(2, PATTERNS[(myRel>>2) & 0x03]);
-  ledModule.setPatternAt(3, PATTERNS[(myRel>>0) & 0x03]);
+  ledModule.setPatternAt(3, ((myRel & 0x80) >> 7) * 0b00000100 + ((myRel & 0x40) >> 6) * 0b00010000);
+  ledModule.setPatternAt(2, ((myRel & 0x20) >> 5) * 0b00000100 + ((myRel & 0x10) >> 4) * 0b00010000);
+  ledModule.setPatternAt(1, ((myRel & 0x08) >> 3) * 0b00000100 + ((myRel & 0x04) >> 2) * 0b00010000);
+  ledModule.setPatternAt(0, ((myRel & 0x02) >> 1) * 0b00000100 + ((myRel & 0x01) >> 0) * 0b00010000);
   ledModule.flush();
 
-  delay(1000);
 }
