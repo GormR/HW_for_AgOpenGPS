@@ -1,9 +1,11 @@
 V1.0
 - first release 
 - USB lines crossed (workaround: cut both lines underneath D15; reconnect one on top and the other on bottom - see pictures in doc folder)
+- additional discharge resistors for readback
 
 V1.1 (Dec 29th, 2021)
 - USB lines corrected
+- R66..R69, R85..R88 added
 
 
 
