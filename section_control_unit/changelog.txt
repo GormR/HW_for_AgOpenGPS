@@ -1,6 +1,6 @@
 V1.0
 - first release 
-- USB lines crossed (workaround: cut both lines underneath D15; reconnect one on top and the other on bottom)
+- USB lines crossed (workaround: cut both lines underneath D15; reconnect one on top and the other on bottom - see pictures in doc folder)
 
 V1.1 (Dec 29th, 2021)
 - USB lines corrected
