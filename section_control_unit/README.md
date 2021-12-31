@@ -76,6 +76,10 @@ Finally, the steer and work switches may be used for AgOpenGPS steering, if this
 - integrated Arduino-Nano hardware
 - ESP32-Module option
 - 8 valve outputs (relays)
+- +/- pressure output
+- slope control output
+- Steer/Work switch for AgOpenGPS
+- LED display
 - mounting holes
 - USB-C / WiFi / RS485 / (Ethernet)
 - virtual serial port for RS485/ModbusRTU
@@ -88,6 +92,7 @@ These [connections](Connections.pdf) are provided:
 - USB-C to tablet/notebook
 - RS485/ModbusRTU
 - USB-C
+- Ethernet module (cable to connector PRGBOOT)
 
 # Initial Operation Instructions
 1. if applicable: [assemble missing SMD parts](https://www.youtube.com/watch?v=dLczChhmDCY)
