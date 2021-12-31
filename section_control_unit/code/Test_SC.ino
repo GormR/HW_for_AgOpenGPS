@@ -18,7 +18,45 @@
 */
 
 #include <EEPROM.h>
+#include <AceTMI.h>
+#include <AceTMI.h> // SimpleTmiInterface
+#include <AceSegment.h> // Tm1637Module
+
 #define EEP_Ident 0x5005
+
+using ace_tmi::SimpleTmiInterface;
+using ace_segment::LedModule;
+using ace_segment::Tm1637Module;
+
+// Replace these with the PIN numbers of your dev board.
+const uint8_t CLK_PIN = A5;
+const uint8_t DIO_PIN = A4;
+const uint8_t NUM_DIGITS = 4;
+
+// Many TM1637 LED modules contain 10 nF capacitors on their DIO and CLK lines
+// which are unreasonably high. This forces a 100 microsecond delay between
+// bit transitions. If you remove those capacitors, you can set this as low as
+// 1-5 micros.
+const uint8_t DELAY_MICROS = 100;
+
+using TmiInterface = SimpleTmiInterface;
+TmiInterface tmiInterface(DIO_PIN, CLK_PIN, DELAY_MICROS);
+Tm1637Module<TmiInterface, NUM_DIGITS> ledModule(tmiInterface);
+
+// LED segment patterns.
+const uint8_t NUM_PATTERNS = 10;
+const uint8_t PATTERNS[NUM_PATTERNS] = {
+  0b00111111, // 0
+  0b00000110, // 1
+  0b01011011, // 2
+  0b01001111, // 3
+  0b01100110, // 4
+  0b01101101, // 5
+  0b01111101, // 6
+  0b00000111, // 7
+  0b01111111, // 8
+  0b01101111, // 9
+};
 
 //Variables for config - 0 is false
 struct Config 
@@ -80,6 +118,18 @@ void setup()
 */
   //set the pins to be outputs (pin numbers)
   pinMode(speedOutPin, OUTPUT);  
+
+  tmiInterface.begin();
+  ledModule.begin();
+
+  ledModule.setPatternAt(0, 0b00110001);
+  ledModule.setPatternAt(1, 0b01111001);
+  ledModule.setPatternAt(2, PATTERNS[5]);
+  ledModule.setPatternAt(3, 0b00110001);
+
+  ledModule.setBrightness(255);
+
+  ledModule.flush();
 }
 
 
@@ -164,7 +214,13 @@ void loop()  //Loop triggers every sec
   if (mainSwitch > 100)  Serial.print("on");
   else                   Serial.print("off");
   Serial.print("\t Relays: ");
-  Serial.println(GetSetRelays());
+  uint8_t myRel = GetSetRelays();
+  Serial.println(myRel);
+  ledModule.setPatternAt(0, PATTERNS[(myRel>>6) & 0x03]);
+  ledModule.setPatternAt(1, PATTERNS[(myRel>>4) & 0x03]);
+  ledModule.setPatternAt(2, PATTERNS[(myRel>>2) & 0x03]);
+  ledModule.setPatternAt(3, PATTERNS[(myRel>>0) & 0x03]);
+  ledModule.flush();
 
   delay(1000);
 }
