@@ -412,6 +412,7 @@
           "LIB~790~-610~package`R0603`BOM_Supplier`LCSC`BOM_Manufacturer Part`0603WAF5101T5E`BOM_Manufacturer`UniOhm`BOM_Supplier Part`C23186`nameAlias`Resistance (Ohms)`SMT Type`Basic`BOM_JLCPCB SMD`Yes`BOM_LCSC Assembly`Yes`spicePre`R`spiceSymbolName`0603WAF5101T5E`~270~0~ggefe3640da4f52432f~1bf59dff03ec4233aa077dc7cf0e92a1~faac4ade3bc4e3dd5ad2239bdc7375c1~0~~yes~yes~~~#@$T~N~784~-597.828125~0~#000080~Arial~~~~~comment~5.1K~1~end~gge17453~0~#@$T~P~784~-606.6759375~0~#000080~Arial~~~~~comment~R45~1~end~gge17455~0~#@$P~show~1~2~790~-590~270~gge17457~0^^790~-590^^M 790 -590 v -10~#000000^^0~793~-605~270~2~start~~~#000000^^0~789~-595~270~2~end~~~#000000^^0~790~-597^^0~M 793 -600 L 790 -603 L 787 -600#@$P~show~1~1~790~-630~90~gge17464~0^^790~-630^^M 790 -630 v 10~#000000^^0~793~-615~270~1~end~~~#000000^^0~789~-625~270~1~start~~~#000000^^0~790~-623^^0~M 787 -620 L 790 -617 L 793 -620#@$R~786~-620~~~8~20~#880000~1~0~none~gge17471~0~",
           "LIB~875~-675~package`C0603`BOM_Supplier`LCSC`BOM_Supplier Part`C327087`BOM_Manufacturer`YAGEO`BOM_Manufacturer Part`CC0603JRX7R8BB104`nameAlias`Capacitance`Contributor`LCSC`spicePre`C`spiceSymbolName`CC0603JRX7R8BB104`~~0~gged99985aa138ce050~9796ce52d844439588f46357e429be00~31f9aab5a8b5407eb61691e2bc96eac3~0~~yes~yes~~~#@$T~N~902.859375~-681.7890625~0~#000080~Arial~~~~~comment~100nF~1~end~gge17476~0~#@$T~P~893.6484375~-691.7953125~0~#000080~Arial~~~~~comment~C25~1~end~gge17478~0~#@$PL~877 -667 877 -683~#A00000~1~0~none~gge17480~0#@$P~show~0~1~895~-675~0~gge17481~0^^895~-675^^M 885 -675 h 10~#800^^0~881~-675~0~1~end~~~#800^^0~889~-679~0~1~start~~~#800^^0~908~-675^^0~M 905 -678 L 902 -675 L 905 -672#@$PL~865 -675 873 -675~#A00000~1~0~none~gge17488~0#@$PL~873 -683 873 -667~#A00000~1~0~none~gge17489~0#@$P~show~0~2~855~-675~180~gge17490~0^^855~-675^^M 865 -675 h -10~#800^^0~869~-675~0~2~start~~~#800^^0~861~-679~0~2~end~~~#800^^0~842~-675^^0~M 845 -672 L 848 -675 L 845 -678#@$PL~877 -675 885 -675~#A00000~1~0~none~gge17497~0",
           "LIB~1385~-305~package`L0805`BOM_Supplier`LCSC`BOM_Manufacturer`Sunlord`BOM_Manufacturer Part`GZ2012D601TF`nameAlias`Value`BOM_Supplier Part`C1017`BOM_JLCPCB Part Class`Basic Part`spicePre`L`spiceSymbolName`GZ2012D601TF`~90~0~gged450ceac7adb81c3~bcc8ca20dcc84ccfa139b07aa569efaf~f31b495d6770ad8889882c562af77cd1~0~~yes~yes~~~#@$T~N~1388.46875~-292.8125~0~#000080~Arial~~~~~comment~600Ω~1~start~gge17589~0~#@$T~P~1388.48~-301.66~0~#000080~Arial~~~~~comment~L1~1~start~gge17591~0~#@$P~show~0~2~1385~-325~90~gge17593~0^^1385~-325^^M 1385 -325 v 3~#800^^0~1385~-318~270~2~end~~~#800^^0~1381~-326~270~2~start~~~#800^^0~1385~-325^^0~M 1382 -322 L 1385 -319 L 1388 -322#@$P~show~0~1~1385~-285~270~gge17600~0^^1385~-285^^M 1385 -285 v -3~#800^^0~1385~-292~270~1~start~~~#800^^0~1381~-284~270~1~end~~~#800^^0~1385~-285^^0~M 1388 -288 L 1385 -291 L 1382 -288#@$A~M 1384.93 -288.12 A 3.9 4 0 1 1 1384.94 -296.08~~#880000~1~0~none~gge17607~0#@$A~M 1384.93 -296.6 A 3.9 4 0 1 1 1384.93 -304.56~~#880000~1~0~none~gge17608~0#@$A~M 1384.93 -305.07 A 3.9 4 0 1 1 1384.93 -313.03~~#880000~1~0~none~gge17609~0#@$A~M 1384.93 -313.7 A 3.9 4 0 1 1 1384.94 -321.67~~#880000~1~0~none~gge17610~0",
+          "T~L~250~-650~0~#3300FF~Arial~~~undefined~~comment~Light guides for LEDs: Mentor 1293.1100 e. g.~1~start~gge17622~0~pinpart",
           "J~385~-865~2.5~#CC0000~gge10716~0",
           "J~385~-875~2.5~#CC0000~gge10719~0",
           "J~710~-915~2.5~#CC0000~gge10722~0",
@@ -473,9 +474,9 @@
         ],
         "BBox": {
           "x": 0,
-          "y": -1145,
+          "y": -1145.1,
           "width": 1632,
-          "height": 1149.5
+          "height": 1149.7
         },
         "colors": {}
       }
@@ -931,7 +932,7 @@
           "x": -10,
           "y": -1140,
           "width": 1632,
-          "height": 1149.5
+          "height": 1150.2
         },
         "colors": {}
       }
