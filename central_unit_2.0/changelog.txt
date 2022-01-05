@@ -1,3 +1,8 @@
 V2.0
-- first release (untested)
+- first release 
+- short drain and source of Q250
+
+V2.1
+- R263 added
+- Q250 value change
 

@@ -87,6 +87,11 @@ These [connections](Connections.pdf) are provided:
 7. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software
 8. connect WAS, buttons, motor and do a test with AgOpenGPS
 
+Some currents:
+out of the box with Atmel and ESP32: 200mA@9V,   153mA@12V,   124mA@15V
+with 2 additional Ardusimples:       310mA@9V,   238mA@12V,   195mA@15V
+()if supplied via USB: 250mA and 470mA)
+
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
 Further information are also provided in the upper folder.

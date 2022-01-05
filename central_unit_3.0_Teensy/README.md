@@ -63,9 +63,14 @@ These [connections](Connections.pdf) are provided:
 # Initial Operation Instructions
 1. if applicable: [assemble missing SMD parts](https://www.youtube.com/watch?v=dLczChhmDCY)
 2. assemble alls THT parts: pin headers and connectors
-3. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
+3. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.8V!)
 4. check +3.3V (should be in the range 3.2..3.4V)
 5. connect WAS, buttons, motor and do a test with AgOpenGPS
+
+Some currents:
+J3 closed:                                                 6mA@6V,   7mA@12V,   8mA@15V
+J3 closed, with Teensy:                                  150mA@6V,  68mA@12V,  57mA@15V
+J3 closed, with Teensy and two Ardusimple (max. power)): 335mA@6V, 160mA@12V, 137mA@15V
 
 debugging: use terminal like HTerm and find out the correct COM port: connect to each possible one, set "DTR" and release "DTR". When releasing, the red LED blinks 3 times (bootloader). The green LED next to U3 will blink when sending any serial data to the Nano; this is also true when sending with the Arduino IDE (serial monitor)
 
