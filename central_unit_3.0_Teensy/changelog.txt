@@ -1,3 +1,8 @@
 V3.0
 - first release (untested)
+- H9: no perfect fit: use copper wires (3 wires for +, D+ and D- necessary only)
+
+V3.1
+- H9 shifted 1mm to the left
+
 
