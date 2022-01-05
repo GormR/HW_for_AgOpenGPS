@@ -3,6 +3,7 @@ V2.0
 - short drain and source of Q250
 
 V2.1
+- R260 changed to 1k from 10k
 - R263 added
 - Q250 value change
 
