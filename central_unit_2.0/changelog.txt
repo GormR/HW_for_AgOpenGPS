@@ -1,10 +1,14 @@
 V2.0
 - first release 
 - short drain and source of Q250
+- solder 2k resistor between GND and _Reset of Atmel (best is @ PRGBOOT)
+- clavilux when USB is connected to Win (not on Linux for any reason); rise/disconnect pin 7 of U22 and U23
 
 V2.1
 - R260 changed to 1k from 10k
 - R263 added
 - Q250 value change
 - outline modified for PushIn connector
+- R64 connected to 3V3 instead of 5V
+- D31 removed, jumper USB_SC added
 
