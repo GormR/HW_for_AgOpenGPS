@@ -6,4 +6,5 @@ V2.1
 - R260 changed to 1k from 10k
 - R263 added
 - Q250 value change
+- outline modified for PushIn connector
 

@@ -4,5 +4,6 @@ V3.0
 
 V3.1
 - H9 shifted 1mm to the left
+- outline modified for PushIn connector
 
 

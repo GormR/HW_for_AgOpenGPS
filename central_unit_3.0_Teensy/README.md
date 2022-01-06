@@ -39,7 +39,7 @@ Special focus is given to the robust housing and industrial M12/M8 connetors (op
 - current feedback from motor driver (may be used to quit autosteering on driver interaction)
 - 2 protected digital inputs (WORK usable as analog input, too)
 - one optional digital optoisolated output
-- mounting holes for RKT unit board(s) (for dual-RTK)
+- mounting holes for RKT unit board(s) (for dual-RTK); Ardusimple board has to be mounted slightly angular: distance between PCB and Ardusimple top: 10mm, antenna side: 16.5mm
 - 3 CAN 
 - many LEDs
 - Ethernet/UDP option 
