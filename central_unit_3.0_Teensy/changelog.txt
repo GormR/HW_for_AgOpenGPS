@@ -1,9 +1,11 @@
 V3.0
 - first release (untested)
 - H9: no perfect fit: use copper wires (3 wires for +, D+ and D- necessary only)
+- add 1k resistor in series to LED "M3"
 
 V3.1
 - H9 shifted 1mm to the left
 - outline modified for PushIn connector
+- D30 and R44 added
 
 
