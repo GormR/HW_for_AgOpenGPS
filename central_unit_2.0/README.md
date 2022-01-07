@@ -85,7 +85,7 @@ These [connections](Connections.pdf) are provided:
 4. check +3.3V (should be in the range 3.2..3.4V)
 5. connect Arduino Uno board and flash bootloader via PRGBOOT (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP)* 
 6. disconnect Uno board and connect USB (either CN2 or CN13/CN8/USB-C): The PC should display a new USB hub at least one several serial device 
-7. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software
+7. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software => blue TXD3-LED starts flashing
 8. connect WAS, buttons, motor and do a test with AgOpenGPS
 
 *_ either with a 3.3V-Arduino or Uno with adapter ( [1k in each signal line + additional diode in _reset line](documentation/adapter_for_Arduino_Uno.jpg) ) 
