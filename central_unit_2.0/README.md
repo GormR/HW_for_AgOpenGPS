@@ -2,7 +2,7 @@
 (Informationen in deutscher Sprache unten)
 ![pic](3D.png?raw=true)
 
-This project includes all hardware function that are needed to run AgOpenGPS on one board. A 2nd board is only needed for Section Control, which can be placed inside the same housing. This setup does not include new functions but provides a robust, monolitic unit that may be manufactured by professionel EMS providers. The central unit V2.0 is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and to my [improved version](code/Autosteer_USB_CMPS14_low_jitter_twistable/). The ESP32 option is compatible with MTZ8002's code as long as USB is used. The project is an update of the Central Unit V1.x which may still be used for single-RTK AgOpenGPS setups w/o limitations.
+This project includes all hardware function that are needed to run AgOpenGPS on one board. A 2nd board is only needed for Section Control, which can be placed inside the same housing. This setup does not include new functions but provides a robust, monolitic unit that may be manufactured by professionel EMS providers. The central unit V2.0 is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/releases/download/5.4.7/SupportFiles.zip) and to my [improved version](code/Autosteer_USB_CMPS14_low_jitter_twistable/). The ESP32 option is compatible with MTZ8002's code as long as USB is used. The project is an update of the Central Unit V1.x which may still be used for single-RTK AgOpenGPS setups w/o limitations.
 
 ![pic](documentation/Structure_USB.png?raw=true)
 
