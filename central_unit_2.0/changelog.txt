@@ -3,6 +3,7 @@ V2.0
 - short drain and source of Q250
 - solder 2k resistor between GND and _Reset of Atmel (best is @ PRGBOOT)
 - clavilux when USB is connected to Win (not on Linux for any reason); rise/disconnect pin 7 of U22 and U23
+- cut A0/WAS line between Atmel and ADC; connect to current measurement line instead
 
 V2.1
 - R260 changed to 1k from 10k
@@ -11,4 +12,7 @@ V2.1
 - outline modified for PushIn connector
 - R64 connected to 3V3 instead of 5V
 - D31 removed, jumper USB_SC added
+- Q14, Q15 changed to 2N7002 (lower threshold voltage)
+- U800 changed to LM2904DR2G (push-pull output needed)
+- A0 of Atmel used for current measurement (disengagement of motor) now
 
