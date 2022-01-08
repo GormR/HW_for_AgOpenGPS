@@ -17,4 +17,6 @@ V2.1
 - U800 changed to LM2904DR2G (push-pull output needed)
 - A0 of Atmel used for current measurement (disengagement of motor) now
 - D26 and R44 added
+- D27 added (just to be very safe)
+
 
