@@ -90,6 +90,10 @@ These [connections](Connections.pdf) are provided:
 
 *_ either with a 3.3V-Arduino or Uno with adapter ( [1k in each signal line + additional diode in _reset line](documentation/adapter_for_Arduino_Uno.jpg) ) 
 
+Accessing the ESP32 words with Arduino as well e. g. as "LOLIN D32".
+
+When using the ESP32 as dual-RTK-receiver, mind setup information [for Ardusimple boards provided by MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32).
+
 Some currents:
 out of the box with Atmel and ESP32: 200mA@9V,   153mA@12V,   124mA@15V
 with 2 additional Ardusimples:       310mA@9V,   238mA@12V,   195mA@15V
