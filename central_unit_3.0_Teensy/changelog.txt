@@ -7,5 +7,6 @@ V3.1
 - H9 shifted 1mm to the left
 - outline modified for PushIn connector
 - D30 and R44 added
+- values modified to be 24V-safe: R35, R44, R51
 
 

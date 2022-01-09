@@ -18,5 +18,6 @@ V2.1
 - A0 of Atmel used for current measurement (disengagement of motor) now
 - D26 and R44 added
 - D27 added (just to be very safe)
+- values modified to be 24V-safe: R22, R35, R44, R51, R55, R62, R71, R71, R82, R92
 
 
