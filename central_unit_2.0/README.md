@@ -37,9 +37,6 @@ Functions' overview:
 
 Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
 
-![pic](documentation/Full_M8_M12.jpg?raw=true)
-![pic](documentation/Full_PushIn.jpg?raw=true)
-
 # 160 x 100 mm² 
 2-layer 35µm, 1,6mm thickness, technology: 0.15mm/0.15mm/0.3mm; SMD assembly: 72 different parts, 252 parts overall, THT: only 2.54mm headers and plugs of your choice
 
@@ -95,6 +92,7 @@ Accessing the ESP32 words with Arduino as well e. g. as "LOLIN D32".
 When using the ESP32 as dual-RTK-receiver, mind setup information [for Ardusimple boards provided by MTZ8302](https://github.com/mtz8302/AOG_GPS_ESP32). Change two lines of the source code:
 
 byte LEDWiFi_PIN = 15;      // WiFi Status LED 0 = off (default: = 2)
+
 byte DataTransVia = 1;      //transfer data via 0 = USB / 1 = USB 10 byte 2x / 7 = UDP / 8 = UDP 2x (default = 8)
 
 Alternatively, this can be done in the web interface of AOG_GPS_ESP32 @ 192.168.1.1 (SSID: "GPS_unit_F9P_Net")
@@ -110,7 +108,7 @@ debugging: use terminal like HTerm and find out the correct COM port: connect to
 
 Further information are also provided in the upper folder.
 
-There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://agopengps.discourse.group/t/smd-pcb-project-for-an-all-in-one-compact-pcb-for-aog-qog/3640). 
+There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_2.0). 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
