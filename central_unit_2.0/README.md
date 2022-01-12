@@ -112,19 +112,58 @@ There is also an [English user group](t.me/agopengpsinternational) and a [multil
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-# Functional Description (to be continued..)
+# Functional Description
 
 The Arduino part including roll sensor, ADC and digital inputs is a copy of what BrianTee sugested. Many thanks for his great work!
 
-An ESP32 module is mountable to provide dual-RTK and CAN. 
+U27 is the µC controlling these functions. All external inputs are low-pass filtered and protected against miswiring. They are high-active, so either switch to +12V or +5V. Dedicated aux voltages are provided on the plugs. The Steer input is a digital input, Work is either digital (when using with Brian's software) or analog, so that it can be automatically controlled by the position sensor output of the hydraulic tool actuator (if available on the DIN 9684 plug). Current feedback for steering motors is provided on A0. The µC is also connected to the W5500 Ethernet interface. Mind, that either the Atmel or the ESP32 may use that option!
 
-The motor driver is the one of the IBT-2. It comes with separated 2-channel power lines at the power plug, so that a double-pole switch with positively opening contacts may be used for safe switch-off. This is especially mandatory for hydraulic steering. Furthermore, a DCDC converter may be used to generate 24V for driving the common Phidgets-Motor with increased dynamic.
+Mind that the µC runs on 3.3V while programming (see annotations @ Initial operation instructions).
 
-The fifth pin of the power plug may either be used for a protected digital output (jumper on 1-2 of J8) or as on-switching signal (jumper on 2-3 of J8). No high currents have to be switched – a small SPST switch is ok. A switch inside the housing would be connected to 3-4 of J8. If an external switch is used to cut of the supply directly, apply a jumper to 2-3 of J8.
+The the Atmel µC is not used, you may leave these key parts out in order to safe costs: U27, X4, PRGBOOT, U22.
 
-All digital inputs are protected and made of constant current sinks. Therefore, the input is inverted, so that either NC pushbuttons may be used or the Arduino firmware may be modified.
+An ESP32 module U6 is mountable to provide dual-RTK, CAN and further interfacing functions. The one in the BOM has a connector for an external antenna, but the variant with the integrated antenna may also be used. The ESP can communicate to AgOpenGPS via USB, Ethernet or WiFi. The main function is handling dual-RTK-signals given by the two Ardusimple modules (when using one Ardusimple, no ESP is needed - can be connected directly to USB). In the future, two additional options are possible:
 
-The RS485 port is like what is also available with a cheap USB-RS485 stick based on a CH340 driver. 
+- all signals of the Atmel are also available to the ESP, so that the module may be used as single-µC-solution with an adapted firmware
+- alternatively, the ESP may be used as UDP-to-serial bridge handling all UDP data and exchanging to steer, section control, IMU.
+
+Only mount R31, R32, if ESP shall forward serial data to the (piggyback) section control unit.
+
+Only mount R49, R50, if ESP shall forward serial data to the steer unit (Atmel).
+
+For controlling the steering, there are two options: For Danfoss, only a level shifter (U800) is necessary. Do not mount U800, Q9, Q12 if this option is not used and the power stage is used instead.
+
+That fully overload-protected motor/valve drivers are the ones of the IBT-2 (U9 and U10). It comes with separated 2-channel power lines at the power plug, so that a double-pole switch with positively opening contacts may be used for safe switch-off. This is especially mandatory for hydraulic steering. Furthermore, a DCDC converter may be used to generate 24V for driving the common Phidgets-Motor with increased dynamic. For 24V, choose a cap type with at least 25V (better: 35V) for C6, C7, C12, C13, C15 and C16! Q7 and Q8 provide a reverse polarity protection. No current is drawn on miswiring - just for the red LED. The bipolar small-signal transistors around the power stage provide a failsafe power decoupling between USB power for the logic and the power stage, so that any single failure in the power stage will not harm your tablet.
+
+The two additional power switches U2 and U14 are only needed in case of an electric clutch (motor) or switching valve (hydraulic steering). The fifth pin of the power plug is used for that signal.
+
+There is a current feedback for the µC, so that it can disengage autosteer at driver interference automatically. R28 is only needed the a digital switch-off signal with potentiometer adjustment is intended.
+
+If no power stage is needed, do not place Q7, Q8, U9, U10, U2, U14, C6, C7, C12, C13, C15 and C16 to safe money.
+
+Either the ESP or the Atmel may use the W5500 Ethernet chip exclusively. If not needed, do not mount U200, RJ200 and X1.
+
+The switch-mode power supply around U250 is only needed for Ethernet- or Wifi-only use, when sourcing logic from USB is not possible. If not used, do not mount C250, L250, D251, R250..257.
+
+The RS485 port (U8) is like what is also available with a cheap USB-RS485 stick based on a CH340 driver. 
+
+# Placement overview
+
+|if not needed|delete these key parts in BOM___.csv file|
+|---|---|
+|Atmel µC|U27, X4, PRGBOOT, U22|
+|ESP32 module|U6, U5, U19|
+|USB (normally needed for Arduino programming)|USBC1, U18, X2, USB2, U23, U5, U22, C28|
+|Ethernet (cable)|U200, RJ200, X1|
+|onboard IMU|U300, X300|
+|Wheel angle sensor|U17|
+|CAN|U19|
+|Optoisolated digital output|U19|
+|RS485|U8|
+|Danfoss|U800, Q9, Q12|
+|motor/valve driver|Q7, Q8, U9, U10, U2, U14, C6, C7, C12, C13, C15, C16|
+|power switch "enable"|U2, U14|
+|connected to USB|U250, L250, D251, C250..257|
 
 The 4 port USB hub connects the tablet/Notebook via either CN2 (PushIn) or CN8/CN13/TO_PC (USB-C) to the RTK-GNSS receiver and to the Nano or ESP32, the CANtact hardware, the RS-485 port or the internal 2 USB-A socket or the external USB-C socket. These alternatives are possible:
 
