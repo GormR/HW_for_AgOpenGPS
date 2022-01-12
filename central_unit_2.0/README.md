@@ -149,7 +149,7 @@ The RS485 port (U8) is like what is also available with a cheap USB-RS485 stick 
 
 # Placement overview
 
-|if not needed|delete these key parts in BOM___.csv file|
+|if not needed...|...delete these key parts in BOM___.csv file|
 |---|---|
 |Atmel µC|U27, X4, PRGBOOT, U22|
 |ESP32 module|U6, U5, U19|
