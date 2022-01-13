@@ -1,0 +1,13 @@
+Layer 	                                Name in extension in Gerber                                      Technology
+
+Top Layer 	                            project_name.toplayer.ger
+Bottom Layer 	                        project_name.bottomlayer.ger
+Top Soldermask 	                        project_name.topsoldermask.ger
+Bottom Soldermask 	                    project_name.bottomsoldermask.ger
+Top Silkscreen 	                        project_name.topsilkscreen.ger
+Bottom Silkscreen 	                    project_name.bottomsilkscreen.ger
+Top Paste (Stencil) 	                project_name.toppaste.ger
+Bottom Paste (Stencil) 	                project_name.bottompaste.ger
+Board Outline 	                        project_name.boardoutline.ger
+PTH Drills (plated holes drills) 	    project_name.drills_pth.xln PTH Drills (plated holes drills)
+NPTH Holes (non-plated holes drills) 	project_name.holes_npth.xln
