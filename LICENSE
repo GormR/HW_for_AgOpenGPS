@@ -1,7 +1,7 @@
 ﻿Copyright GormR 2021
  
-#Central Unit and Rooftop Unit LICENSE
-The Central Unit and the Rooftop Unit are licensed under the terms of the CERL OHL 1.2 (see below or http://www.ohwr.org/attachments/2388/cern_ohl_v_1_2.txt for full text) will the following additional condition:
+#Central Units, IMU and Section Control Units LICENSE
+These Units are licensed under the terms of the CERL OHL 1.2 (see below or http://www.ohwr.org/attachments/2388/cern_ohl_v_1_2.txt for full text) will the following additional condition:
 Attribution:
   Any reproductions or modifications of the hardware must contain the following attribution on the silkscreen and packaging:
   "Reproduction based on the github.com/GormR/HW_for_AgOpenGPS".
