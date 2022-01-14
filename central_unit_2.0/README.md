@@ -159,7 +159,8 @@ The RS485 port (U8) is like what is also available with a cheap USB-RS485 stick 
 |Wheel angle sensor|U17|
 |CAN|U19|
 |Optoisolated digital output|U19|
-|RS485|U8|
+|RS485|U8, C24=10R, C25=10R, R37, R38; do not mount: U8a, L1, L2, C24=100nF, C25=100nF, Q16|
+|Power Line Communication|U8a, L1, L2, C24=100nF, C25=100nF, Q16; do not mount: U8, C24=10R, C25=10R, R37, R38|
 |Danfoss|U800, Q9, Q12|
 |motor/valve driver|Q7, Q8, U9, U10, U2, U14, C6, C7, C12, C13, C15, C16|
 |power switch "enable"|U2, U14|

@@ -22,5 +22,10 @@ V2.1
 - values modified to be 24V-safe: R22, R35, R44, R51, R55, R62, R71, R71, R82, R92
 - mods for W5500
 
+V2.2
+- Power Line Communication option added based on THVD8000: R83, U8a, L1, L2, C24, C25, Q16 - either place components for RS485 or for Power Line Communication (OOK modulation)
+- D28, D29 added
+
+
 
 
