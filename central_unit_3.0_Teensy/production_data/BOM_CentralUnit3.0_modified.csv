@@ -95,3 +95,4 @@ ID	Name (ext)	Designator	Footprint	Quantity	Manufacturer Part	Manufacturer	Suppl
 94	U11 (ext)	ARDUSIMPLE2	ARDUSIMPLE_MECH_FLIPPED	1		Ardusimple			
 95	CMPS14 (ext)	U15	CMPS14	1					
 96	47k (mod)	R35,R51	R0603	2	0603WAF4702T5E	UNI-ROYAL(Uniroyal Elec)	LCSC	C25819	
+97	SOD-323_L1.8-W1.3-LS2.5-RD	D34,D32,D33	SOD-323_L1.8-W1.3-LS2.5-RD	3					

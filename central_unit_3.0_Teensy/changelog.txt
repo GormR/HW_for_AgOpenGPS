@@ -8,5 +8,7 @@ V3.1
 - outline modified for PushIn connector
 - D30 and R44 added
 - values modified to be 24V-safe: R35, R44, R51
+- D32, D33, D34 added (additional ESD protection)
+- input signals named "Work", "Steer" and "Remote"; pinning like CU2
 
 
