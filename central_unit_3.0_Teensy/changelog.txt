@@ -11,4 +11,5 @@ V3.1
 - D32, D33, D34 added (additional ESD protection)
 - input signals named "Work", "Steer" and "Remote"; pinning like CU2
 
-
+V3.2
+- Power Line Communication option added based on THVD8000: R83, U8a, L1, L2, C24, C25, Q16 - either place components for RS485 or for Power Line Communication (OOK modulation)
