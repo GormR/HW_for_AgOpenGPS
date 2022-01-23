@@ -27,5 +27,6 @@ V2.2
 - D28, D29 added
 - names of input signals named "Steer", "Work"
 - F1, F2 added
+- R70, R47, R45 added
 
 
