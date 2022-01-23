@@ -28,5 +28,8 @@ V2.2
 - names of input signals named "Steer", "Work", text "left.." and "right.." added
 - F1, F2 added
 - R70, R47, R45 added (needed for ESP32-only solution)
+- WorkAnalog connected to µCs (accidentially forgotten - digital input for Atmel working anyway)
+- Out1 replaces D23, polarity of optocoupler output changed, D5/AuxOut to GPIO0, A0/Current to GPIO32, R78, R94, R95, Q22..Q24, _OFF deleted (motor torque switch-off is now part of Brian's Arduino code)
+
 
 
