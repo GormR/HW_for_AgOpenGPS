@@ -1,3 +1,0 @@
-(1)  run CH340CFG.exe and set values acc. to the pictures - take care to choose the correct COM ports for ESP32 ("-ESP"), Atmel/Nano ("-Atm") and external devices ("-Aux")
-(2)  follow https://www.maketecheasier.com/install-unsigned-drivers-windows10/ to disable hash checking for driver installation
-(3)  install driver provided in the subfolder "ch340ser_driver_AOG_Central-Unit" here
