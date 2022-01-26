@@ -2,8 +2,8 @@
 
 ![pic](USB_ESP32_Central-Unit-2.x.PNG?raw=true)  ![pic](USB_Atmel_Central-Unit-2.x.PNG?raw=true)  ![pic](USB_AuxMachine_Central-Unit-2.x.PNG)
 
-(2)  follow [these instructions to disable hash checking for driver installation]()https://www.maketecheasier.com/install-unsigned-drivers-windows10/) 
+(2)  follow [these instructions to disable hash checking for driver installation](https://www.maketecheasier.com/install-unsigned-drivers-windows10/) 
 
-(3)  install [driver for AgOpenGPS Central Units 1.x and 2.x](/ch340ser_driver_AOG_Central-Unit)
+(3)  install [driver for AgOpenGPS Central Units 1.x and 2.x](ch340ser_driver_AOG_Central-Unit)
 
 
