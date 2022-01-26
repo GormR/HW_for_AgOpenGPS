@@ -1,4 +1,4 @@
-(1)  run [virtual COM port chip setup](CH340CFG.zip) and set values acc. to the pictures - take care to choose the correct COM ports for ESP32 ("-ESP"), Atmel/Nano ("-Atm") and external devices ("-Aux")
+(1)  run [virtual COM port chip setup](CH340CFG.zip) and set values acc. to the pictures - take care to choose the correct COM ports for ESP32 ("-ESP"), Atmel/Nano ("-Atm") and external devices ("-Aux"). YOUR COM PORTS WILL BE DIFFERENT ON YOUR MACHINE TO WHAT IS SHOWN IN THE PICTURES!!
 
 ![pic](USB_ESP32_Central-Unit-2.x.PNG?raw=true)  ![pic](USB_Atmel_Central-Unit-2.x.PNG?raw=true)  ![pic](USB_AuxMachine_Central-Unit-2.x.PNG)
 
