@@ -1,0 +1,5 @@
+this software is a draft!
+
+steering is working, exchanges RTK and GNSS packets with one or two Ardusimple boards (but not supported in AgIO yet), communicates on USB-PD CC lines (but no role change yet)
+
+

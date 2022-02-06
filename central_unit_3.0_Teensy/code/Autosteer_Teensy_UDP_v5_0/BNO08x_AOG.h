@@ -37,6 +37,7 @@
 #endif
 
 #include <Wire.h>
+extern TwoWire Wire1;
 #include <SPI.h>
 
 //The default I2C address for the BNO080 on the SparkX breakout is 0x4B. 0x4A is also possible.
@@ -132,7 +133,7 @@ const byte CHANNEL_GYRO = 5;
 class BNO080
 {
 public:
-	boolean begin(uint8_t deviceAddress = BNO080_DEFAULT_ADDRESS, TwoWire &wirePort = Wire, uint8_t intPin = 255); //By default use the default I2C addres, and use Wire port, and don't declare an INT pin
+	boolean begin(uint8_t deviceAddress = BNO080_DEFAULT_ADDRESS, TwoWire &wirePort = Wire1, uint8_t intPin = 255); //By default use the default I2C addres, and use Wire port, and don't declare an INT pin
 	boolean beginSPI(uint8_t user_CSPin, uint8_t user_WAKPin, uint8_t user_INTPin, uint8_t user_RSTPin, uint32_t spiPortSpeed = 3000000, SPIClass &spiPort = SPI);
 
 	void enableDebugging(Stream &debugPort = Serial); //Turn on debug printing. If user doesn't specify then Serial will be used.

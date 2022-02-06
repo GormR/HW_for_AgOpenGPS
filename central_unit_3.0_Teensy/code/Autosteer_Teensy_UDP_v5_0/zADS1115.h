@@ -23,6 +23,7 @@ ADS1115 lite library - Adapted from adafruit ADS1015/ADS1115 library
 
 #include <Arduino.h>
 #include <Wire.h>
+extern TwoWire Wire1;
 
 /*=========================================================================
     I2C ADDRESS/BITS
