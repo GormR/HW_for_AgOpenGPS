@@ -23,7 +23,7 @@
 /////////////////////////////////////////////
 
 // if USB power delivery is not available, comment out
-#define USB_PD
+//#define USB_PD
 
 // if not in eeprom, overwrite
 #define EEP_Ident 5100
@@ -238,10 +238,15 @@ void(* resetFunc) (void) = 0;
 
 int currentPos = 0;
 
+unsigned char serial2buffer[128];
+unsigned char serial7buffer[128];
+
 void setup()
 {
   Serial2.begin(460800);  // F9P_2
+  Serial1.addMemoryForRead(serial2buffer, sizeof(serial2buffer));  
   Serial7.begin(460800);  // F9P_1
+  Serial7.addMemoryForRead(serial7buffer, sizeof(serial7buffer));  
   Serial.begin(38400);
   delay(100);
   Serial.println("Setup");
@@ -605,9 +610,10 @@ void loop()
           F9P_1[i] = F9P_2[i-F9P_1cnt];  // concat strings
       SendUdp(F9P_1, i, ipDestination, GNSSUDPport);
   
-//      for (uint16_t j=0; j<i; j++) Serial.write(F9P_1[j]);  // debug
-//      Serial.print("Units: ");
-//      Serial.println(noOfF9Ps);
+      Serial.print("\"");
+      for (uint16_t j=0; j<i; j++) Serial.write(F9P_1[j]);  // debug
+      Serial.print("\" Units: ");
+      Serial.println(noOfF9Ps);
 //      digitalWrite(debug0, LOW);
       F9P_1cnt = 0;
       F9P_1state = 0;
