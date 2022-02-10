@@ -1,10 +1,12 @@
 V1.0
 - first release 
 - Rx and Tx swapped
+- programming of bootloader: remove C55
+- access to Rx and Tx for stardard-Arduino programming: best at LEDs
 
 V1.1
 - bugfix Rx/Tx
-- R5 added
-- Testpoints on Rx and Tx added
+- R5, R9 added
+- Testpoints on Rx and Tx added for programming
 
 
