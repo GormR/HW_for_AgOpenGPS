@@ -1,3 +1,10 @@
 V1.0
 - first release 
+- Rx and Tx swapped
+
+V1.1
+- bugfix Rx/Tx
+- R5 added
+- Testpoints on Rx and Tx added
+
 
