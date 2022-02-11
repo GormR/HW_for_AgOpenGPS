@@ -33,15 +33,13 @@ These [connections](Connections.pdf) are provided:
 0. [read changelog](changelog.txt)
 1. if applicable: [assemble missing SMD parts](https://www.youtube.com/watch?v=dLczChhmDCY)
 2. assemble alls THT parts: pin headers and connectors
-3. slowly increase input voltage on CN4/POWER with current limit of 100mA while checking the 5V voltage (should be 0mA till about 4V, 20mA @ 4.5V, 12mA @ 12V; +5V must not rise up to more than 5.1V!)
-4. check +3.3V (should be in the range 3.2..3.4V)
-5. connect Arduino Uno board and flash bootloader via PRGBOOT (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP)* 
-6. disconnect Uno board and connect USB (either CN2 or CN13/CN8/USB-C): The PC should display a new USB hub at least one several serial device 
-7. flash [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) via Arduino software => blue TXD3-LED starts flashing
-8. connect WAS and do a test with AgOpenGPS
+3. slowly increase input voltage on +5V with a current limit of 30mA while checking the 3.3V voltage; +3.3V must not rise up to more than 3.4V!)
+4. connect Arduino Uno board and flash bootloader via PRGBOOT connector (https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP)* 
+5. disconnect Uno board and connect an USB-serial-adapter with 3.3V signals to the connector "PRGARDU"
+6. flash [firmware](code) via Arduino software => blue TXD3-LED starts flashing (the firmware is a copy of [BrianTee's Arduino code](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) with mods to support RS485 data flow steering)
+7. test with AgOpenGPS with the help of an [powerlink USB stick](https://github.com/GormR/RS485-OOK-USB-Adapter) or [Central Unit 2.x](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_2.0) or [Central Unit 3.x](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_3.0_Teensy)
 
-Some currents:
-5V 25mA
+*_ either with a 3.3V-Arduino or Uno with adapter ( [1k in each signal line + additional diode in _reset line](documentation/adapter_for_Arduino_Uno.jpg) ) 
 
 There is also an [English user group](t.me/agopengpsinternational) and a [multilingual forum](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_2.0). 
 
