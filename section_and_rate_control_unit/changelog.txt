@@ -7,5 +7,9 @@ V1.1 (Dec 29th, 2021)
 - USB lines corrected
 - R66..R69, R85..R88 added
 
+V1.2 (Feb, 12th, 2022)
+- two-wire powerlink bus option added: U7, R90, R91, C26, C27, L2, L3, D17..D20
+- R92, R93 added
+
 
 
