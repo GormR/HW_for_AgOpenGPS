@@ -1,4 +1,4 @@
-# Section Control Unit AgOpenGPS/QtOpenGuidance  
+# Section and Rate Control Unit for AgOpenGPS
 (Informationen in deutscher Sprache unten)
 Top view:
 ![pic](3D_top.png?raw=true)
