@@ -244,7 +244,7 @@ unsigned char serial7buffer[128];
 void setup()
 {
   Serial2.begin(460800);  // F9P_2
-  Serial1.addMemoryForRead(serial2buffer, sizeof(serial2buffer));  
+  Serial2.addMemoryForRead(serial2buffer, sizeof(serial2buffer));  
   Serial7.begin(460800);  // F9P_1
   Serial7.addMemoryForRead(serial7buffer, sizeof(serial7buffer));  
   Serial.begin(38400);
