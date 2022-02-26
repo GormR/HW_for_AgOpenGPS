@@ -5,30 +5,44 @@ namespace AgIO
 {
     public partial class FormLoop
     {
-        private string rawBuffer = "";
+        private string[] rawBuffer = new string [2];
         private string[] words;
         private string nextNMEASentence = "";
 
         private bool isNMEAToSend = false;
+        public bool isDual = false;
 
-        public string ggaSentence, vtgSentence, hdtSentence, avrSentence, paogiSentence, 
-            hpdSentence, rmcSentence, pandaSentence, ksxtSentence;
+        public string[] vtgSentence = new string [2];
+        public string[] ggaSentence = new string[2];
+        public string hdtSentence, avrSentence, paogiSentence, 
+            hpdSentence, rmcSentence, pandaSentence;
 
-        public float hdopData, altitude = float.MaxValue, headingTrue = float.MaxValue,
+        public float altitude = float.MaxValue, headingTrue = float.MaxValue,
             headingTrueDual = float.MaxValue, speed = float.MaxValue, roll = float.MaxValue;
-        public float altitudeData, speedData, rollData, headingTrueData, headingTrueDualData, ageData;
+        public float rollData, headingTrueData, headingTrueDualData;
+        public float[] altitudeData = new float [2];
+        public float[] speedData = new float[2];
+        public float[] ageData = new float[2];
+        public float[] hdopData = new float[2];
 
-        public double latitudeSend = double.MaxValue, longitudeSend = double.MaxValue, latitude, longitude;
+        public double latitudeSend = double.MaxValue, longitudeSend = double.MaxValue, latitude, longitude, GPSroll, GPSheading;
 
-        public ushort satellitesData, satellitesTracked = ushort.MaxValue, hdopX100 = ushort.MaxValue, 
+        public double[] myLongitude = new double[2];  // definitions for dual RTK with two F9P
+        public double[] myLattitude = new double[2];
+        public double[] myAltitude = new double[2];
+        public int[] myTime = new int[2];
+        public double antennaDist = 0;  // distance between the two antennas
+
+        public ushort satellitesTracked = ushort.MaxValue, hdopX100 = ushort.MaxValue, 
             ageX100 = ushort.MaxValue;
+        public ushort[] satellitesData = new ushort[2];
 
         //imu data
         public ushort imuHeadingData, imuHeading = ushort.MaxValue;
-        public short imuRollData, imuRoll = short.MaxValue, imuPitchData, imuPitch = short.MaxValue, 
-            imuYawRateData, imuYawRate = short.MaxValue;
+        public short imuRollData, imuRoll = short.MaxValue;
 
-        public byte fixQualityData, fixQuality = byte.MaxValue;
+        public byte fixQuality = byte.MaxValue;
+        public byte[] fixQualityData = new byte [2];
 
         private float rollK, Pc, G, Xp, Zp, XeRoll, P = 1.0f;
         private readonly float varRoll = 0.1f, varProcess = 0.0003f;
@@ -40,15 +54,32 @@ namespace AgIO
         {
             get
             {
-                if (fixQualityData == 0) return "Invalid: ";
-                else if (fixQualityData == 1) return "GPS 1: ";
-                else if (fixQualityData == 2) return "DGPS : ";
-                else if (fixQualityData == 3) return "PPS : ";
-                else if (fixQualityData == 4) return "RTK fix: ";
-                else if (fixQualityData == 5) return "Float: ";
-                else if (fixQualityData == 6) return "Estimate: ";
-                else if (fixQualityData == 7) return "Man IP: ";
-                else if (fixQualityData == 8) return "Sim: ";
+                if (fixQualityData[0] == 0) return "Invalid: ";
+                else if (fixQualityData[0] == 1) return "GPS single: ";
+                else if (fixQualityData[0] == 2) return "DGPS : ";
+                else if (fixQualityData[0] == 3) return "PPS : ";
+                else if (fixQualityData[0] == 4) return "RTK fix: ";
+                else if (fixQualityData[0] == 5) return "Float: ";
+                else if (fixQualityData[0] == 6) return "Estimate: ";
+                else if (fixQualityData[0] == 7) return "Man IP: ";
+                else if (fixQualityData[0] == 8) return "Sim: ";
+                else return "Unknown: ";
+            }
+        }
+
+        public string FixQuality2
+        {
+            get
+            {
+                if (fixQualityData[1] == 0) return "Invalid: ";
+                else if (fixQualityData[1] == 1) return "GPS single: ";
+                else if (fixQualityData[1] == 2) return "DGPS : ";
+                else if (fixQualityData[1] == 3) return "PPS : ";
+                else if (fixQualityData[1] == 4) return "RTK fix: ";
+                else if (fixQualityData[1] == 5) return "Float: ";
+                else if (fixQualityData[1] == 6) return "Estimate: ";
+                else if (fixQualityData[1] == 7) return "Man IP: ";
+                else if (fixQualityData[1] == 8) return "Sim: ";
                 else return "Unknown: ";
             }
         }
@@ -84,42 +115,82 @@ namespace AgIO
             return sentence;
         }
 
-        public void ParseNMEA(ref string buffer)
+        public void ParseIMU()
         {
-            if (rawBuffer == null) return;
+            if (spIMU.IsOpen && isRVC)    // RVC mode on BNO085: do on-the-fly decoding to safe performance
+            {
+                short yaw = 0, pitch = 0, roll = 0;
+                double yawSum = 0, pitchSum = 0, rollSum = 0;
+                uint NoOfPackets = 0;
+                int bytesNow = spIMU.BytesToRead;          // no. of bytes in buffer
+                int bytesGot = 0;
+                byte dummy = 0;
+
+                traffic.cntrIMUIn = 0;
+                if (bytesNow > 21 * RVCPacketLength)       // too many bytes in buffer => flush it
+                    spIMU.DiscardInBuffer();
+                else
+                {
+                    while (bytesNow - bytesGot >= RVCPacketLength - 3)  // while there is at least one packet in buffer, do..
+                    {
+                        while (spIMU.ReadByte() != 0xaa && bytesNow - bytesGot >= RVCPacketLength - 3)   // look out for 1st 0xaa
+                            bytesGot++;
+                        if (bytesNow - bytesGot >= RVCPacketLength - 4 && spIMU.ReadByte() == 0xaa)      // look out for 2nd 0xaa
+                        {
+                            NoOfPackets++;                                                          // ok, let's decode it
+                            dummy = (byte)spIMU.ReadByte();   // running counter (we don't care for the moment)
+                            yaw = (short)((byte)spIMU.ReadByte() | (byte)spIMU.ReadByte() << 8);   // 1/100 deg
+                            yawSum += Convert.ToDouble(yaw);
+                            pitch = (short)((byte)spIMU.ReadByte() | (byte)spIMU.ReadByte() << 8); // 1/100 deg
+                            pitchSum += Convert.ToDouble(pitch);
+                            roll = (short)((byte)spIMU.ReadByte() | (byte)spIMU.ReadByte() << 8);  // 1/100 deg
+                            rollSum += Convert.ToDouble(roll);
+                            dummy = (byte)spIMU.ReadByte();   // accelaration x low
+                            dummy = (byte)spIMU.ReadByte();   // accelaration x high
+                            dummy = (byte)spIMU.ReadByte();   // accelaration y low
+                            dummy = (byte)spIMU.ReadByte();   // accelaration y high
+                            dummy = (byte)spIMU.ReadByte();   // accelaration z low
+                            dummy = (byte)spIMU.ReadByte();   // accelaration z high
+                            bytesGot += 14;  // we don't care for the rest here
+                        }
+                    }
+                    if (NoOfPackets != 0)
+                    {
+                        GPSroll = rollSum / (100 * NoOfPackets);
+                        GPSheading = 180 + yawSum / (100 * NoOfPackets);
+                        traffic.cntrIMUIn = (int)(100 * RVCPacketLength);  // 19 bytes per packet, 100 packets per second
+                    }
+                }
+            }
+        }
+
+        public void ParseNMEA(ref string buffer, byte GPS012)  // GPS012: 0, 1 = from different serial COM or via UDP
+        {
+            if (rawBuffer[GPS012] == null) return;
 
             //find end of a sentence
-            int cr = rawBuffer.IndexOf("\r", StringComparison.Ordinal);
+            int cr = rawBuffer[GPS012].IndexOf("\r", StringComparison.Ordinal);
             if (cr == -1) return; // No end found, wait for more data
 
             // Find start of next sentence
-            int dollar = rawBuffer.IndexOf("$", StringComparison.Ordinal);
+            int dollar = rawBuffer[GPS012].IndexOf("$", StringComparison.Ordinal);
             if (dollar == -1) return;
 
             //if the $ isn't first, get rid of the tail of corrupt sentence
-            if (dollar >= cr) rawBuffer = rawBuffer.Substring(dollar);
+            if (dollar >= cr) rawBuffer[GPS012] = rawBuffer[GPS012].Substring(dollar);
 
-            cr = rawBuffer.IndexOf("\r", StringComparison.Ordinal);
+            cr = rawBuffer[GPS012].IndexOf("\r", StringComparison.Ordinal);
             if (cr == -1) return; // No end found, wait for more data
-            dollar = rawBuffer.IndexOf("$", StringComparison.Ordinal);
-            if (dollar == -1) return;
 
-            //if the $ isn't first, get rid of the tail of corrupt sentence
-            if (dollar >= cr) rawBuffer = rawBuffer.Substring(dollar);
-
-            cr = rawBuffer.IndexOf("\r", StringComparison.Ordinal);
-            dollar = rawBuffer.IndexOf("$", StringComparison.Ordinal);
-            if (cr == -1 || dollar == -1) return;
-
-            if (rawBuffer.Length > 301)
+            if (rawBuffer[GPS012].Length > 250)
             {
                 if (isLogNMEA)
                 {
                     logNMEASentence.Append("\r\n" + 
-                        DateTime.UtcNow.ToString(" ->>  mm:ss.fff ", CultureInfo.InvariantCulture) + "\r\n" + rawBuffer + "\r\n");
+                        DateTime.UtcNow.ToString(" ->>  mm:ss.fff ", CultureInfo.InvariantCulture) + "\r\n" + rawBuffer[GPS012] + "\r\n");
                 }
 
-                rawBuffer = "";
+                rawBuffer[GPS012] = "";
                 return;
             }
 
@@ -146,18 +217,48 @@ namespace AgIO
                 }
 
                 //parse them accordingly
+                words = nextNMEASentence.Split(',');
                 if (words.Length < 3) break;
 
                 if ((words[0] == "$GPGGA" || words[0] == "$GNGGA") && words.Length > 13)
                 {
-                    ParseGGA();
-                    if (isGPSSentencesOn) ggaSentence = nextNMEASentence;
+                    ParseGGA(GPS012);
+                    if (isGPSSentencesOn) ggaSentence[GPS012] = nextNMEASentence;
+
+                    if (spGPS.IsOpen && spGPS2.IsOpen || isDual)   // dual serial F9P: calculate roll and heading
+                    {
+                        if ((myTime[GPS012] - myTime[GPS012 ^ 1]) < 20)  
+                            // true if value decoded right now is less than 10ms newer than the one on the other COM => calulate heading
+                        {
+                            latitude = (myLattitude[GPS012] + myLattitude[GPS012 ^ 1]) / 2;     // middle of the two antennas
+                            longitude = (myLongitude[GPS012] + myLongitude[GPS012 ^ 1]) / 2;
+                            latitude += 1.237463278;        // camouflage my location for videos
+                            longitude += 1.39485723948;
+                            double distanceDeg = 40080000 / 360;  // circumference of the earth in [m] / 360°
+                            antennaDist = Math.Sqrt(Math.Pow((myLattitude[0] - myLattitude[1]), 2) + 
+                                                    Math.Pow(((myLongitude[0] - myLongitude[1]) * Math.Cos(myLattitude[0] * Math.PI / 180)), 2)) * distanceDeg; 
+                                                    // Pythagoras
+                            GPSheading = 180 - Math.Atan2((myLattitude[0] - myLattitude[1]) * Math.PI / 180, 
+                                                          (myLongitude[0] - myLongitude[1]) * Math.PI / 180 * Math.Cos(myLattitude[0] * Math.PI / 180)) * 180 / Math.PI;
+                            GPSroll = Math.Atan((myAltitude[0] - myAltitude[1]) / antennaDist) * 180 / Math.PI;
+                            //GPSheading = (myLattitude[0] - myLattitude[1]) * 10000000;  // debug outputs
+                            //GPSroll = (myLongitude[0] - myLongitude[1])  * Math.Cos(myLattitude[0] * Math.PI / 180) * 10000000;
+                            //antennaDist = myAltitude[0] - myAltitude[1];
+                            ParseIMU();  
+                        }
+                    }
+                    else  // only one F9P => copy directly
+                    {
+                        latitude = myLattitude[GPS012];
+                        longitude = myLongitude[GPS012];
+                        ParseIMU();  
+                    }
                 }
 
                 else if ((words[0] == "$GPVTG" || words[0] == "$GNVTG") && words.Length > 7)
                 {
-                    ParseVTG();
-                    if (isGPSSentencesOn) vtgSentence = nextNMEASentence;
+                    ParseVTG(GPS012);
+                    if (isGPSSentencesOn) vtgSentence[GPS012] = nextNMEASentence;
                 }
 
                 //else if (words[0] == "$GPRMC" || words[0] == "$GNRMC")
@@ -174,42 +275,42 @@ namespace AgIO
 
                 else if (words[0] == "$GPHPD")
                 {
-                    ParseHPD();
+                    ParseHPD(GPS012);
                     if (isGPSSentencesOn) hpdSentence = nextNMEASentence;
                 }
 
                 else if (words[0] == "$PAOGI" && words.Length > 14)
                 {
-                    ParseOGI();
+                    ParseOGI(GPS012);
                     if (isGPSSentencesOn) paogiSentence = nextNMEASentence;
                 }
 
                 else if (words[0] == "$PANDA" && words.Length > 14)
                 {
-                    ParsePANDA();
+                    ParsePANDA(GPS012);
                     if (isGPSSentencesOn) pandaSentence = nextNMEASentence;
                 }
 
                 else if (words[0] == "$GPHDT" || words[0] == "$GNHDT")
                 {
-                    ParseHDT();
+                    ParseHDT(GPS012);
                     if (isGPSSentencesOn) hdtSentence = nextNMEASentence;
                 }
 
                 else if (words[0] == "$PTNL" && words.Length > 8)
                 {
-                    ParseAVR();
+                    ParseAVR(GPS012);
                     if (isGPSSentencesOn) avrSentence = nextNMEASentence;
                 }
 
                 else if (words[0] == "$GNTRA")
                 {
-                    ParseTRA();
+                    ParseTRA(GPS012);
                 }
 
                 else if (words[0] == "$PSTI" && words[1] == "032")
                 {
-                    ParseSTI032(); //there is also an $PSTI,030,... wich contains different data!
+                    ParseSTI032(GPS012); //there is also an $PSTI,030,... wich contains different data!
                 }
             }// while still data
 
@@ -351,8 +452,10 @@ namespace AgIO
             }
         }
 
-        private void ParseGGA()
+        private void ParseGGA(byte GPS012)
         {
+            double longitude = 0, latitude = 0;  // hide values (only local)
+
             #region GGA Message
             //$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
 
@@ -387,23 +490,24 @@ namespace AgIO
 
                 //FixQuality
                 byte.TryParse(words[6], NumberStyles.Float, CultureInfo.InvariantCulture, out fixQuality);
-                fixQualityData = fixQuality;
+                fixQualityData[GPS012] = fixQuality;
 
                 //satellites tracked
                 ushort.TryParse(words[7], NumberStyles.Float, CultureInfo.InvariantCulture, out satellitesTracked);
-                satellitesData = satellitesTracked;
+                satellitesData[GPS012] = satellitesTracked;
 
                 //hdop
-                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData);
-                hdopX100 = (ushort)(hdopData * 100.0);
+                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData[GPS012]);
+                hdopX100 = (ushort)(hdopData[GPS012] * 100.0);
 
                 //altitude
                 float.TryParse(words[9], NumberStyles.Float, CultureInfo.InvariantCulture, out altitude);
-                altitudeData = altitude;
+                altitudeData[GPS012] = altitude;
+                myAltitude[GPS012] = altitude;
 
                 //age
-                float.TryParse(words[13], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData);
-                ageX100 = (ushort)(ageData*100.0);
+                float.TryParse(words[13], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData[GPS012]);
+                ageX100 = (ushort)(ageData[GPS012]*100.0);
 
                 //LastUpdateUTC = UTC;
 
@@ -418,11 +522,12 @@ namespace AgIO
                 decim -= 2;
                 double.TryParse(words[2].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out latitude);
                 double.TryParse(words[2].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp);
-                temp *= 0.01666666666667;
+                temp *= 0.01666666666667;  // = 1/60
                 latitude += temp;
                 if (words[3] == "S")
                     latitude *= -1;
                 latitudeSend = latitude;
+                myLattitude[GPS012] = latitude;
 
                 //get longitude and convert to decimal degrees
                 decim = words[4].IndexOf(".", StringComparison.Ordinal);
@@ -435,17 +540,19 @@ namespace AgIO
                 decim -= 2;
                 double.TryParse(words[4].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out longitude);
                 double.TryParse(words[4].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out temp);
-                longitude += temp * 0.0166666666667;
+                longitude += temp * 0.0166666666667;  // = 1/60
 
                 { if (words[5] == "W") longitude *= -1; }
                 longitudeSend = longitude;
+                myLongitude[GPS012] = longitude;
 
                 if (lastSentence == "GGA") isNMEAToSend = true;
-                //}
+
+                myTime[GPS012] = DateTime.UtcNow.Millisecond;
             }
         }
 
-        private void ParseVTG()
+        private void ParseVTG(byte GPS012)
         {
             #region VTG Message
             //$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K*48
@@ -463,11 +570,11 @@ namespace AgIO
             {
                 //kph for speed
                 float.TryParse(words[7], NumberStyles.Float, CultureInfo.InvariantCulture, out speed);
-                speedData = speed;
+                speedData[GPS012] = speed;
             }
             else
             {
-                speed = speedData = 0;
+                speed = speedData[GPS012] = 0;
             }
 
             if (!string.IsNullOrEmpty(words[1]))
@@ -480,7 +587,7 @@ namespace AgIO
             if (lastSentence == "VTG") isNMEAToSend = true;
         }
 
-        private void ParseAVR()
+        private void ParseAVR(byte GPS012)
         {
             #region AVR Message
             // $PTNL,AVR,145331.50,+35.9990,Yaw,-7.8209,Tilt,-0.4305,Roll,444.232,3,1.2,17 * 03
@@ -524,7 +631,7 @@ namespace AgIO
             }
         }
 
-        private void ParseHPD()
+        private void ParseHPD(byte GPS012)
         {
             if (!string.IsNullOrEmpty(words[1]))
             {
@@ -553,7 +660,7 @@ namespace AgIO
             }
         }
 
-        private void ParseOGI()
+        private void ParseOGI(byte GPS012)
         {
             #region PAOGI Message
             /*
@@ -600,24 +707,24 @@ namespace AgIO
 
                 //FixQuality
                 byte.TryParse(words[6], NumberStyles.Float, CultureInfo.InvariantCulture, out fixQuality);
-                fixQualityData = fixQuality;
+                fixQualityData[GPS012] = fixQuality;
 
                 //satellites tracked
                 ushort.TryParse(words[7], NumberStyles.Float, CultureInfo.InvariantCulture, out satellitesTracked);
-                satellitesData = satellitesTracked;
+                satellitesData[GPS012] = satellitesTracked;
 
                 //hdop
-                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData);
-                hdopX100 = (ushort)(hdopData * 100.0);
+                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData[GPS012]);
+                hdopX100 = (ushort)(hdopData[GPS012] * 100.0);
 
                 //altitude
                 float.TryParse(words[9], NumberStyles.Float, CultureInfo.InvariantCulture, out altitude);
-                altitudeData = altitude;
+                altitudeData[GPS012] = altitude;
 
                 //kph for speed - knots read
                 float.TryParse(words[11], NumberStyles.Float, CultureInfo.InvariantCulture, out speed);
                 speed *= 1.852f;
-                speedData = speed;
+                speedData[GPS012] = speed;
 
                 //Dual antenna derived heading
                 float.TryParse(words[12], NumberStyles.Float, CultureInfo.InvariantCulture, out headingTrueDual);
@@ -636,8 +743,8 @@ namespace AgIO
                 }
 
                 //age
-                float.TryParse(words[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData);
-                ageX100 = (ushort)(ageData * 100.0);
+                float.TryParse(words[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData[GPS012]);
+                ageX100 = (ushort)(ageData[GPS012] * 100.0);
 
                 decim -= 2;
                 double.TryParse(words[2].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out latitude);
@@ -671,7 +778,7 @@ namespace AgIO
             }
         }
 
-        private void ParsePANDA()
+        private void ParsePANDA(byte GPS012)
         {
             #region PANDA Message
             /*
@@ -749,28 +856,28 @@ namespace AgIO
 
                 //FixQuality
                 byte.TryParse(words[6], NumberStyles.Float, CultureInfo.InvariantCulture, out fixQuality);
-                fixQualityData = fixQuality;
+                fixQualityData[GPS012] = fixQuality;
 
                 //satellites tracked
                 ushort.TryParse(words[7], NumberStyles.Float, CultureInfo.InvariantCulture, out satellitesTracked);
-                satellitesData = satellitesTracked;
+                satellitesData[GPS012] = satellitesTracked;
 
                 //hdop
-                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData);
-                hdopX100 = (ushort)(hdopData * 100.0);
+                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData[GPS012]);
+                hdopX100 = (ushort)(hdopData[GPS012] * 100.0);
 
                 //altitude
                 float.TryParse(words[9], NumberStyles.Float, CultureInfo.InvariantCulture, out altitude);
-                altitudeData = altitude;
+                altitudeData[GPS012] = altitude;
 
                 //age
-                float.TryParse(words[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData);
-                ageX100 = (ushort)(ageData * 100.0);
+                float.TryParse(words[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData[GPS012]);
+                ageX100 = (ushort)(ageData[GPS012] * 100.0);
 
                 //kph for speed - knots read
                 float.TryParse(words[11], NumberStyles.Float, CultureInfo.InvariantCulture, out speed);
                 speed *= 1.852f;
-                speedData = speed;
+                speedData[GPS012] = speed;
 
                 //imu heading
                 ushort.TryParse(words[12], NumberStyles.Float, CultureInfo.InvariantCulture, out imuHeading);
@@ -794,7 +901,7 @@ namespace AgIO
             }
         }
 
-        private void ParseHDT()
+        private void ParseHDT(byte GPS012)
         {
             #region HDT Message
             //$GNHDT,123.456,T * 00
@@ -815,7 +922,7 @@ namespace AgIO
             }
         }
 
-        private void ParseSTI032() //heading and roll from SkyTraQ receiver
+        private void ParseSTI032(byte GPS012) //heading and roll from SkyTraQ receiver
         {
             #region STI0 Message
             //$PSTI,032,033010.000,111219,A,R,‐4.968,‐10.817,‐1.849,12.046,204.67,,,,,*39
@@ -866,7 +973,7 @@ namespace AgIO
             }
         }
 
-        private void ParseTRA()  //tra contains hdt and roll for the ub482 receiver
+        private void ParseTRA(byte GPS012)  //tra contains hdt and roll for the ub482 receiver
         {
             if (!string.IsNullOrEmpty(words[1]))
             {
@@ -887,7 +994,7 @@ namespace AgIO
             }
         }
 
-        private void ParseRMC()
+        private void ParseRMC(byte GPS012)
         {
             #region RMC Message
             //$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
@@ -910,7 +1017,7 @@ namespace AgIO
                 //Convert from knots to kph for speed
                 float.TryParse(words[7], NumberStyles.Float, CultureInfo.InvariantCulture, out speed);
                 speed *= 1.852f;
-                speedData = speed;
+                speedData[GPS012] = speed;
 
                 //True heading
                 float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out headingTrueDual);

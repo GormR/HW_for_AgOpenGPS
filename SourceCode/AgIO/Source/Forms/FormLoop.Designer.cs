@@ -36,6 +36,8 @@ namespace AgIO
             this.label8 = new System.Windows.Forms.Label();
             this.lblCurentLon = new System.Windows.Forms.Label();
             this.lblCurrentLat = new System.Windows.Forms.Label();
+            this.lblCurrentHeading = new System.Windows.Forms.Label();
+            this.lblCurrentRoll = new System.Windows.Forms.Label();
             this.lblWatch = new System.Windows.Forms.Label();
             this.lblNTRIPBytes = new System.Windows.Forms.Label();
             this.lblBytes = new System.Windows.Forms.Label();
@@ -63,8 +65,15 @@ namespace AgIO
             this.saveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.uDPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxSerialPorts = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelSerPorts = new System.Windows.Forms.Label();
+            this.lblGPS2Comm = new System.Windows.Forms.Label();
+            this.lblFromGPS2 = new System.Windows.Forms.Label();
+            this.lblToGPS2 = new System.Windows.Forms.Label();
+            this.btnGPS2 = new System.Windows.Forms.Button();
+            this.labelRl = new System.Windows.Forms.Label();
+            this.labelHd = new System.Windows.Forms.Label();
             this.btnRadio = new System.Windows.Forms.Button();
             this.cboxLogNMEA = new System.Windows.Forms.CheckBox();
             this.btnStartStopNtrip = new System.Windows.Forms.Button();
@@ -77,6 +86,7 @@ namespace AgIO
             this.btnAOGButton = new System.Windows.Forms.Button();
             this.btnIMU = new System.Windows.Forms.Button();
             this.btnUDP = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnRescanPorts = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -142,6 +152,34 @@ namespace AgIO
             this.lblCurrentLat.Size = new System.Drawing.Size(28, 18);
             this.lblCurrentLat.TabIndex = 153;
             this.lblCurrentLat.Text = "53";
+            this.lblCurrentLat.Click += new System.EventHandler(this.lblCurrentLat_Click);
+            // 
+            // lblCurrentHeading
+            // 
+            this.lblCurrentHeading.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentHeading.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblCurrentHeading.ForeColor = System.Drawing.Color.Black;
+            this.lblCurrentHeading.Location = new System.Drawing.Point(50, 61);
+            this.lblCurrentHeading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCurrentHeading.Name = "lblCurrentHeading";
+            this.lblCurrentHeading.Size = new System.Drawing.Size(64, 27);
+            this.lblCurrentHeading.TabIndex = 466;
+            this.lblCurrentHeading.Text = "---";
+            this.lblCurrentHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCurrentHeading.Click += new System.EventHandler(this.lblGPSheading_Click);
+            // 
+            // lblCurrentRoll
+            // 
+            this.lblCurrentRoll.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentRoll.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblCurrentRoll.ForeColor = System.Drawing.Color.Black;
+            this.lblCurrentRoll.Location = new System.Drawing.Point(50, 89);
+            this.lblCurrentRoll.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCurrentRoll.Name = "lblCurrentRoll";
+            this.lblCurrentRoll.Size = new System.Drawing.Size(64, 27);
+            this.lblCurrentRoll.TabIndex = 465;
+            this.lblCurrentRoll.Text = "---";
+            this.lblCurrentRoll.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblWatch
             // 
@@ -481,25 +519,35 @@ namespace AgIO
             this.uDPToolStripMenuItem.Text = "UDP";
             this.uDPToolStripMenuItem.Click += new System.EventHandler(this.uDPToolStripMenuItem_Click);
             // 
-            // listBox1
+            // listBoxSerialPorts
             // 
-            this.listBox1.BackColor = System.Drawing.Color.Snow;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 23;
-            this.listBox1.Location = new System.Drawing.Point(5, 276);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(90, 140);
-            this.listBox1.TabIndex = 193;
+            this.listBoxSerialPorts.BackColor = System.Drawing.Color.Snow;
+            this.listBoxSerialPorts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxSerialPorts.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxSerialPorts.FormattingEnabled = true;
+            this.listBoxSerialPorts.ItemHeight = 23;
+            this.listBoxSerialPorts.Location = new System.Drawing.Point(10, 296);
+            this.listBoxSerialPorts.Name = "listBoxSerialPorts";
+            this.listBoxSerialPorts.Size = new System.Drawing.Size(90, 163);
+            this.listBoxSerialPorts.TabIndex = 193;
+            this.listBoxSerialPorts.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.labelSerPorts);
+            this.panel1.Controls.Add(this.lblGPS2Comm);
+            this.panel1.Controls.Add(this.lblFromGPS2);
+            this.panel1.Controls.Add(this.lblToGPS2);
+            this.panel1.Controls.Add(this.btnGPS2);
+            this.panel1.Controls.Add(this.labelRl);
+            this.panel1.Controls.Add(this.labelHd);
+            this.panel1.Controls.Add(this.lblCurrentHeading);
+            this.panel1.Controls.Add(this.lblCurrentRoll);
             this.panel1.Controls.Add(this.btnRadio);
             this.panel1.Controls.Add(this.cboxLogNMEA);
             this.panel1.Controls.Add(this.btnStartStopNtrip);
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.listBoxSerialPorts);
             this.panel1.Controls.Add(this.lblFromGPS);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.lblToIMU);
@@ -540,6 +588,106 @@ namespace AgIO
             this.panel1.Padding = new System.Windows.Forms.Padding(4);
             this.panel1.Size = new System.Drawing.Size(411, 491);
             this.panel1.TabIndex = 194;
+            // 
+            // labelSerPorts
+            // 
+            this.labelSerPorts.AutoSize = true;
+            this.labelSerPorts.BackColor = System.Drawing.Color.Transparent;
+            this.labelSerPorts.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSerPorts.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelSerPorts.Location = new System.Drawing.Point(8, 274);
+            this.labelSerPorts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSerPorts.Name = "labelSerPorts";
+            this.labelSerPorts.Size = new System.Drawing.Size(95, 19);
+            this.labelSerPorts.TabIndex = 473;
+            this.labelSerPorts.Text = "Serial Ports:";
+            this.labelSerPorts.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lblGPS2Comm
+            // 
+            this.lblGPS2Comm.BackColor = System.Drawing.Color.Transparent;
+            this.lblGPS2Comm.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGPS2Comm.ForeColor = System.Drawing.Color.Black;
+            this.lblGPS2Comm.Location = new System.Drawing.Point(116, 244);
+            this.lblGPS2Comm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGPS2Comm.Name = "lblGPS2Comm";
+            this.lblGPS2Comm.Size = new System.Drawing.Size(80, 27);
+            this.lblGPS2Comm.TabIndex = 472;
+            this.lblGPS2Comm.Text = "--";
+            this.lblGPS2Comm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblFromGPS2
+            // 
+            this.lblFromGPS2.BackColor = System.Drawing.Color.Transparent;
+            this.lblFromGPS2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFromGPS2.ForeColor = System.Drawing.Color.Black;
+            this.lblFromGPS2.Location = new System.Drawing.Point(344, 242);
+            this.lblFromGPS2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFromGPS2.Name = "lblFromGPS2";
+            this.lblFromGPS2.Size = new System.Drawing.Size(64, 27);
+            this.lblFromGPS2.TabIndex = 470;
+            this.lblFromGPS2.Text = "---";
+            this.lblFromGPS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblToGPS2
+            // 
+            this.lblToGPS2.BackColor = System.Drawing.Color.Transparent;
+            this.lblToGPS2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblToGPS2.ForeColor = System.Drawing.Color.Black;
+            this.lblToGPS2.Location = new System.Drawing.Point(202, 242);
+            this.lblToGPS2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblToGPS2.Name = "lblToGPS2";
+            this.lblToGPS2.Size = new System.Drawing.Size(64, 27);
+            this.lblToGPS2.TabIndex = 469;
+            this.lblToGPS2.Text = "---";
+            this.lblToGPS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnGPS2
+            // 
+            this.btnGPS2.BackColor = System.Drawing.Color.Transparent;
+            this.btnGPS2.BackgroundImage = global::AgIO.Properties.Resources.B_GPS;
+            this.btnGPS2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGPS2.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGPS2.FlatAppearance.BorderSize = 0;
+            this.btnGPS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGPS2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGPS2.ForeColor = System.Drawing.Color.White;
+            this.btnGPS2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnGPS2.Location = new System.Drawing.Point(268, 234);
+            this.btnGPS2.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGPS2.Name = "btnGPS2";
+            this.btnGPS2.Size = new System.Drawing.Size(74, 48);
+            this.btnGPS2.TabIndex = 471;
+            this.btnGPS2.UseVisualStyleBackColor = false;
+            this.btnGPS2.Click += new System.EventHandler(this.btnGPS2_Click);
+            // 
+            // labelRl
+            // 
+            this.labelRl.AutoSize = true;
+            this.labelRl.BackColor = System.Drawing.Color.Transparent;
+            this.labelRl.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelRl.Location = new System.Drawing.Point(8, 89);
+            this.labelRl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRl.Name = "labelRl";
+            this.labelRl.Size = new System.Drawing.Size(36, 19);
+            this.labelRl.TabIndex = 468;
+            this.labelRl.Text = "Roll";
+            this.labelRl.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // labelHd
+            // 
+            this.labelHd.AutoSize = true;
+            this.labelHd.BackColor = System.Drawing.Color.Transparent;
+            this.labelHd.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelHd.Location = new System.Drawing.Point(8, 61);
+            this.labelHd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelHd.Name = "labelHd";
+            this.labelHd.Size = new System.Drawing.Size(45, 19);
+            this.labelHd.TabIndex = 467;
+            this.labelHd.Text = "Head";
+            this.labelHd.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnRadio
             // 
@@ -764,6 +912,19 @@ namespace AgIO
             this.btnUDP.UseVisualStyleBackColor = false;
             this.btnUDP.Click += new System.EventHandler(this.btnUDP_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(6, 31);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 19);
+            this.label8.TabIndex = 152;
+            this.label8.Text = "Lon";
+            // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::AgIO.Properties.Resources.InOut;
@@ -773,24 +934,6 @@ namespace AgIO
             this.pictureBox2.TabIndex = 183;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // btnRescanPorts
-            // 
-            this.btnRescanPorts.BackColor = System.Drawing.Color.Transparent;
-            this.btnRescanPorts.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
-            this.btnRescanPorts.FlatAppearance.BorderSize = 0;
-            this.btnRescanPorts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRescanPorts.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRescanPorts.ForeColor = System.Drawing.Color.White;
-            this.btnRescanPorts.Image = global::AgIO.Properties.Resources.ScanPorts;
-            this.btnRescanPorts.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRescanPorts.Location = new System.Drawing.Point(17, 214);
-            this.btnRescanPorts.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRescanPorts.Name = "btnRescanPorts";
-            this.btnRescanPorts.Size = new System.Drawing.Size(63, 58);
-            this.btnRescanPorts.TabIndex = 180;
-            this.btnRescanPorts.UseVisualStyleBackColor = false;
-            this.btnRescanPorts.Click += new System.EventHandler(this.btnRescanPorts_Click);
             // 
             // pictureBox1
             // 
@@ -875,14 +1018,23 @@ namespace AgIO
         private System.Windows.Forms.Button btnRunAOG;
         private System.Windows.Forms.Button btnNTRIP;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnRescanPorts;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxSerialPorts;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem uDPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripGPSData;
         private System.Windows.Forms.ToolStripMenuItem toolStripAgDiag;
         private System.Windows.Forms.CheckBox cboxLogNMEA;
         private System.Windows.Forms.Button btnRadio;
+        private System.Windows.Forms.Label labelHd;
+        private System.Windows.Forms.Label lblCurrentHeading;
+        private System.Windows.Forms.Label lblCurrentRoll;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelRl;
+        private System.Windows.Forms.Label lblGPS2Comm;
+        private System.Windows.Forms.Label lblFromGPS2;
+        private System.Windows.Forms.Label lblToGPS2;
+        private System.Windows.Forms.Button btnGPS2;
+        private System.Windows.Forms.Label labelSerPorts;
     }
 }
 

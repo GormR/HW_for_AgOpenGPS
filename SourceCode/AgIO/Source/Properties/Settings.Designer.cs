@@ -37,7 +37,7 @@ namespace AgIO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9600")]
+        [global::System.Configuration.DefaultSettingValueAttribute("460800")]
         public int setPort_baudRateGPS {
             get {
                 return ((int)(this["setPort_baudRateGPS"]));
@@ -421,7 +421,7 @@ namespace AgIO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9600")]
+        [global::System.Configuration.DefaultSettingValueAttribute("460800")]
         public int setPort_baudRateGPS2 {
             get {
                 return ((int)(this["setPort_baudRateGPS2"]));
@@ -491,6 +491,21 @@ namespace AgIO.Properties {
             }
         }
         
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setPort_wasGPS2Connected
+        {
+            get
+            {
+                return ((bool)(this["setPort_wasGPS2Connected"]));
+            }
+            set
+            {
+                this["setPort_wasGPS2Connected"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("***")]
