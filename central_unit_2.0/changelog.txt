@@ -31,5 +31,8 @@ V2.2
 - WorkAnalog connected to µCs (accidentially forgotten - digital input for Atmel working anyway)
 - Out1 replaces D23, polarity of optocoupler output changed, D5/AuxOut to GPIO0, A0/Current to GPIO32, R78, R94, R95, Q22..Q24, _OFF deleted (motor torque switch-off is now part of Brian's Arduino code)
 
+V2.3
+- USB3 added to enable dual-RTK w/o ESP32 (all just via USB)
+- R78, R79 added as protection
 
 
