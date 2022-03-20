@@ -153,21 +153,28 @@ The connection to the Ardusimple board can also be made by [the plugable Pixhawk
 [Here](central_unit_2.0/code/) is is a replacement for the standard AgIO.exe. Just replace it by this file and work with the data directly.
 
 ----
+# Projects within the repository
 
+All projects use a robust housing and industrial M12/M8 connetors (optional) as far as possible. There is also an option to use industrial PushIn connectors instead.
 
-![pic](Overview.png?raw=true)
+The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. 
 
-This setup does not include new functions but provides a robust, monolitic unit  that may be manufactured by professionel EMS providers. The central unit is compatible to [BrianTee‘s Nano firmware](https://github.com/farmerbriantee/AgOpenGPS/blob/master/Support_Files.zip) and the rooftop unit to [MTZ8302's dual-RTK firmware](https://github.com/mtz8302/AOG_GPS_ESP32). If the ESP32 option is used for autosteering or RTK, the pin definitions of [esp32-aog](https://github.com/eringerli/esp32-aog) and [AOG_Autosteer_ESP32](https://github.com/mtz8302/AOG_Autosteer_ESP32) or [MTZ8302's dual-RTK firmware](https://github.com/mtz8302/AOG_GPS_ESP32) must be adapted respectively.
-
-Special focus is given to the robust housing and industrial M12/M8 connetors (optional). PushIn connectors may also be used for single wire connections).
-
-The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. The Altium export has not been checked. 
-
+*These products are still working perfectly with AgOpenGPS, but not recommended for new systems*
 [Documentation Central Unit](central_unit/README.md)
-
 [Documentation Rooftop Unit](rooftop_unit/README.md)
-
 [Documentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
+
+*Main boards*
+
+Update of Central Unit 1.x with 2nd slot for dual-Ardusimple:
+![pic](central_unit_2.0/3D.png?raw=true)
+[Documentation Central Unit 2.x](central_unit_2.0/README.md)
+There is a [reduced BOM](central_unit_2.0/production_data/BOM_CentralUnit2.3_(USB-recommended).csv) for USB (estimated board price @ JLCPCB: $30 after the semiconductor prices will have returned to normal levels again).
+
+Teensy-based central unit with additonal support for USB-PD hardware (no firmware support yet):
+![pic](central_unit_3.0_Teensy/3D.png?raw=true)
+[Documentation Central Unit 3.x](central_unit_3.0_Teensy/README.md)
+(This board also has a slot for Bynav-GNSS-receivers)
 
 # Order How-To JLCPCB
 - browse to [JLCPCB](https://jlcpcb.com) and click "Quote now"
