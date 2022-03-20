@@ -127,6 +127,29 @@ Using an extra µC for the IMU ("IMU_USB_v5_0.ino") even makes the timing even w
 
 The best timing is archieved with no additional µC at all for GNSS and IMU. Both units are able to send serial data directly to the PC. All you need for the GNSS receivers is a USB cable and an USB-serial-converter cable for the IMU. The jitter simply can't be less.
 
+Connection [of USB-Serial-Cable](https://de.aliexpress.com/item/32965292523.html) to BNO085 in RVC mode: 1st pic shows USB cable supplying board with 5V, if there is a voltage regulator on it; 2nd pic shows the same cable w/o using the voltage regulator. The 1st is prefered for this Adafruit board, the 2nd is for all boards w/o voltage regulator like shown in the 3rd picture. Supply voltage is about 3.05V in that case :+1:
+
+![](basic_documentation/BNO085_RVC_connection.jpeg)
+![](basic_documentation/BNO085_RVC_connection_3V3.jpeg)
+![](basic_documentation/BNO080_china_RVC_connection.jpeg)
+
+For those who prefer Ethernet connections: This is how to connect two Ardusimple to AgIO via an Ethernet cable. [This module can connect two serial devices](https://www.pusr.com/products/dual-UART-to-ethernet-module-usr-tcp232-e2.html), in this case two [Ardusimples @ 460800Bd](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_2.0/code) to Windows. 
+
+Will also work for one Ardusimple and one BNO085 in RVC mode.
+
+The red wire is the +5V supply - FIVE volt supply.
+
+black: 0V
+red: 5V
+brown: 3.3V
+green: to Ardusimple (NTRIP; RxD@AS, TxD@USR)
+white: from Ardusimple (NMEA data; TxD@AS, RxD@USR)
+
+![](basic_documentation/serial_devices_via_Ethernet.jpeg)
+(same colors used as above for the BNO085)
+
+The connection to the Ardusimple board can also be made by [the plugable Pixhawk connectors using 0V, 5V and the two communication lines.](https://www.ardusimple.com/simplertk2b-hookup-guide/) In that case, connecting the 3.3V line is not needed, but I would put a 100 Ohms resistor in series with the com lines.
+
 [Here](central_unit_2.0/code/) is is a replacement for the standard AgIO.exe. Just replace it by this file and work with the data directly.
 
 ----
