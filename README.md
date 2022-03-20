@@ -162,7 +162,9 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 *These products are still working perfectly with AgOpenGPS, but not recommended for new systems*
 
 [Documentation Central Unit](central_unit/README.md)
+
 [Documentation Rooftop Unit](rooftop_unit/README.md)
+
 [Documentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
 
 **Main boards**
@@ -170,11 +172,13 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 Update of Central Unit 1.x with 2nd slot for dual-Ardusimple:
 ![pic](central_unit_2.0/3D.png?raw=true)
 [Documentation Central Unit 2.x](central_unit_2.0/README.md)
+
 There is a [reduced BOM](central_unit_2.0/production_data/BOM_CentralUnit2.3_(USB-recommended).csv) for USB (estimated board price @ JLCPCB: $30 after the semiconductor prices will have returned to normal levels again).
 
 Teensy-based central unit with additonal support for USB-PD hardware (no firmware support yet):
 ![pic](central_unit_3.0_Teensy/3D.png?raw=true)
 [Documentation Central Unit 3.x](central_unit_3.0_Teensy/README.md)
+
 (This board also has a slot for Bynav-GNSS-receivers)
 
 # Order How-To JLCPCB
