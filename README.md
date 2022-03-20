@@ -31,18 +31,14 @@ Join the [AgOpenGPS forum](https://discourse.agopengps.com/) for further help an
 >**Mind, that YOU are reliable for all what you do with this project!**
 
 ----
-
-**Table of Contents**
-
-[TOC]
+# Basic Block Diagram
+![](basic_documentation/basic_block_diagram.png)
 
 # Getting Started, Level 1: Parallel Driving Aid and Mapping
 
 A tablet/notebook/convertable computer running Windows and an RTK-enabled GNSS (GPS) receiver is needed. Read [the posts in the forum](https://discourse.agopengps.com/search?q=which%20tablet) to find a suitable tablet. The screen and its brightness is of highest importance. Other helpful features, you may need, are GSM (mobile data) for the reception of NTRIP data for real-time correction of the GNSS data (instead of using the mobile phone), easy charging for 12V or Ethernet, if USB is not used.
 
-The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module from ublox](https://www.u-blox.com/en/product/zed-f9p-module), if you don't have an onboard receiver in the tractor. Ready-to-use boards ship from [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) for less than 200€ or $. This is the only option where you can start with a single antenna and migrate to dual-antenna later one. Even two Ardusimple boards are by far less expensive than dual-receivers from [Serpentrio](https://www.septentrio.com) or [Bynav](https://www.bynav.com/). There is no noteworthy difference in precision between these receivers. The Ardusimple board is the de-facto standard for AgOpenGPS.
-
-![](https://www.gnu.org/graphics/gplv3-127x51.png)
+The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module from ublox](https://www.u-blox.com/en/product/zed-f9p-module), if you don't have an onboard receiver in the tractor. Ready-to-use boards ship from [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) for less than 200€ or $. This is the only option where you can start with a single antenna and migrate to dual-antenna later one. Even two Ardusimple boards are by far less expensive than dual-receivers from [Serpentrio](https://www.septentrio.com) or [Bynav](https://www.bynav.com/). There is no noteworthy difference in precision between these receivers. The Ardusimple board is the de-facto standard for AgOpenGPS. [Here](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) is a good introduction in German.
 
 **Parts list**
 - tablet/notebook/convertable computer for Windows 7 or higher
@@ -52,13 +48,15 @@ The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module f
 
 **Installation:**
 - Download and install [AgOpenGPS software packet]([https://github.com/farmerbriantee/AgOpenGPS/releases)
-- Configure the Ardusimple with the help of the software "ucenter"
+- Configure the Ardusimple with the help of the software ["ucenter"](https://www.u-blox.com/en/product/u-center) (not version 2!) and [this setup file](central_unit_2.0/code/Ardusimple_GGA_VTG_460.txt)
 - connect charger - computer - GNSS-receiver - antenna in a row (the USB receptacle next to the antenna plug is the right one)
 - start AgOpenGPS and configure the NTRIP server in AgIO
 - put the antenna outside and see, if position data is received (should lock to RTK after a while)
 - start mapping with AgOpenGPS
 
-"NTRIP" is the data needed to make cm-accuracy to GNSS positioning. Your position is send to a server every 10 seconds, and you receive correction data once per second in return. The availability of NTRIP data varies from country to country. There is also the option to run your own server. This corrects two things: The intended inaccuracy in GPS/GALILEO/GLONASS/BEIDOO and phase correction. Not only measuring the time-of-flight is necessary for cm precision, but also detecting the signal phases. Due to the phase correction you need to find a server near to your location or run your own.
+"NTRIP" is the data needed to make cm-precision to GNSS positioning. Your position is send to a server every 10 seconds, and you receive correction data once per second in return. The availability of NTRIP data varies from country to country. There is also the option to run your own server. This corrects two things: The intended inaccuracy in GPS/GALILEO/GLONASS/BEIDOO and phase correction. Not only measuring the time-of-flight is necessary for cm precision, but also detecting the signal phases. Due to the phase correction you need to find a server near to your location or run your own. The precision is even more impressive, when considering that light needs 1 second for 300,000km, so it only takes 33 nanoseconds = 0.000000033 sec per centimeter and even the wavelength of the GPS is much higher (about 20 centimeters).
+
+Data sent by the GNSS receiver follows the NMEA standard. Wikipedia helps for details.
 
 # Level 2: Steering
 There are two possibilities for steering: Turning the wheel like the driver does or driving the hydraulic system directly. Fortunately the electrical part is about the same (two PWM signals) and only the actuator differs: Either a DC motor or a dedicated proportional valve. 
@@ -99,6 +97,7 @@ Pros of dual antenna are:
 Pros of IMU:
 - Cheaper
 - Roll angle is more exact
+- Reduced update rate if using two Ardusimple with cross-communication (8Hz instead of 10Hz). Solution: Connect both F9P directly to the PC via USB (same setup file).
  
 The z axis of the IMU must be exactly the vertical axis of the vehicle. Recommended is the use of an BNO085 or BNO080 - directly or embedded in the CMPS14 board.
 
@@ -118,6 +117,17 @@ Many discussions have been made about the "right" interface between the computer
 An important point is the ability to transport supply power. For Ethernet, that makes some effort and only a few devices support PoE. USB always have that feature, so you can use just one USB-C cable for charging the computer and transfer data to the peripherals. Clear point of USB, as long as two-wire Ethernet is not commonly available for adequate costs.
 
 My suggestion: If you ever dreamt of being a professional network admin, go for Ethernet. All others should use USB. Here, the Teensy may bring both worlds together by using RNDIS (Ethernet over USB) one day.
+
+**Timing**
+![](basic_documentation/basic_timing.png)
+
+This is the basic timing of AgOpenGPS. It is defined by the GNSS update cycle, so about 100ms for the F9P (Ardusimple) board. The postion data is an average of the last period, so the position is about 50ms "old". After having received that data, AgOpenGPS calulates all the steering data and sends it to the µC unit, that delivers the position of the steering (from wheel angle sensor) and optionally the IMU data in return. This is obviously not the best time, because that data is about 90ms old when processed by AgOpenGPS.
+
+Using an extra µC for the IMU ("IMU_USB_v5_0.ino") even makes the timing even worse, because data receives at *any* time, so we don't have a delay but a fully unpredictable jitter. One workaround will come the AgOpenGPS V6 - there will be a unit that combines GNSS and IMU data into one non-standard NMEA sentence.
+
+The best timing is archieved with no additional µC at all for GNSS and IMU. Both units are able to send serial data directly to the PC. All you need for the GNSS receivers is a USB cable and an USB-serial-converter cable for the IMU. The jitter simply can't be less.
+
+[Here](central_unit_2.0/code/) is is a replacement for the standard AgIO.exe. Just replace it by this file and work with the data directly.
 
 ----
 
