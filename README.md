@@ -31,10 +31,8 @@ Join the [AgOpenGPS forum](https://discourse.agopengps.com/) for further help an
 >**Mind, that YOU are reliable for all what you do with this project!**
 
 ----
-
-**Table of Contents**
-
-[TOC]
+# Basic Block Diagram
+![](basic_documentation/basic_block_diagram.png)
 
 # Getting Started, Level 1: Parallel Driving Aid and Mapping
 
