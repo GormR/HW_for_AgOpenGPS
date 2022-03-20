@@ -196,7 +196,7 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 - check if all components are placed correctly (e. g. rotation information is sometimes incorrect in the libraries)
 - order
 
-# (German copy) Zusammenfassung
+# (German copy)
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 ### Was ist "AgOpenGPS"?
@@ -228,15 +228,6 @@ Es gibt ein (englisches) [AgOpenGPS forum](https://discourse.agopengps.com/), wo
 >
 >Mit AgOpenGPS kann der notwendige Sicherheitslevel durch die fehlersichere Abschaltung der elektrischen Leistung für die Lenkaktoren erfolgen. Diese Abschaltung muss mindestens diesen Sicherheitslevel erfüllen.
 >
->Bei passender Installation mag eine Abnahme mag auf folgenden Argumenten basieren, die sich auf die EN-ISO 13849 stützen: 
->
->- Schalter für die Stromversorgung der Lenkaktorik entspricht EN-IEC 60947-5-5/EN-ISO 13850, die Vorsicherung entspricht IEC60269-1 (beides entsprechend Tabelle D.3, EN-ISO 13849-2)
->- die Leiterplatte enthält MELF-Widerstände (8.2kOhm), die Tabelle D.14, EN-ISO 13849-2 erfüllen (standardmäßig ist hier 1206 bestückt)
->- die Leiterplatte ist in ein Gehäuse eingebaut, das mindestens IP54 erfüllt (Tabelle D.5, EN-ISO 13849-2)
->- Die Verkabelung ist geschützt gemäß EN-IEC 60204-1 (Tabelle D.4, EN-ISO 13849-2) 
->- Massnahmen gegen "tin whiskers" wurden getroffen, z. B. mit 60/40 Lötzinn gelötet (nach D.2.2, EN-ISO 13849-2)
->- die Firmware sollte die Spannung des Signals „safesense“ messen und plausibilisieren
->
 >Alle Daten diese Repositories stehen unter der CERN Open-Hardware-Lizenz 2.0. Jede Haftung für Personenschäden und Sachschäden auf Grund Fehlern der Beschreibung oder Fehlern der Leiterplatte oder Software wird ausgeschlossen! 
 >
 >**Du bist dafür verantwortlich, was du mit diesem Projekt machst!**
@@ -247,23 +238,25 @@ Es gibt ein (englisches) [AgOpenGPS forum](https://discourse.agopengps.com/), wo
 
 # Getting Started, Level 1: Parallelfahrhilfe und Dokumentation
 
-A tablet/notebook/convertable computer running Windows and an RTK-enabled GNSS (GPS) receiver is needed. Read [the posts in the forum](https://discourse.agopengps.com/search?q=which%20tablet) to find a suitable tablet. The screen and its brightness is of highest importance. Other helpful features, you may need, are GSM (mobile data) for the reception of NTRIP data for real-time correction of the GNSS data (instead of using the mobile phone), easy charging for 12V or Ethernet, if USB is not used.
+Für den Einstieg wird ein Tablet, Notebook oder Convertable mit dem Betriebssytem Windows une ein RTK-fähiger GNSS-(GPS)-Empfänger benötigt. Eine Beratung zum Rechner gibt es [in diesen Posts im Forum](https://discourse.agopengps.com/search?q=which%20tablet). Das ist natürlich immer nur eine Momentaufnahme. Wichtig ist in jedem Fall eine hohe Bildschirmhelligkeit. Weitere wichtige Punkte sind neben der Gesamtperformance die Möglichkeit, mobile Daten zu empfangen (eingebautes GSM-Modem), falls kein Handy dafür verwendet werden soll, um die NTRIP-Daten für die Positionskorrektur zu empfangen, eine einfache Lademöglichkeit für 12V und Ethernet, falls man USB nicht verwenden möchte.
 
-The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module from ublox](https://www.u-blox.com/en/product/zed-f9p-module), if you don't have an onboard receiver in the tractor. Ready-to-use boards ship from [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) for less than 200€ or $. This is the only option where you can start with a single antenna and migrate to dual-antenna later one. Even two Ardusimple boards are by far less expensive than dual-receivers from [Serpentrio](https://www.septentrio.com) or [Bynav](https://www.bynav.com/). There is no noteworthy difference in precision between these receivers. The Ardusimple board is the de-facto standard for AgOpenGPS. [Here](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) is a good introduction in German.
+Die Mehrzahl der RTK-GNSS-Empfänger für AgOpenGPS basieren auf einem [ZED-F9P-Module von ublox](https://www.u-blox.com/en/product/zed-f9p-module), aber auch bereits vorhandene Systeme der Traktorhersteller können verwendet werden. Fertige Empfängerplatinen gibt es z. B. bei [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) für weniger als 200€. Das ist auch die einzige Möglichkeit, zunächst mit einem Ein-Antennen-System zu starten und später auf zwei Antennen aufzurüsten. Dabei sind zwei Ardusimples + zwei Antennen immer noch deutlich günstiger als Dual-Receiver von  [Serpentrio](https://www.septentrio.com) oder [Bynav](https://www.bynav.com/). Nennenswerte Genauigkeitsunterschiede haben die Systeme nicht. Das  Ardusimple-Board ist deshalb nicht umsonst der de-facto-Standard bei AgOpenGPS. 
+
+[Hier](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) gibt es eine guten Anleitung zur Konfiguration.
 
 **Einkaufsliste**
-- tablet/notebook/convertable computer for Windows 7 or higher
-- [Ardusimple receiver with antenna](https://www.ardusimple.com/product/simplertk2b-basic-starter-kit-ip65/) or equivalent 
-- USB-cable A-microB
-- 12V charger for computer (optional but recommended)
+- Tablet/Notebook/Convertable-Computer mit Windows 7 oder höher
+- [Ardusimple-Empfänger mit Antenne](https://www.ardusimple.com/product/simplertk2b-basic-starter-kit-ip65/) oder vergleichbarer Empfänger 
+- USB-Kable A-microB
+- 12V-Ladegerät für den Computer (optional aber empfehlenswert)
 
 **Installation:**
-- Download and install [AgOpenGPS software packet]([https://github.com/farmerbriantee/AgOpenGPS/releases)
-- Configure the Ardusimple with the help of the software ["ucenter"](https://www.u-blox.com/en/product/u-center) (not version 2!) and [this setup file](central_unit_2.0/code/Ardusimple_GGA_VTG_460.txt)
-- connect charger - computer - GNSS-receiver - antenna in a row (the USB receptacle next to the antenna plug is the right one)
-- start AgOpenGPS and configure the NTRIP server in AgIO
-- put the antenna outside and see, if position data is received (should lock to RTK after a while)
-- start mapping with AgOpenGPS
+- [AgOpenGPS software packet]([https://github.com/farmerbriantee/AgOpenGPS/releases) downloaden und installieren 
+- Ardusimple konfigurieren mit der Software ["ucenter"](https://www.u-blox.com/en/product/u-center) (nicht die Version 2 benutzen!) und [diesen Setup-Daten](central_unit_2.0/code/Ardusimple_GGA_VTG_460.txt)
+- Ladegerät, Computer - GNSS-Empfänger und Antenne einer einer Reihe verbinden (die USB-Buchse neben dem Antennenstecker ist die richtige)
+- AgOpenGPS starten und den NTRIP-Server in AgIO konfigurieren (in D sollten im Allgemeinen die Daten von Sapos verwendet werden)
+- Antenne nach draußen stellen und warten, bis Positionsdaten angezeigt werden. Nach einer Zeit sollte auch "RKT" angezeigt werden.
+- Aufs Feld fahren und loslegen
 
 "NTRIP" is the data needed to make cm-precision to GNSS positioning. Your position is send to a server every 10 seconds, and you receive correction data once per second in return. The availability of NTRIP data varies from country to country. There is also the option to run your own server. This corrects two things: The intended inaccuracy in GPS/GALILEO/GLONASS/BEIDOO and phase correction. Not only measuring the time-of-flight is necessary for cm precision, but also detecting the signal phases. Due to the phase correction you need to find a server near to your location or run your own. The precision is even more impressive, when considering that light needs 1 second for 300,000km, so it only takes 33 nanoseconds = 0.000000033 sec per centimeter and even the wavelength of the GPS is much higher (about 20 centimeters).
 
