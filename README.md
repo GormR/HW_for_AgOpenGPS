@@ -54,7 +54,7 @@ The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module f
 - put the antenna outside and see, if position data is received (should lock to RTK after a while)
 - start mapping with AgOpenGPS
 
-"NTRIP" is the data needed to make cm-precision to GNSS positioning. Precise satellite-based navigation systems do not only a time-of-flight measurement, but also a detecting of the signal phases. Therefore, your position is send to a server every 10 seconds, and you receive customized correction data once per second in return. This only works well, if the server is located quite close to you (<30 km). The availability of public NTRIP serves varies from country to country. There is also the option to run your own server. 
+"NTRIP" is the data needed to make cm-precision to GNSS positioning. Precise satellite-based navigation systems do not only a time-of-flight measurement, but also a detecting of the signal phases. Therefore, your position is send to a server every 10 seconds, and you receive customized correction data once per second in return. This only works well, if the server is located quite close to you (<30 km). The availability of public NTRIP serves varies from country to country. There is also the option to run [your own server](https://discourse.agopengps.com/t/rtkbase-a-gui-for-your-own-gnss-base-station/2341/214?u=goronb). 
 
 Generally, the precision is impressive, when considering that light needs 1 second for 300,000km, so it only takes 33 nanoseconds = 0.000000033 sec per centimeter and even the wavelength of the GPS is much higher (about 20 centimeters).
 
@@ -260,9 +260,9 @@ Die Mehrzahl der RTK-GNSS-Empfänger für AgOpenGPS basieren auf einem [ZED-F9P-
 - Antenne nach draußen stellen und warten, bis Positionsdaten angezeigt werden. Nach einer Zeit sollte auch "RKT" angezeigt werden.
 - Aufs Feld fahren und loslegen
 
-Mit "NTRIP" werden Korrekturdaten bezeichnet, die benötigt werden, um eine Genauigkeit im cm-Bereicht zu erreichen. Dazu muss der Empfänger nicht nur die Signallaufzeit zwischen den Satelliten und der Antenne messen, sondern auch die Phase des Empfangssignals. Die notwendigen Korrekturdaten liefert ein NTRIP-Server, der über eine Referenzantenne verfügt, dessen Position hochgenau bekannt ist und sich in der Nähe befinden muss (< 30km). Man kann einen solchen Server auch selbst betreiben, allerdings gibt es im deutschsprachigen Raum kostengünstige Angebote wie z. B. Sapos.
+Mit "NTRIP" werden Korrekturdaten bezeichnet, die benötigt werden, um eine Genauigkeit im cm-Bereicht zu erreichen. Dazu muss der Empfänger nicht nur die Signallaufzeit zwischen den Satelliten und der Antenne messen, sondern auch die Phase des Empfangssignals. Die notwendigen Korrekturdaten liefert ein NTRIP-Server, der über eine Referenzantenne verfügt, dessen Position hochgenau bekannt ist und sich in der Nähe befinden muss (< 30km). Man kann einen solchen Server auch [selbst](https://discourse.agopengps.com/t/rtkbase-a-gui-for-your-own-gnss-base-station/2341/214?u=goronb) betreiben, allerdings gibt es im deutschsprachigen Raum kostengünstige, professionelle Angebote wie z. B. SAPOS speziell for Landwirtschaft und Vermessung.
 
-Folgende Daten werden für Sapos benötigt:
+Folgende Daten werden für SAPOS benötigt:
 - Server-IP (hier am Beispiel Nordrhein-Westfalen: www.sapos-nw-ntrip.de (AgIO kann damit automatisch die IP (hier: 80.158.61.104) und den Port (hier: 2101) ermitteln
 - Benutzerkennung in der Form "nw-123456"
 - Passwort in der Form "abcdef"
