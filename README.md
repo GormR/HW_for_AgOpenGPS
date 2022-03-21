@@ -54,9 +54,11 @@ The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module f
 - put the antenna outside and see, if position data is received (should lock to RTK after a while)
 - start mapping with AgOpenGPS
 
-"NTRIP" is the data needed to make cm-precision to GNSS positioning. Your position is send to a server every 10 seconds, and you receive correction data once per second in return. The availability of NTRIP data varies from country to country. There is also the option to run your own server. This corrects two things: The intended inaccuracy in GPS/GALILEO/GLONASS/BEIDOO and phase correction. Not only measuring the time-of-flight is necessary for cm precision, but also detecting the signal phases. Due to the phase correction you need to find a server near to your location or run your own. The precision is even more impressive, when considering that light needs 1 second for 300,000km, so it only takes 33 nanoseconds = 0.000000033 sec per centimeter and even the wavelength of the GPS is much higher (about 20 centimeters).
+"NTRIP" is the data needed to make cm-precision to GNSS positioning. Precise satellite-based navigation systems do not only a time-of-flight measurement, but also a detecting of the signal phases. Therefore, your position is send to a server every 10 seconds, and you receive customized correction data once per second in return. This only works well, if the server is located quite close to you (<30 km). The availability of public NTRIP serves varies from country to country. There is also the option to run your own server. 
 
-Data sent by the GNSS receiver follows the NMEA standard. Wikipedia helps for details.
+Generally, the precision is impressive, when considering that light needs 1 second for 300,000km, so it only takes 33 nanoseconds = 0.000000033 sec per centimeter and even the wavelength of the GPS is much higher (about 20 centimeters).
+
+Data sent by the GNSS receiver follows the [NMEA standard](https://en.wikipedia.org/wiki/NMEA_0183). For AgOpenGPS, the number of sentences should be as low as needed, so only "GGA" for position and "VTG" for speed vector.
 
 # Level 2: Steering
 There are two possibilities for steering: Turning the wheel like the driver does or driving the hydraulic system directly. Fortunately the electrical part is about the same (two PWM signals) and only the actuator differs: Either a DC motor or a dedicated proportional valve. 
@@ -258,9 +260,16 @@ Die Mehrzahl der RTK-GNSS-Empfänger für AgOpenGPS basieren auf einem [ZED-F9P-
 - Antenne nach draußen stellen und warten, bis Positionsdaten angezeigt werden. Nach einer Zeit sollte auch "RKT" angezeigt werden.
 - Aufs Feld fahren und loslegen
 
-"NTRIP" is the data needed to make cm-precision to GNSS positioning. Your position is send to a server every 10 seconds, and you receive correction data once per second in return. The availability of NTRIP data varies from country to country. There is also the option to run your own server. This corrects two things: The intended inaccuracy in GPS/GALILEO/GLONASS/BEIDOO and phase correction. Not only measuring the time-of-flight is necessary for cm precision, but also detecting the signal phases. Due to the phase correction you need to find a server near to your location or run your own. The precision is even more impressive, when considering that light needs 1 second for 300,000km, so it only takes 33 nanoseconds = 0.000000033 sec per centimeter and even the wavelength of the GPS is much higher (about 20 centimeters).
+Mit "NTRIP" werden Korrekturdaten bezeichnet, die benötigt werden, um eine Genauigkeit im cm-Bereicht zu erreichen. Dazu muss der Empfänger nicht nur die Signallaufzeit zwischen den Satelliten und der Antenne messen, sondern auch die Phase des Empfangssignals. Die notwendigen Korrekturdaten liefert ein NTRIP-Server, der über eine Referenzantenne verfügt, dessen Position hochgenau bekannt ist und sich in der Nähe befinden muss (< 30km). Man kann einen solchen Server auch selbst betreiben, allerdings gibt es im deutschsprachigen Raum kostengünstige Angebote wie z. B. Sapos.
 
-Data sent by the GNSS receiver follows the NMEA standard. Wikipedia helps for details.
+Folgende Daten werden für Sapos benötigt:
+- Server-IP (hier am Beispiel Nordrhein-Westfalen: www.sapos-nw-ntrip.de (AgIO kann damit automatisch die IP (hier: 80.158.61.104) und den Port (hier: 2101) ermitteln
+- Benutzerkennung in der Form "nw-123456"
+- Passwort in der Form "abcdef"
+
+Insgesamt ist die erreichbare Genauigkeit beeindruckend, wenn man bedenkt, dass Licht und damit auch Funkwellen 300.000km in einer Sekunde zurücklegen, man also nur 33 Nanosekunden für einen cm benötigt und selbst die Wellenlänge der Trägerfrequenz mit ungefähr 20cm deutlich größer ist.
+
+Ein GNSS-Empfänger sendet die Daten im [NMEA-Format](https://de.wikipedia.org/wiki/NMEA_0183). Die Einstellungen sollten so sein, dass möglichst nur die notwendigen Sätze "GGA" für Position und "VTG" für den Geschwindigkeitsvektor gesendet werden (s. u.).
 
 # Level 2: Automatische Steuerung
 There are two possibilities for steering: Turning the wheel like the driver does or driving the hydraulic system directly. Fortunately the electrical part is about the same (two PWM signals) and only the actuator differs: Either a DC motor or a dedicated proportional valve. 
