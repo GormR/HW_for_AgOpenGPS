@@ -114,7 +114,11 @@ Nevertheless, this option is described in detail now:
 All signals to the motor or hydraulic valve shall be inside a single cable. This cable may only be connected to the Central Unit and the motor/valve unit - nowhere else. So no connection between the valve unit and the chassis as long as you don't want to use your equipment for short-wave broadcasting!
 
 WAS:
-If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced", a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Connect "WAS_N" to 0V next to the point where you already connected the "WAS". Select "differential" in AgOpenGPS in both cases.
+If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced" like in the following pictures, a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Mind that the cable number differs! Connect "WAS_N" to 0V next to the point where you already connected the "WAS". Select "differential" in AgOpenGPS in both cases.
+![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS_Y.jpg)
+![](basic_documentation/Fendt_junction.jpg)
+![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS.jpg)
+![](basic_documentation/Fendt_312_Vario_S4_Power_WAS.jpg)
 
 There is intentionally no coupling of 0V from power stage and computer side on the Central Unit 1.x and 2.x, because the charger unit has that normally. If this is not the case (e. g. you're using an inverter and a charger with mains plug), the connection must be done manually.
 
@@ -373,7 +377,11 @@ Die z-Achse der IMU muss vertikal montiert sein. Es sollten BNO085 or BNO080-bas
 Alle Signale, die zum Motor oder zur Ventilinsel führen, sollten in einem Kabel enthalten sein. Das Kabel darf nur an der Central Unit und am Motor oder an der Ventilinsel angeschlossen sein, sonst nirgendwo, also auch nicht die 0V an der Ventilinsel mit der Karosserie verbinden! Man baut sich so ganz schnell eine Rahmenantenne für Mittelwelle...
 
 LWS/WAS:
-Soll ein Extra-Lenkwinkelsensor verwendet werden, sollte ein 3pol. Kabel von der Central Unit zum Sensor verlegt werden, das die Signale +5V, "WAS" = Analogwert des LWS und 0V = GND enthält. Auch hier sollte nichts anderes angeschlossen sein, als der LWS, also auch wieder eine "Erdung" zur Karrosserie oder so. Wenn ein bereits verbauter LWS "angezapft" werden soll, muss die Verdrahtung über ein zweipoliges Kabel "differenziell" erfolgen: "WAS" ist wieder der Analogwert des LWS, und "WAS_N" wird an einen 0V-Punkt in der Nähe des Punktes angeschlossen, wo auch "WAS" angeklemmt ist. Bei Verwendung der Central Units sollte in beiden Fällen in AgOpenGPS "differenziell" ausgewählt werden.
+Soll ein Extra-Lenkwinkelsensor verwendet werden, sollte ein 3pol. Kabel von der Central Unit zum Sensor verlegt werden, das die Signale +5V, "WAS" = Analogwert des LWS und 0V = GND enthält. Auch hier sollte nichts anderes angeschlossen sein, als der LWS, also auch wieder eine "Erdung" zur Karrosserie oder so. Wenn ein bereits verbauter LWS "angezapft" werden soll wie in den folgenden Bildern gezeigt, muss die Verdrahtung über ein zweipoliges Kabel "differenziell" erfolgen: "WAS" ist wieder der Analogwert des LWS, und "WAS_N" wird an einen 0V-Punkt in der Nähe des Punktes angeschlossen, wo auch "WAS" angeklemmt ist. Achtung: Die Klemmennummer variiert von Modell zu Modell - zumindestens bei Fendt. Bei Verwendung der Central Units sollte in beiden Fällen in AgOpenGPS "differenziell" ausgewählt werden.
+![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS_Y.jpg)
+![](basic_documentation/Fendt_junction.jpg)
+![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS.jpg)
+![](basic_documentation/Fendt_312_Vario_S4_Power_WAS.jpg)
 
 Bei der Central Unit 1.x und 2.x gibt es ganz bewusst keine harte Kopplung von 0V/GND der Leistungsendstufe und 0V/GND des USB, weil dies normalerweise über das 12V-Ladegerät erfolgt und eine Masseschleife vermieden werden soll. Sollte dies Verbindung nicht vorhanden sein, weil z. B. ein 230V-Netzteil an einem Wechselrichter betrieben wird, muss diese Verbindung manuell hergestellt werden.
 
