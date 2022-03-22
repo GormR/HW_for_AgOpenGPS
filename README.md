@@ -1,4 +1,5 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
+
 (1) µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
 (2) Power stage to drive a motor or hydraulic valves
 (3) Input section: Analog-digital converter for WAS signal and decoupling for buttons
@@ -75,12 +76,15 @@ For AgOpenGPS, feedback from a wheel angle sensor "WAS" is always needed, althou
 
 There are 3 different approaches for driving a motor or valves:
 - plugging together readily available boards (e. g. Arduino Nano with ADS1115, BNO085 and IBT-2/Cytron - plans are in the AgOpenGPS ZIP file)
+
 ![](basic_documentation/free_wiring.jpeg)
 
 - using a carrier board for those boards, which adds power supply and necessary components in classic "THT" technology (you have to solder all parts yourself - such boards are discussed in the forum)
+
 ![](basic_documentation/Kaupoi.png)
 
 - ordering one of the full-equipped board in this repository from a PCB manufacturer (only some "simple" parts have to be soldered by yourself)
+
 ![](basic_documentation/CU3_with_2_Ardusimple.jpg)
 
 Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. 
@@ -225,6 +229,7 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 # (German copy)
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
+
 (1) µC, also z. B. Ardusimple Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter und ggf. der IMU ein
 (2) Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
 (3) Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
@@ -232,6 +237,7 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 (5) IMU-Einheit
 (6) Teilbreiten- und Volumensteuerung (optional)
 (7) Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
+
 Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
 
 ### Was ist "AgOpenGPS"?
@@ -315,12 +321,15 @@ AgOpenGPS benötigt immer einen Lenkwinkelsensor, obwohl technisch auch eine Reg
 
 Für die Steuerung gibt es nun drei verschiedene Ansätze:
 - man kauft sich fertige Teilmodule (Arduino Nano, ADS1115, ...) und verdrahtet diese "fliegend" in einem geeigneten Gehäuse
+
 ![](basic_documentation/free_wiring.jpeg)
 
 - man lässt sich eine fertige Leiterplatte herstellen, die für ein paar Euro aus China angeflogen kommt. Die Bestückung mit "klassischen" THT-Bauteilen muss man dann selber durchführen und auch die o. g. Teilmodule hier wieder auflöten
+
 ![](basic_documentation/Kaupoi.png)
 
 - man bestellt sich eine der vollständig bestückten Leiterplatten aus diesem Repository. Dann müssen nur noch die gewünschten Stecker angelötet werden.
+
 ![](basic_documentation/CU3_with_2_Ardusimple.jpg)
 
 In jedem Fall muss natürlich die Software auf den µC aufgespielt werden. Eine Beschreibung dazu befindet sich bei den einzelnen Leiterplatten.
