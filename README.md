@@ -347,73 +347,61 @@ Meine Meinung: Wer immer schon ein professioneller Netzwerk-Admin werden wollte,
 
 ![](basic_documentation/timing.png)
 
-This is the basic timing of AgOpenGPS. It is defined by the GNSS update cycle, so about 100ms for the F9P (Ardusimple) board. The postion data is an average of the last period, so the position is about 50ms "old". After having received that data, AgOpenGPS calulates all the steering data and sends it to the µC unit, that delivers the position of the steering (from wheel angle sensor) and optionally the IMU data in return. This is obviously not the best time, because that data is about 90ms old when processed by AgOpenGPS.
+Das Bild zeigt einen Zyklus von AgOpenGPS. Bestimmt wird das Timing vom Update-Zyklus des RTK-Empfängers, also ungefähr 100ms beim F9P, der auf dem Ardusimple-Board verbaut ist. Die gesendeten Positionsdaten sind also eine Mittelung über die letzten 100ms (ms = Millisekunden) und somit beim Empfang bereits 50ms "alt". Nachdem die Daten im Computer angekommen sind, berechnet AgOpenGPS die neuen Lenkvorgaben, sendet diese und bekommt als Antwort den Wert des Lenkwinkelsensors und die Daten der IMU, falls diese mit der Central Unit verbaut sind. Das ist ziemlich suboptimal, weil diese Daten dann schon mindestens 90ms alt sind, wenn AgOpenGPS mit den Positionsdaten verrechnet.
 
-Using an extra µC for the IMU ("IMU_USB_v5_0.ino") even makes the timing even worse, because data receives at *any* time, so we don't have a delay but a fully unpredictable jitter. One workaround will come the AgOpenGPS V6 - there will be a unit that combines GNSS and IMU data into one non-standard NMEA sentence.
+Also ein Arduino-Nano, Software drauf ("IMU_USB_v5_0.ino") und IMU dran. Leider nein, denn nun werden die Daten zwar alle 100ms gesendet, aber völlig asynchron zu den GNSS-Daten. Das wurde erkannt und "PANDA", ein proprieterer NMEA-Datensatz erschaffen, der GNSS-Daten und IMU-Daten zusammenfasst und an AgIO sendet.
 
-The best timing is archieved with no additional µC at all for GNSS and IMU. Both units are able to send serial data directly to the PC. All you need for the GNSS receivers is a USB cable and an USB-serial-converter cable for the IMU. The jitter simply can't be less.
-
-Connection [of USB-Serial-Cable](https://de.aliexpress.com/item/32965292523.html) to BNO085 in RVC mode: 1st pic shows USB cable supplying board with 5V, if there is a voltage regulator on it; 2nd pic shows the same cable w/o using the voltage regulator. The 1st is prefered for this Adafruit board, the 2nd is for all boards w/o voltage regulator like shown in the 3rd picture. Supply voltage is about 3.05V in that case :+1:
+Viel einfacher ist es allerdings, einen BNO080 oder BNO085 im "RVC"-Mode zu betreiben und direkt an den PC anzuschließen. Da ist nix dazwischen und daher die Lösung, die prinzipbedingt den geringsten Jitter aufweist. Dazu wird einfach ein [USB-TTL-Seriell-Kabel wie dieses](https://de.aliexpress.com/item/32965292523.html) an die IMU angelötet: Das erste Bild zeigt ein Board mit Spannungsregler, das mit 5V versorgt wird; das zweite Bild zeigt dasselbe Bord, aber mit Umgehung des Spannungsreglers - die Spannung beträgt dann 3.05V :+1:, und auf dem dritten Bild ist ein Board ohne integrierten Spannungsregler gezeigt. Ist ein Spannungsregler vorhanden, sollte die erste Lösung verwendet werden.
 
 ![](basic_documentation/BNO085_RVC_connection.jpeg)
 ![](basic_documentation/BNO085_RVC_connection_3V3.jpeg)
 ![](basic_documentation/BNO080_china_RVC_connection.jpeg)
 
-For those who prefer Ethernet connections: This is how to connect two Ardusimple to AgIO via an Ethernet cable. [This module can connect two serial devices](https://www.pusr.com/products/dual-UART-to-ethernet-module-usr-tcp232-e2.html), in this case two [Ardusimples @ 460800Bd](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_2.0/code) to Windows. 
+Für die Freunde des Ethernets: So kann man zwei two Ardusimple oder natürlich auch einen Ardusimple und die IMU mit AgIO über ein Ethernetkabel anschließen. Gezeigt ist hier [dieses Modul](https://www.pusr.com/products/dual-UART-to-ethernet-module-usr-tcp232-e2.html), hier mit zwei [Ardusimples @ 460800Bd](https://github.com/GormR/HW_for_AgOpenGPS/tree/main/central_unit_2.0/code). 
 
-Will also work for one Ardusimple and one BNO085 in RVC mode.
+Der rote Draht ist der der +5V-Versorgung - in Worten: fünf Volt!
 
-The red wire is the +5V supply - FIVE volt supply.
-
-black: 0V
-red: 5V
-brown: 3.3V
-green: to Ardusimple (NTRIP; RxD@AS, TxD@USR)
-white: from Ardusimple (NMEA data; TxD@AS, RxD@USR)
+Schwarz: 0V
+rot: 5V
+braun: 3.3V
+grün: zum Ardusimple (NTRIP; RxD@AS, TxD@USR)
+weiss: vom Ardusimple (NMEA data; TxD@AS, RxD@USR)
 
 ![](basic_documentation/serial_devices_via_Ethernet.jpeg)
-(same colors used as above for the BNO085)
+(Es wurden dieselben Farben verwendet, wie beim Beispiel des BNO08x am USB-Kabel)
 
-The connection to the Ardusimple board can also be made by [the plugable Pixhawk connectors using 0V, 5V and the two communication lines.](https://www.ardusimple.com/simplertk2b-hookup-guide/) In that case, connecting the 3.3V line is not needed, but I would put a 100 Ohms resistor in series with the com lines.
+Alternativ zu einer Lötverbindung kann die Verbindung auch steckbar über die [Pixhawk Stecker unter Verwendung von 0V, 5V und den beiden RX- und TX-Drähten erfolgen.](https://www.ardusimple.com/simplertk2b-hookup-guide/) Eine Versorgung mit 3,3V ist in diesem Fall nicht notwendig, aber ich würde sicherheitshalber je einen 100Ohm-Widerstand in Serie zum Signal einlöten.
 
-[Here](central_unit_2.0/code/) is is a replacement for the standard AgIO.exe. Just replace it by this file and work with the data directly.
+[Hier](central_unit_2.0/code/) kann man die AgIO.exe mit direktem USB-Support für IMU und F9P/Ardusimple herunterladen. Einfach die Originaldatei damit ersetzen.
 
 ----
 # Projekte in diesem Repository
 
-All projects use a robust housing and industrial M12/M8 connetors (optional) as far as possible. There is also an option to use industrial PushIn connectors instead.
+Alle Projekte wurde in einem robusten Aluminiumgehäuse weitgehend mit industriellen M12/M8-Steckerverbindern realisiert. Es gibt aber auch die Möglichkeit, alternativ industrielle PushIn-Steckverbinder zu verwenden.
 
-The PCB project was set up with the EDA program „EasyEDA“, which is freely usable. 
+Alle Leiterplatten wurden mit dem kostenfreien Layoutprogramm „EasyEDA“ erstellt und lassen sich so direkt online bearbeiten. 
 
-*These products are still working perfectly with AgOpenGPS, but not recommended for new systems*
+*Folgende Projekte funktionieren zwar ohne Einschränkung an AgOpenGPS, haben aber inzwischen verbesserte Nachfolger:*
 
-[Documentation Central Unit](central_unit/README.md)
+[Dokumentation Central Unit](central_unit/README.md)
 
-[Documentation Rooftop Unit](rooftop_unit/README.md)
+[Dokumentation Rooftop Unit](rooftop_unit/README.md)
 
-[Documentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
+[Dokumentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
 
 **Mainboards**
 
-Update of Central Unit 1.x with 2nd slot for dual-Ardusimple:
+Update der Central Unit 1.x mit einem zweiten Steckplatz für dual-Ardusimple-Lösungen:
 ![pic](central_unit_2.0/3D.png?raw=true)
 [Documentation Central Unit 2.x](central_unit_2.0/README.md)
 
-There is a [reduced BOM](central_unit_2.0/production_data/BOM_CentralUnit2.3_(USB-recommended).csv) for USB (estimated board price @ JLCPCB: $30 after the semiconductor prices will have returned to normal levels again).
+Es gibt eine [reduzierte Bauteilliste](central_unit_2.0/production_data/BOM_CentralUnit2.3_(USB-recommended).csv) für die meistverwendete USB-Variante, die für ca. 30€ herzustellen ist, wenn sich die Bauteilpreise denn mal wieder in normalen Höhen bewegen werden (Schätzpreis bei einer Bestellung von 5 Stück). 
 
-Teensy-based central unit with additonal support for USB-PD hardware (no firmware support yet):
+Teensy-basierte Central Unit mit Unterstützung von USB-PD (Laden des Computers über USB-C; leider noch kein Firmware-Support bisher):
 ![pic](central_unit_3.0_Teensy/3D.png?raw=true)
-[Documentation Central Unit 3.x](central_unit_3.0_Teensy/README.md)
+[Dokumentation Central Unit 3.x](central_unit_3.0_Teensy/README.md)
 
-(This board also has a slot for Bynav-GNSS-receivers)
-
-Besonderer Wert wurde auf ein robustes Gehäuse und insbesondere robuste Steckverbinder und Kabel gelegt. Es sind M12/M8-Steckverbinder gerade oder abgewinkelt vorgesehen. Alternativ sind über auch steckbare PushIn-Steckverbinder bestückbar.
-
-Das Leiterplattenprojekt wurde im frei verfügbaren EDA-Programm „EasyEDA“ erstellt. Der Export nach Altium ist ungeprüft. 
-
-[Dokumentation Zentraleinheit](central_unit/README.md)
-
-[Dokumentation Dacheinheit (optional)](rooftop_unit/README.md)
+(Dieses Board hat auch einen Steckplatz für den alternativen Bynav-GNSS-Empfänger)
 
 # Bestellhinweise
 1. SMD-bestückte Leiterplatte bestellen, z. B. beim JLCPCB für ca. 35€ wie oben im englischen Teil beschrieben. Deutschsprachige Alternativen: PCB-Pool, Aisler. Vorsicht bei JLCPCB: Es werden nur die Bauteile bestückt, die zum Bestellzeitpunkt verfügbar sind (wird aber deutlich angezeigt - Liste kann auch heruntergeladen werden).
