@@ -1,16 +1,5 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-*Block schematic*
-
-1. µC e. g. Arduino Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
-2. Power stage to drive a motor or hydraulic valves
-3. Input section: Analog-digital converter for WAS signal and decoupling for buttons
-4. Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
-5. IMU unit
-6. Section and rate control (option)
-7. Power stage and analog frontend for section and rate control
-All blocks but the antennas may be integrated into one PCB - see "Central Units"
-
 ### What is "AgOpenGPS"?
 AgOpenGPS "AOG" is an open-source project initiated by the Canadian [Brian Tischler](https://www.astech.ca/archives/indexofpastwinners/tischler-brian). It started as parallel driving aid and mapping software for Windows(TM) and turned into a full-control system for steering including section and rate control. Today, many peaceful people from all over the world collaborate and contribute to the project. 
 
@@ -45,6 +34,15 @@ Join the [AgOpenGPS forum](https://discourse.agopengps.com/) for further help an
 ----
 # Basic Block Diagram
 ![](basic_documentation/basic_block_diagram.png)
+
+1. µC e. g. Arduino Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
+2. Power stage to drive a motor or hydraulic valves
+3. Input section: Analog-digital converter for WAS signal and decoupling for buttons
+4. Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
+5. IMU unit
+6. Section and rate control (option)
+7. Power stage and analog frontend for section and rate control
+All blocks but the antennas may be integrated into one PCB - see "Central Units"
 
 # Getting Started, Level 1: Parallel Driving Aid and Mapping
 
@@ -232,16 +230,6 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-*Blockschaltbild*
-
-1. µC, also z. B. Arduino Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter nd ggf. der IMU ein
-2. Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
-3. Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
-4. GPS-Empfänger (GNSS) mit RTK-Genauigkeit + Antenna (ein oder zwei Paare)
-5. IMU-Einheit
-6. Teilbreiten- und Volumensteuerung (optional)
-7. Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
-
 Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
 
 ### Was ist "AgOpenGPS"?
@@ -280,6 +268,14 @@ Es gibt ein (englisches) [AgOpenGPS forum](https://discourse.agopengps.com/), wo
 ----
 # Grundlegendes Blockdiagram
 ![](basic_documentation/basic_block_diagram.png)
+
+1. µC, also z. B. Arduino Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter nd ggf. der IMU ein
+2. Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
+3. Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
+4. GPS-Empfänger (GNSS) mit RTK-Genauigkeit + Antenna (ein oder zwei Paare)
+5. IMU-Einheit
+6. Teilbreiten- und Volumensteuerung (optional)
+7. Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
 
 # Getting Started, Level 1: Parallelfahrhilfe und Dokumentation
 
