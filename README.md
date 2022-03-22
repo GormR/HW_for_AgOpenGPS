@@ -1,12 +1,12 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
--1 µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
--2 Power stage to drive a motor or hydraulic valves
--3 Input section: Analog-digital converter for WAS signal and decoupling for buttons
--4 Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
--5 IMU unit
--6 Section and rate control (option)
--7 Power stage and analog frontend for section and rate control
+1 µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
+2 Power stage to drive a motor or hydraulic valves
+3 Input section: Analog-digital converter for WAS signal and decoupling for buttons
+4 Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
+5 IMU unit
+6 Section and rate control (option)
+7 Power stage and analog frontend for section and rate control
 All blocks but the antennas may be integrated into one PCB - see "Central Units"
 
 ### What is "AgOpenGPS"?
@@ -230,13 +230,13 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-(1) µC, also z. B. Ardusimple Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter und ggf. der IMU ein
-(2) Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
-(3) Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
-(4) GPS-Empfänger (GNSS) mit RTK-Genauigkeit + Antenna (ein oder zwei Paare)
-(5) IMU-Einheit
-(6) Teilbreiten- und Volumensteuerung (optional)
-(7) Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
+1 µC, also z. B. Ardusimple Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter nd ggf. der IMU ein
+2 Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
+3 Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
+4 GPS-Empfänger (GNSS) mit RTK-Genauigkeit + Antenna (ein oder zwei Paare)
+5 IMU-Einheit
+6 Teilbreiten- und Volumensteuerung (optional)
+7 Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
 
 Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
 
