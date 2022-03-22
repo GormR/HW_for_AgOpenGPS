@@ -311,34 +311,37 @@ Aus aktuellem Anlass muss aber leider gesagt werden, dass die letztgenannte Mög
 - Los auf's Feld und AgOpenGPS ausprobieren
 
 # Dual-GNSS? IMU? Oder beides?
-When you living in a plain area with no hills, you can start farming now. But likely there are rolling hills around and your fields are sloping a little bit, so that the antenna position swings left and right with the slope of the field and there is a need to compensate that by either using two antennas with two RTK receivers or and an	inertial measurement unit (IMU). 
-Pros of dual antenna are:
-- always absolute position in the room
-- antenna diversity: if one antenna does not receive the signal due to trees, the other one will take over for that time
+Landwirte in im nördwestlichen Niedersachsen können jetzt loslegen. Alle anderen haben wahrscheinlich das ein oder andere Feld in Hanglage, und da läuft dann die eigene Position mit der Hangneigung weg, weil der Fußpunkt der Antenne zur Seite wandert. Also muss das kompensiert werden, wozu es eben diese beiden Möglichkeiten gibt: Eine zweite RTK-Empfänger/Antennenkombination oder eine IMU (inertial measurement unit - Inertiale Messeinheit, also ein Sensor, der die relative Lage im Raum an Hand der Schwerkraft und Massenträgheit bestimmen kann).
 
-Pros of IMU:
-- Cheaper
-- Roll angle is more exact
-- Reduced update rate if using two Ardusimple with cross-communication (8Hz instead of 10Hz). Solution: Connect both F9P directly to the PC via USB (same setup file).
+Vorteile Dual-GNSS:
+- hat immer die absolute Position im Raum
+- "Antenna-Diversity": Der kurzzeitige Ausfall einer Antenne führt nicht zum Verlust der Genauigkeit, z. B. wenn eine Seite von einem Baum abgeschattet wird
+
+Vorteile IMU:
+- Kostengünstiger
+- Genauere Winkelerfassung
+- Wenn zwei Ardusimple mit Querkommunikation betrieben werden (z. B. an einem ESP32), verringert sich die Datenrate der Position von 10 auf 8 pro Sekunde. Das kann aber umgangen werden, indem beide Boards direkt über USB mit dem PC verbunden werden (sie haben dann auch das gleiche Setup-File (s. o.).
  
-The z axis of the IMU must be exactly the vertical axis of the vehicle. Recommended is the use of an BNO085 or BNO080 - directly or embedded in the CMPS14 board.
+Die z-Achse der IMU muss vertikal montiert sein. Es sollten BNO085 or BNO080-basierte Sensoren verwendet werden - allein oder als CMPS14-Board.
 
 # Arduino-Nano oder Teensy?
-For all 3 different approaches, these two options are available (plus ESP32 to name the third). The Teensy has more memory and is faster - both more than 100 times). The advantage today is: simply nothing, as long as you don't use CAN or main parts of AgOpenGPS run inside the iMX controller. Maybe in future, AgOpenGPS will migrate there and has just have a web page on any mobile device. This would also improve the steering behaviour noteworthy due to reduced jitter times (no Windows in between).
+Für alle drei Möglichkeiten (Module zusammenlöten, auf Trägerplatine löten oder integriertes Board) gibt es zwei zur Auswahl stehende µC: der "klassische" Arduion-Nano-Controller ATMEGA368 oder das Teensy4.1-Board mit iMX1061-Controller von NXP. Der ESP32 und andere mal außen vor - sie haben ihre Daseinsbereichtigung z. B. für WLAN-Lösungen. Der Teensy ist mehr als 100x schneller, hat mehr als 100x mehr Speicher und hat somit - nein, bisher leider garkeinen Vorteil, solange AgOpenGPS weder CAN unterstützt oder wesentliche Softwareteile wirklich im iMX laufen und eine mobile Webside bereitstellen. Wäre super, weil sicherlich auch die Lenkqualität besser würde, ist aber noch Zukunftsmusik.
 
 # IBT-2 oder Cytron
-First of all: None of them for driving a Danfoss block - a rail-to-rail operational amplifier will do that job as well.
+Vorweg: Für Danfoss reicht ein einfacher Operationsverstärker. Für alles andere muss schwereres Geschütz aufgefahren werden.
 
-Intergrated boards will always use what the IBT-2 is using, because there is no need to care for short-circuits due to miswiring or mechanical damage. The drivers have a build-in protected agains all that. And there is no need for a freewheeling relay if a steering wheel motor is used. 
+Die intergraten Board in diesem Repository werden immer die robusten, speziell für die Automobilindustrie entwickelten Infineon-Treiber verwenden, die auch auf dem IBT-2 verbaut sind, weil diese einfach vollständig gegen alle möglichen Fehler und Überlastung vollständig geschützt sind. Außerdem benötigt man nicht unbedingt einen Freilauf für das Lenkrad, weil der Motor nicht nennenswert elektromotorisch gebremst wird.
 
-When using complete boards, further arguments matter: Yes, the IBT-2 is cheaper, but there are a lot of bad-quality boards out in the wildlife. Control the solderings and always add a thermal pad between the board and the heat sink! The solder mask is no suitable isolation between the PCB and the heat sink! These qualitiy problems are avoided by buying the Cytron. But the Cytron blocks manual steering, when AgOpenGPS isn't in control, because it short the motor wires - it acts as electrical brake, which is not intended in this use-case. Any kind of disengagement is needed.
+Wenn man eine Baugruppe fertig zukaufen möchte, kommen noch andere Argumente ins Spiel: Ja, ein IBT-2 ist günstiger, aber zumindeste die billigen China-Clones sind oft von wirklich lausiger Qualität. Hier muss man sich auf jeden Fall die Arbeit machen und den Kühlkörper abschrauben und mit Wärmeleitpaste oder besser einem Wärmeleitpad gegen die Leiterplatte isolieren. Der Lötstopplack alleine ist dafür vollkommen ungeeignet. Das hat zu einem schlechten Ruf dieser Lösung begetragen, ist aber - wie gesagt - auch leicht zu beheben.
+
+Kauft man ein Cytron-Board, bekommt man immer gleich gute Qualität. Allerdings schließt ein Cytron die Motorwicklungen kurz, wenn AgOpenGPS nicht steuert. Dadurch ist es nicht mehr möglich das Lenkrad vernünftig leicht zu drehen. Ein Freilauf wird also auf jeden Fall benötigt.
 
 # USB oder Ethernet
-Many discussions have been made about the "right" interface between the computer and the peripherals. In fact: Both kind of connectors, USB and Ethernet, are not suitable for agricultural use. Professional systems use M8 and M12 connectors. The type "M12-D" is well-suitable for both Ethernet and USB, but no computer has such a connector... An option is soldering yourself, but another option is just having some spare cables in the box. 
+Unzählige Diskussionen gibt es, welches die beste Schnittstelle zwischen AgOpenGPS und der Hardware ist. Die ehrliche Antwort ist zunächst einmal: Sowohl USB als auch Ethernet haben für automobile/landwirtschaftliche Verwendung ungeeignete Stecker. Beide lassen sich allerdings mit den in professionellen Geräten verwendeten M12-D-Stecker versehen und sind dann sogar wasserfest bis IP67. Computer mit einem solchen Stecker sucht man allerdings vergeblich. Selbstlöten ist natürlich möglich oder nimmt Kabel von der Stange und legt sich ein paar als Ersatz ins Handschuhfach.
 
-An important point is the ability to transport supply power. For Ethernet, that makes some effort and only a few devices support PoE. USB always have that feature, so you can use just one USB-C cable for charging the computer and transfer data to the peripherals. Clear point of USB, as long as two-wire Ethernet is not commonly available for adequate costs.
+Ein wichtiger Punkt ist, dass der Anschluss auch den Versorgungsstrom liefern kann. Klarer Vorteil für USB - hier kann sogar der Computer während der Fahrt aufgeladen werden (Treiber vorausgesetzt - siehe oben). Der Vorteil mag sich zukünftig relativieren, wenn automobiles Zweidraht-Ethernet üblicher wird (Single-Pair Ethernet) und ICs zu vertretbaren Kosten für die AgOpenGPS-Gemeinde verfügbar werden.
 
-My suggestion: If you ever dreamt of being a professional network admin, go for Ethernet. All others should use USB. Here, the Teensy may bring both worlds together by using RNDIS (Ethernet over USB) one day.
+Meine Meinung: Wer immer schon ein professioneller Netzwerk-Admin werden wollte, nimmt Ethernet. Alle anderen sind mit USB weit besser bedient, zumal man über USB auch das Netzwerkprotokoll fahren kann ("RNDIS").
 
 **Timing**
 
