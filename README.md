@@ -1,4 +1,13 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
+(1) µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
+(2) Power stage to drive a motor or hydraulic valves
+(3) Input section: Analog-digital converter for WAS signal and decoupling for buttons
+(4) Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
+(5) IMU unit
+(6) Section and rate control (option)
+(7) Power stage and analog frontend for section and rate control
+All blocks but the antennas may be integrated into one PCB - see "Central Units"
+
 ### What is "AgOpenGPS"?
 AgOpenGPS "AOG" is an open-source project initiated by the Canadian [Brian Tischler](https://www.astech.ca/archives/indexofpastwinners/tischler-brian). It started as parallel driving aid and mapping software for Windows(TM) and turned into a full-control system for steering including section and rate control. Today, many peaceful people from all over the world collaborate and contribute to the project. 
 
@@ -203,6 +212,15 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 # (German copy)
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
+(1) µC, also z. B. Ardusimple Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter und ggf. der IMU ein
+(2) Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
+(3) Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
+(4) GPS-Empfänger (GNSS) mit RTK-Genauigkeit + Antenna (ein oder zwei Paare)
+(5) IMU-Einheit
+(6) Teilbreiten- und Volumensteuerung (optional)
+(7) Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
+Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
+
 ### Was ist "AgOpenGPS"?
 AgOpenGPS "AOG" ist ein open-source-Project, das vom kandischen Farmer [Brian Tischler](https://www.astech.ca/archives/indexofpastwinners/tischler-brian) initiiert wurde. Es war zunächst eine reine Parallelfahrhilfe und wurde nach und nach mit Hilfe der Community zu einem Lenksystem mit Teilbreitensteuerung. Die Software läuft nur unter Windows(TM) - es wird also ein Windows-Tablet oder Notebook benötigt. Inzwischen arbeiten Interessierte aus aller Welt friedlich an der Weiterentwicklung des Projektes. 
 
@@ -310,6 +328,14 @@ Aus aktuellem Anlass muss aber leider gesagt werden, dass die letztgenannte Mög
 - Antenne im Freien aufstellen. Nach einer Zeit sollte der eigene Standort angezeigt werden und auch die Anzeige "RTK" erscheinen
 - Los auf's Feld und AgOpenGPS ausprobieren
 
+# Hints for Wiring
+All signals to the motor or hydraulic valve shall be inside a single cable. This cable may only be connected to the Central Unit and the motor/valve unit - nowhere else. So no connection between the valve unit and the chassis as long as you don't want to use your equipment for short-wave broadcasting!
+
+WAS:
+If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced", a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Connect "WAS_N" to 0V next to the point where you already connected the "WAS". Select "differential" in AgOpenGPS in both cases.
+
+There is intentionally no coupling of 0V from power stage and computer side on the Central Unit 1.x and 2.x, because the charger unit has that normally. If this is not the case (e. g. you're using an inverter and a charger with mains plug), the connection must be done manually.
+
 # Dual-GNSS? IMU? Oder beides?
 Landwirte in im nördwestlichen Niedersachsen können jetzt loslegen. Alle anderen haben wahrscheinlich das ein oder andere Feld in Hanglage, und da läuft dann die eigene Position mit der Hangneigung weg, weil der Fußpunkt der Antenne zur Seite wandert. Also muss das kompensiert werden, wozu es eben diese beiden Möglichkeiten gibt: Eine zweite RTK-Empfänger/Antennenkombination oder eine IMU (inertial measurement unit - Inertiale Messeinheit, also ein Sensor, der die relative Lage im Raum an Hand der Schwerkraft und Massenträgheit bestimmen kann).
 
@@ -323,6 +349,14 @@ Vorteile IMU:
 - Wenn zwei Ardusimple mit Querkommunikation betrieben werden (z. B. an einem ESP32), verringert sich die Datenrate der Position von 10 auf 8 pro Sekunde. Das kann aber umgangen werden, indem beide Boards direkt über USB mit dem PC verbunden werden (sie haben dann auch das gleiche Setup-File (s. o.).
  
 Die z-Achse der IMU muss vertikal montiert sein. Es sollten BNO085 or BNO080-basierte Sensoren verwendet werden - allein oder als CMPS14-Board.
+
+# Hinweise zur Verkabelung
+Alle Signale, die zum Motor oder zur Ventilinsel führen, sollten in einem Kabel enthalten sein. Das Kabel darf nur an der Central Unit und am Motor oder an der Ventilinsel angeschlossen sein, sonst nirgendwo, also auch nicht die 0V an der Ventilinsel mit der Karosserie verbinden! Man baut sich so ganz schnell eine Rahmenantenne für Mittelwelle...
+
+LWS/WAS:
+Soll ein Extra-Lenkwinkelsensor verwendet werden, sollte ein 3pol. Kabel von der Central Unit zum Sensor verlegt werden, das die Signale +5V, "WAS" = Analogwert des LWS und 0V = GND enthält. Auch hier sollte nichts anderes angeschlossen sein, als der LWS, also auch wieder eine "Erdung" zur Karrosserie oder so. Wenn ein bereits verbauter LWS "angezapft" werden soll, muss die Verdrahtung über ein zweipoliges Kabel "differenziell" erfolgen: "WAS" ist wieder der Analogwert des LWS, und "WAS_N" wird an einen 0V-Punkt in der Nähe des Punktes angeschlossen, wo auch "WAS" angeklemmt ist. Bei Verwendung der Central Units sollte in beiden Fällen in AgOpenGPS "differenziell" ausgewählt werden.
+
+Bei der Central Unit 1.x und 2.x gibt es ganz bewusst keine harte Kopplung von 0V/GND der Leistungsendstufe und 0V/GND des USB, weil dies normalerweise über das 12V-Ladegerät erfolgt und eine Masseschleife vermieden werden soll. Sollte dies Verbindung nicht vorhanden sein, weil z. B. ein 230V-Netzteil an einem Wechselrichter betrieben wird, muss diese Verbindung manuell hergestellt werden.
 
 # Arduino-Nano oder Teensy?
 Für alle drei Möglichkeiten (Module zusammenlöten, auf Trägerplatine löten oder integriertes Board) gibt es zwei zur Auswahl stehende µC: der "klassische" Arduion-Nano-Controller ATMEGA368 oder das Teensy4.1-Board mit iMX1061-Controller von NXP. Der ESP32 und andere mal außen vor - sie haben ihre Daseinsbereichtigung z. B. für WLAN-Lösungen. Der Teensy ist mehr als 100x schneller, hat mehr als 100x mehr Speicher und hat somit - nein, bisher leider garkeinen Vorteil, solange AgOpenGPS weder CAN unterstützt oder wesentliche Softwareteile wirklich im iMX laufen und eine mobile Webside bereitstellen. Wäre super, weil sicherlich auch die Lenkqualität besser würde, ist aber noch Zukunftsmusik.
