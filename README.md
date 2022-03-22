@@ -1,5 +1,7 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
+*Block schematic*
+
 1. µC e. g. Arduino Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
 2. Power stage to drive a motor or hydraulic valves
 3. Input section: Analog-digital converter for WAS signal and decoupling for buttons
@@ -229,6 +231,8 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 # (German copy)
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
+
+*Blockschaltbild*
 
 1. µC, also z. B. Arduino Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter nd ggf. der IMU ein
 2. Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
