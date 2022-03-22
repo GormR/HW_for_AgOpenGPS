@@ -1,6 +1,6 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-1. µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
+1. µC e. g. Arduino Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
 2. Power stage to drive a motor or hydraulic valves
 3. Input section: Analog-digital converter for WAS signal and decoupling for buttons
 4. Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
@@ -230,7 +230,7 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-1. µC, also z. B. Ardusimple Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter nd ggf. der IMU ein
+1. µC, also z. B. Arduino Nano, Teensy4.1, ESP32,... steuert die Leistungsendstufe und liest die Werte des Lenkwinkelsensors (LWS = WAS), der Schalter nd ggf. der IMU ein
 2. Leistungsendstufe, um den Motor oder die Hydraulik zu bedienen
 3. Eingänge: Analog-digital-Wandler für das LWS-Signal und Eingangsstufe für die Schalter
 4. GPS-Empfänger (GNSS) mit RTK-Genauigkeit + Antenna (ein oder zwei Paare)
