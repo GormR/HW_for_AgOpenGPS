@@ -87,6 +87,7 @@ There are 3 different approaches for driving a motor or valves:
 - ordering one of the full-equipped board in this repository from a PCB manufacturer (only some "simple" parts have to be soldered by yourself)
 
 ![](basic_documentation/CU3_with_2_Ardusimple.jpg)
+![](basic_documentation/CU1_housing.jpg)
 
 Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. 
 
@@ -125,6 +126,7 @@ There is intentionally no coupling of 0V from power stage and computer side on t
 
 # Dual-GNSS? IMU? Both?
 When you living in a plain area with no hills, you can start farming now. But likely there are rolling hills around and your fields are sloping a little bit, so that the antenna position swings left and right with the slope of the field and there is a need to compensate that by either using two antennas with two RTK receivers or and an	inertial measurement unit (IMU). 
+
 Pros of dual antenna are:
 - always absolute position in the room
 - antenna diversity: if one antenna does not receive the signal due to trees, the other one will take over for that time
@@ -336,6 +338,7 @@ Für die Steuerung gibt es nun drei verschiedene Ansätze:
 - man bestellt sich eine der vollständig bestückten Leiterplatten aus diesem Repository. Dann müssen nur noch die gewünschten Stecker angelötet werden.
 
 ![](basic_documentation/CU3_with_2_Ardusimple.jpg)
+![](basic_documentation/CU1_housing.jpg)
 
 In jedem Fall muss natürlich die Software auf den µC aufgespielt werden. Eine Beschreibung dazu befindet sich bei den einzelnen Leiterplatten.
 
