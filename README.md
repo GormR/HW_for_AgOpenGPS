@@ -69,7 +69,9 @@ There are 3 different approaches for driving a motor or valves:
 - using a carrier board for those boards, which adds power supply and necessary components in classic "THT" technology (you have to solder all parts yourself - such boards are discussed in the forum)
 - ordering one of the full-equipped board in this repository from a PCB manufacturer (only some "simple" parts have to be soldered by yourself)
 
-Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. This option is described in detail now:
+Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. 
+
+Nevertheless, this option is described in detail now:
 
 **Parts list**
 - tablet/notebook/convertable computer for Windows 7 or higher
@@ -82,7 +84,7 @@ Honestly, the last option is a nightmare these days, because some key parts (e. 
 
 **Installation:**
 - Download and install [AgOpenGPS software packet]([https://github.com/farmerbriantee/AgOpenGPS/releases)
-- Configure the Ardusimple with the help of the software "ucenter"
+- Configure the Ardusimple with the help of the software ["ucenter"](https://www.u-blox.com/en/product/u-center) (not version 2!) and [this setup file](central_unit_2.0/code/Ardusimple_GGA_VTG_460.txt)
 - assemble board and put it into the housing
 - prepare cables 
 - connect everything
@@ -272,34 +274,41 @@ Insgesamt ist die erreichbare Genauigkeit beeindruckend, wenn man bedenkt, dass 
 Ein GNSS-Empfänger sendet die Daten im [NMEA-Format](https://de.wikipedia.org/wiki/NMEA_0183). Die Einstellungen sollten so sein, dass möglichst nur die notwendigen Sätze "GGA" für Position und "VTG" für den Geschwindigkeitsvektor gesendet werden (s. u.).
 
 # Level 2: Automatische Steuerung
-There are two possibilities for steering: Turning the wheel like the driver does or driving the hydraulic system directly. Fortunately the electrical part is about the same (two PWM signals) and only the actuator differs: Either a DC motor or a dedicated proportional valve. 
-For AgOpenGPS, feedback from a wheel angle sensor "WAS" is always needed, although an incremental sensor at the DC motor would work as well. The best choice is measuring the signal of the build-in WAS, if there is one, but there are also lots of how-tos for adding an additional WAS.
+Es gibt zwei grundsätzlich verschiedene Möglichkeiten der Steuerung: Direkt über Hydraulikventile oder mit Hilfe eines Elektromotors am Lenkrad drehen. Einen Eingriff in die Hydraulik sollten nur diejenigen vornehmen, die wirklich verstanden haben, was AgPL d bedeutet und es umsetzen können. Auch wenn es natürlich das eleganteste ist... Zu unterscheiden sind hier Systeme, die aus zwei Ventilgruppen bestehen (Steuerventil und Umschaltventil zwischen Lenkrad und AgOpenGPS-Steuerventil) und "intelligenten" Ventilinseln, wie z. B. "Danfoss".
 
-There are 3 different approaches for driving a motor or valves:
-- plugging together readily available boards (e. g. Arduino Nano with ADS1115, BNO085 and IBT-2/Cytron - plans are in the AgOpenGPS ZIP file)
-- using a carrier board for those boards, which adds power supply and necessary components in classic "THT" technology (you have to solder all parts yourself - such boards are discussed in the forum)
-- ordering one of the full-equipped board in this repository from a PCB manufacturer (only some "simple" parts have to be soldered by yourself)
+Bei Lenkradmotoren hat sich der Phidgets-Motor als meistverwendeter herausgestellt, obwohl natürlich auch vergleichbare Motoren funktionieren. Zu unterscheiden sind Ankopplungen über ein Reibrad und Zahnradlösungen, bei denen das Ritzel des Motors in ein Zahnrad eingreift, das am Lenkrad festgeschraubt ist. Beide Lösungen haben sicherlich ihre Vorteile - wichtig ist, dass der Fahrer jederzeit ins Lenkgeschehen eingreifen kann! 
 
-Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. This option is described in detail now:
+Motor oder Hydraulik: Zum Glück sind die Ansteuersignale dieselben: 2 PWM-Leistungssignale. Für das Umschaltventil muss bei Hydraulik zusätzlich noch ein Enable-Signal entsprechender Leistung bereitgestellt werden. "Danfoss"-Ventile können ebenfalls über 2 PWM angesteuert werden, es reicht allerdings ein einfacher Operationsverstärker als "Leistungsendstufe".
+
+AgOpenGPS benötigt immer einen Lenkwinkelsensor, obwohl technisch auch eine Regelung über einen Tachogeber am Motor möglich wäre. Aber zum Glück haben ja viele Traktoren bereits eingebaute Sensoren, und es gibt auch sehr gute Anleitungen, einen Sensor einzubauen.
+
+Für die Steuerung gibt es nun drei verschiedene Ansätze:
+- man kauft sich fertige Teilmodule (Arduino Nano, ADS1115, ...) und verdrahtet diese "fliegend" in einem geeigneten Gehäuse
+- man lässt sich eine fertige Leiterplatte herstellen, die für ein paar Euro aus China angeflogen kommt. Die Bestückung mit "klassischen" THT-Bauteilen muss man dann selber durchführen und auch die o. g. Teilmodule hier wieder auflöten
+- man bestellt sich eine der vollständig bestückten Leiterplatten aus diesem Repository. Dann müssen nur noch die gewünschten Stecker angelötet werden.
+
+In jedem Fall muss natürlich die Software auf den µC aufgespielt werden. Eine Beschreibung dazu befindet sich bei den einzelnen Leiterplatten.
+
+Aus aktuellem Anlass muss aber leider gesagt werden, dass die letztgenannte Möglichkeit aktuell (Frühjahr 2022) sehr mühselig ist, da Schlüsselbauteile wie µC und Leistungstreiber nicht ab Lager verfügbar sind und somit anderweitig beschafft und selbst aufgelötet werden müssen. Leider kein Spaß für viele und erst einmal keine Besserung in Sicht
 
 **Einkaufsliste**
-- tablet/notebook/convertable computer for Windows 7 or higher
-- [one or two Ardusimple receiver with antenna](https://www.ardusimple.com/product/simplertk2b-basic-starter-kit-ip65/) or equivalent 
-- IMU unit based on BNO08x
-- mainboard + housing
-- cables
-- 12V charger for computer (the Central Unit 3.0 has a build-in charger, but no software support yet)
-- steering wheel motor or hydraulic unit + support material
+- Tablet/Notebook/Convertable-Computer für Windows 7 oder höher
+- [ein oder zwei Ardusimple-Empfänger mit Antenne](https://www.ardusimple.com/product/simplertk2b-basic-starter-kit-ip65/) oder vergleichbarer Empfänger
+- IMU auf Basis eines BNO080 oder BNO085 (auch als CMPS14-Board möglich)
+- eines der Mainboard aus dem Repository hier + Gehäuse
+- Kabel
+- ein 12V-Ladegerät für den Computer (die Central Unit 3.0 hat ein eingebautes USB-C-PD Ladegerät, aber bisher keinen passenden Treiber)
+- Lenkradmotor oder Hydraulikeinheit und Zubehör dafür
 
 **Installation:**
-- Download and install [AgOpenGPS software packet]([https://github.com/farmerbriantee/AgOpenGPS/releases)
-- Configure the Ardusimple with the help of the software "ucenter"
-- assemble board and put it into the housing
-- prepare cables 
-- connect everything
-- start AgOpenGPS and configure the NTRIP server in AgIO
-- put the antenna outside and see, if position data is received (should lock to RTK after a while)
-- start working with AgOpenGPS
+- [AgOpenGPS software packet]([https://github.com/farmerbriantee/AgOpenGPS/releases) downloaden und installieren
+- Ardusimple konfigurieren mit der Software ["ucenter"](https://www.u-blox.com/en/product/u-center) (nicht die Version 2 benutzen!) und [diesen Setup-Daten](central_unit_2.0/code/Ardusimple_GGA_VTG_460.txt)
+- Mainboard mit Steckern bestücken und programmieren; Ardusimple-Boards aufstecken, wenn sie mit im Gehäuse sein sollen
+- Kabel vorbereiten
+- Alles verbinden
+- AgOpenGPS starten und den NTRIP-Server in AgIO konfigurieren mit den eigenen Zugangsdaten (Sapos z. B.)
+- Antenne im Freien aufstellen. Nach einer Zeit sollte der eigene Standort angezeigt werden und auch die Anzeige "RTK" erscheinen
+- Los auf's Feld und AgOpenGPS ausprobieren
 
 # Dual-GNSS? IMU? Oder beides?
 When you living in a plain area with no hills, you can start farming now. But likely there are rolling hills around and your fields are sloping a little bit, so that the antenna position swings left and right with the slope of the field and there is a need to compensate that by either using two antennas with two RTK receivers or and an	inertial measurement unit (IMU). 
