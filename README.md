@@ -118,7 +118,9 @@ All signals to the motor or hydraulic valve shall be inside a single cable. This
 WAS:
 If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced" like in the following pictures, a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Mind that the cable number differs! Connect "WAS_N" to 0V next to the point where you already connected the "WAS". 
 
-Select "differential" in AgOpenGPS in both cases.
+The original wire was not cut but the isolation was just partially cut from one side. Advantage here: It's inside the cabin and always dry.
+
+With one of the central units, select "differential" in AgOpenGPS in both cases.
 
 ![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS_Y.jpg)
 ![](basic_documentation/Fendt_junction.jpg)
@@ -385,6 +387,8 @@ Alle Signale, die zum Motor oder zur Ventilinsel führen, sollten in einem Kabel
 
 LWS/WAS:
 Soll ein Extra-Lenkwinkelsensor verwendet werden, sollte ein 3pol. Kabel von der Central Unit zum Sensor verlegt werden, das die Signale +5V, "WAS" = Analogwert des LWS und 0V = GND enthält. Auch hier sollte nichts anderes angeschlossen sein, als der LWS, also auch wieder eine "Erdung" zur Karrosserie oder so. Wenn ein bereits verbauter LWS "angezapft" werden soll wie in den folgenden Bildern gezeigt, muss die Verdrahtung über ein zweipoliges Kabel "differenziell" erfolgen: "WAS" ist wieder der Analogwert des LWS, und "WAS_N" wird an einen 0V-Punkt in der Nähe des Punktes angeschlossen, wo auch "WAS" angeklemmt ist. Achtung: Die Klemmennummer variiert von Modell zu Modell - zumindestens bei Fendt. 
+
+Im Bild wurde der Originaldraht nicht durchgeschnitten, sondern die Isolierung nur seitlich weggeschnitten, um den Draht für AgOpenGPS dann dort anzulöten. Zugentlastung nicht vergessen. Vorteil dieser Lösung: Es liegt alles im Trockenen in der Kabine.
 
 Bei Verwendung der Central Units sollte in beiden Fällen in AgOpenGPS "differenziell" ausgewählt werden.
 
