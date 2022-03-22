@@ -1,12 +1,12 @@
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-(1) µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
-(2) Power stage to drive a motor or hydraulic valves
-(3) Input section: Analog-digital converter for WAS signal and decoupling for buttons
-(4) Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
-(5) IMU unit
-(6) Section and rate control (option)
-(7) Power stage and analog frontend for section and rate control
+-1 µC e. g. Ardusimple Nano, Teensy4.1, ESP32,... controlling the power stage and sampling wheel angle sensor (WAS) and optionally IMU data. Also reads the switches 
+-2 Power stage to drive a motor or hydraulic valves
+-3 Input section: Analog-digital converter for WAS signal and decoupling for buttons
+-4 Satellite navigation receiver (GNSS) with RTK precision + antenna (one or two sets)
+-5 IMU unit
+-6 Section and rate control (option)
+-7 Power stage and analog frontend for section and rate control
 All blocks but the antennas may be integrated into one PCB - see "Central Units"
 
 ### What is "AgOpenGPS"?
