@@ -42,6 +42,7 @@ Join the [AgOpenGPS forum](https://discourse.agopengps.com/) for further help an
 5. IMU unit
 6. Section and rate control (option)
 7. Power stage and analog frontend for section and rate control
+
 All blocks but the antennas may be integrated into one PCB - see "Central Units"
 
 # Getting Started, Level 1: Parallel Driving Aid and Mapping
@@ -234,8 +235,6 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
-
 ### Was ist "AgOpenGPS"?
 AgOpenGPS "AOG" ist ein open-source-Project, das vom kandischen Farmer [Brian Tischler](https://www.astech.ca/archives/indexofpastwinners/tischler-brian) initiiert wurde. Es war zunächst eine reine Parallelfahrhilfe und wurde nach und nach mit Hilfe der Community zu einem Lenksystem mit Teilbreitensteuerung. Die Software läuft nur unter Windows(TM) - es wird also ein Windows-Tablet oder Notebook benötigt. Inzwischen arbeiten Interessierte aus aller Welt friedlich an der Weiterentwicklung des Projektes. 
 
@@ -280,6 +279,8 @@ Es gibt ein (englisches) [AgOpenGPS forum](https://discourse.agopengps.com/), wo
 5. IMU-Einheit
 6. Teilbreiten- und Volumensteuerung (optional)
 7. Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
+
+Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
 
 # Getting Started, Level 1: Parallelfahrhilfe und Dokumentation
 
