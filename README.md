@@ -210,7 +210,7 @@ The PCB project was set up with the EDA program „EasyEDA“, which is freely u
 
 [Documentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
 
-**Main boards**
+**Latest Main boards**
 
 Update of Central Unit 1.x with 2nd slot for dual-Ardusimple:
 ![pic](central_unit_2.0/3D.png?raw=true)
@@ -464,10 +464,12 @@ Alle Leiterplatten wurden mit dem kostenfreien Layoutprogramm „EasyEDA“ erst
 
 [Dokumentation Ethernet Adapter for UDP](ethernet_adapter/README.md)
 
-**Mainboards**
+**Aktuelle Mainboards**
 
-Update der Central Unit 1.x mit einem zweiten Steckplatz für dual-Ardusimple-Lösungen:
+Update der Central Unit 1.x mit einem zweiten Steckplatz für dual-Ardusimple-Lösungen. Es kann auch nur eine Teilbestückung in Auftrag gegeben werden, bei der dann jeweils nur eine reine dual-Ardusimple-Einheit oder eine reine Motortreiber/Sensor-Einheit für zwei getrennte Gehäuse hergestellt wird.
+
 ![pic](central_unit_2.0/3D.png?raw=true)
+
 [Documentation Central Unit 2.x](central_unit_2.0/README.md)
 
 Es gibt eine [reduzierte Bauteilliste](central_unit_2.0/production_data/BOM_CentralUnit2.3_(USB-recommended).csv) für die meistverwendete USB-Variante, die für ca. 30€ herzustellen ist, wenn sich die Bauteilpreise denn mal wieder in normalen Höhen bewegen werden (Schätzpreis bei einer Bestellung von 5 Stück). 
