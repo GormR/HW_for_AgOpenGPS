@@ -75,8 +75,13 @@ For AgOpenGPS, feedback from a wheel angle sensor "WAS" is always needed, althou
 
 There are 3 different approaches for driving a motor or valves:
 - plugging together readily available boards (e. g. Arduino Nano with ADS1115, BNO085 and IBT-2/Cytron - plans are in the AgOpenGPS ZIP file)
+![](basic_documentation/free_wiring.jpeg)
+
 - using a carrier board for those boards, which adds power supply and necessary components in classic "THT" technology (you have to solder all parts yourself - such boards are discussed in the forum)
+![](basic_documentation/Kaupoi.png)
+
 - ordering one of the full-equipped board in this repository from a PCB manufacturer (only some "simple" parts have to be soldered by yourself)
+![](basic_documentation/CU3_with_2_Ardusimple.jpg)
 
 Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. 
 
@@ -100,6 +105,14 @@ Nevertheless, this option is described in detail now:
 - start AgOpenGPS and configure the NTRIP server in AgIO
 - put the antenna outside and see, if position data is received (should lock to RTK after a while)
 - start working with AgOpenGPS
+
+# Hints for Wiring
+All signals to the motor or hydraulic valve shall be inside a single cable. This cable may only be connected to the Central Unit and the motor/valve unit - nowhere else. So no connection between the valve unit and the chassis as long as you don't want to use your equipment for short-wave broadcasting!
+
+WAS:
+If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced", a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Connect "WAS_N" to 0V next to the point where you already connected the "WAS". Select "differential" in AgOpenGPS in both cases.
+
+There is intentionally no coupling of 0V from power stage and computer side on the Central Unit 1.x and 2.x, because the charger unit has that normally. If this is not the case (e. g. you're using an inverter and a charger with mains plug), the connection must be done manually.
 
 # Dual-GNSS? IMU? Both?
 When you living in a plain area with no hills, you can start farming now. But likely there are rolling hills around and your fields are sloping a little bit, so that the antenna position swings left and right with the slope of the field and there is a need to compensate that by either using two antennas with two RTK receivers or and an	inertial measurement unit (IMU). 
@@ -302,8 +315,13 @@ AgOpenGPS benötigt immer einen Lenkwinkelsensor, obwohl technisch auch eine Reg
 
 Für die Steuerung gibt es nun drei verschiedene Ansätze:
 - man kauft sich fertige Teilmodule (Arduino Nano, ADS1115, ...) und verdrahtet diese "fliegend" in einem geeigneten Gehäuse
+![](basic_documentation/free_wiring.jpeg)
+
 - man lässt sich eine fertige Leiterplatte herstellen, die für ein paar Euro aus China angeflogen kommt. Die Bestückung mit "klassischen" THT-Bauteilen muss man dann selber durchführen und auch die o. g. Teilmodule hier wieder auflöten
+![](basic_documentation/Kaupoi.png)
+
 - man bestellt sich eine der vollständig bestückten Leiterplatten aus diesem Repository. Dann müssen nur noch die gewünschten Stecker angelötet werden.
+![](basic_documentation/CU3_with_2_Ardusimple.jpg)
 
 In jedem Fall muss natürlich die Software auf den µC aufgespielt werden. Eine Beschreibung dazu befindet sich bei den einzelnen Leiterplatten.
 
@@ -327,14 +345,6 @@ Aus aktuellem Anlass muss aber leider gesagt werden, dass die letztgenannte Mög
 - AgOpenGPS starten und den NTRIP-Server in AgIO konfigurieren mit den eigenen Zugangsdaten (Sapos z. B.)
 - Antenne im Freien aufstellen. Nach einer Zeit sollte der eigene Standort angezeigt werden und auch die Anzeige "RTK" erscheinen
 - Los auf's Feld und AgOpenGPS ausprobieren
-
-# Hints for Wiring
-All signals to the motor or hydraulic valve shall be inside a single cable. This cable may only be connected to the Central Unit and the motor/valve unit - nowhere else. So no connection between the valve unit and the chassis as long as you don't want to use your equipment for short-wave broadcasting!
-
-WAS:
-If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced", a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Connect "WAS_N" to 0V next to the point where you already connected the "WAS". Select "differential" in AgOpenGPS in both cases.
-
-There is intentionally no coupling of 0V from power stage and computer side on the Central Unit 1.x and 2.x, because the charger unit has that normally. If this is not the case (e. g. you're using an inverter and a charger with mains plug), the connection must be done manually.
 
 # Dual-GNSS? IMU? Oder beides?
 Landwirte in im nördwestlichen Niedersachsen können jetzt loslegen. Alle anderen haben wahrscheinlich das ein oder andere Feld in Hanglage, und da läuft dann die eigene Position mit der Hangneigung weg, weil der Fußpunkt der Antenne zur Seite wandert. Also muss das kompensiert werden, wozu es eben diese beiden Möglichkeiten gibt: Eine zweite RTK-Empfänger/Antennenkombination oder eine IMU (inertial measurement unit - Inertiale Messeinheit, also ein Sensor, der die relative Lage im Raum an Hand der Schwerkraft und Massenträgheit bestimmen kann).
