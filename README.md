@@ -42,6 +42,7 @@ Join the [AgOpenGPS forum](https://discourse.agopengps.com/) for further help an
 5. IMU unit
 6. Section and rate control (option)
 7. Power stage and analog frontend for section and rate control
+
 All blocks but the antennas may be integrated into one PCB - see "Central Units"
 
 # Getting Started, Level 1: Parallel Driving Aid and Mapping
@@ -86,6 +87,7 @@ There are 3 different approaches for driving a motor or valves:
 - ordering one of the full-equipped board in this repository from a PCB manufacturer (only some "simple" parts have to be soldered by yourself)
 
 ![](basic_documentation/CU3_with_2_Ardusimple.jpg)
+![](basic_documentation/CU1_housing.jpg)
 
 Honestly, the last option is a nightmare these days, because some key parts (e. g. the automotive PWM power stage drivers) are not in stock from common distributors due to the general shortage in semiconductor industry these days (spring 2022). This means, you have to source from different suppliers and solder some SMD parts yourself, which is not easy in some cases. 
 
@@ -114,7 +116,12 @@ Nevertheless, this option is described in detail now:
 All signals to the motor or hydraulic valve shall be inside a single cable. This cable may only be connected to the Central Unit and the motor/valve unit - nowhere else. So no connection between the valve unit and the chassis as long as you don't want to use your equipment for short-wave broadcasting!
 
 WAS:
-If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced" like in the following pictures, a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Mind that the cable number differs! Connect "WAS_N" to 0V next to the point where you already connected the "WAS". Select "differential" in AgOpenGPS in both cases.
+If there is a dedicated WAS for AgOpenGPS, use a 3-pole calbe running from the Central Unit to the WAS. It contains the signals +5V, "WAS" = analog output of the WAS and 0V = GND. No other connections like "grounding" somewere in this case either! If a factory-assembled WAS shall be "sourced" like in the following pictures, a two-pole cable with the signals "WAS" (again the analog output of the WAS) and "WAS_N" is needed. Mind that the cable number differs! Connect "WAS_N" to 0V next to the point where you already connected the "WAS". 
+
+The original wire was not cut but the isolation was just partially cut from one side. Advantage here: It's inside the cabin and always dry.
+
+With one of the central units, select "differential" in AgOpenGPS in both cases.
+
 ![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS_Y.jpg)
 ![](basic_documentation/Fendt_junction.jpg)
 ![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS.jpg)
@@ -124,6 +131,7 @@ There is intentionally no coupling of 0V from power stage and computer side on t
 
 # Dual-GNSS? IMU? Both?
 When you living in a plain area with no hills, you can start farming now. But likely there are rolling hills around and your fields are sloping a little bit, so that the antenna position swings left and right with the slope of the field and there is a need to compensate that by either using two antennas with two RTK receivers or and an	inertial measurement unit (IMU). 
+
 Pros of dual antenna are:
 - always absolute position in the room
 - antenna diversity: if one antenna does not receive the signal due to trees, the other one will take over for that time
@@ -234,8 +242,6 @@ Teensy-based central unit with additonal support for USB-PD hardware (no firmwar
 
 ![](https://discourse.agopengps.com/uploads/default/original/2X/c/c1b394220444382039f35444654e9a8aaf33b567.png)
 
-Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
-
 ### Was ist "AgOpenGPS"?
 AgOpenGPS "AOG" ist ein open-source-Project, das vom kandischen Farmer [Brian Tischler](https://www.astech.ca/archives/indexofpastwinners/tischler-brian) initiiert wurde. Es war zunächst eine reine Parallelfahrhilfe und wurde nach und nach mit Hilfe der Community zu einem Lenksystem mit Teilbreitensteuerung. Die Software läuft nur unter Windows(TM) - es wird also ein Windows-Tablet oder Notebook benötigt. Inzwischen arbeiten Interessierte aus aller Welt friedlich an der Weiterentwicklung des Projektes. 
 
@@ -280,6 +286,8 @@ Es gibt ein (englisches) [AgOpenGPS forum](https://discourse.agopengps.com/), wo
 5. IMU-Einheit
 6. Teilbreiten- und Volumensteuerung (optional)
 7. Leistungsendstufe und Analogteil der Teilbreiten- und Volumensteuerung
+
+Alle Blöcke bis auf die Antennen können sich in einem Gehäuse befinden, z. B. auf den Leiterplatten in diesem Repository
 
 # Getting Started, Level 1: Parallelfahrhilfe und Dokumentation
 
@@ -335,6 +343,7 @@ Für die Steuerung gibt es nun drei verschiedene Ansätze:
 - man bestellt sich eine der vollständig bestückten Leiterplatten aus diesem Repository. Dann müssen nur noch die gewünschten Stecker angelötet werden.
 
 ![](basic_documentation/CU3_with_2_Ardusimple.jpg)
+![](basic_documentation/CU1_housing.jpg)
 
 In jedem Fall muss natürlich die Software auf den µC aufgespielt werden. Eine Beschreibung dazu befindet sich bei den einzelnen Leiterplatten.
 
@@ -377,7 +386,12 @@ Die z-Achse der IMU muss vertikal montiert sein. Es sollten BNO085 or BNO080-bas
 Alle Signale, die zum Motor oder zur Ventilinsel führen, sollten in einem Kabel enthalten sein. Das Kabel darf nur an der Central Unit und am Motor oder an der Ventilinsel angeschlossen sein, sonst nirgendwo, also auch nicht die 0V an der Ventilinsel mit der Karosserie verbinden! Man baut sich so ganz schnell eine Rahmenantenne für Mittelwelle...
 
 LWS/WAS:
-Soll ein Extra-Lenkwinkelsensor verwendet werden, sollte ein 3pol. Kabel von der Central Unit zum Sensor verlegt werden, das die Signale +5V, "WAS" = Analogwert des LWS und 0V = GND enthält. Auch hier sollte nichts anderes angeschlossen sein, als der LWS, also auch wieder eine "Erdung" zur Karrosserie oder so. Wenn ein bereits verbauter LWS "angezapft" werden soll wie in den folgenden Bildern gezeigt, muss die Verdrahtung über ein zweipoliges Kabel "differenziell" erfolgen: "WAS" ist wieder der Analogwert des LWS, und "WAS_N" wird an einen 0V-Punkt in der Nähe des Punktes angeschlossen, wo auch "WAS" angeklemmt ist. Achtung: Die Klemmennummer variiert von Modell zu Modell - zumindestens bei Fendt. Bei Verwendung der Central Units sollte in beiden Fällen in AgOpenGPS "differenziell" ausgewählt werden.
+Soll ein Extra-Lenkwinkelsensor verwendet werden, sollte ein 3pol. Kabel von der Central Unit zum Sensor verlegt werden, das die Signale +5V, "WAS" = Analogwert des LWS und 0V = GND enthält. Auch hier sollte nichts anderes angeschlossen sein, als der LWS, also auch wieder eine "Erdung" zur Karrosserie oder so. Wenn ein bereits verbauter LWS "angezapft" werden soll wie in den folgenden Bildern gezeigt, muss die Verdrahtung über ein zweipoliges Kabel "differenziell" erfolgen: "WAS" ist wieder der Analogwert des LWS, und "WAS_N" wird an einen 0V-Punkt in der Nähe des Punktes angeschlossen, wo auch "WAS" angeklemmt ist. Achtung: Die Klemmennummer variiert von Modell zu Modell - zumindestens bei Fendt. 
+
+Im Bild wurde der Originaldraht nicht durchgeschnitten, sondern die Isolierung nur seitlich weggeschnitten, um den Draht für AgOpenGPS dann dort anzulöten. Zugentlastung nicht vergessen. Vorteil dieser Lösung: Es liegt alles im Trockenen in der Kabine.
+
+Bei Verwendung der Central Units sollte in beiden Fällen in AgOpenGPS "differenziell" ausgewählt werden.
+
 ![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS_Y.jpg)
 ![](basic_documentation/Fendt_junction.jpg)
 ![](basic_documentation/Fendt_718_SCR_Vario_Profi_WAS.jpg)
