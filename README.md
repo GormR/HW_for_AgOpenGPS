@@ -193,7 +193,9 @@ white: from Ardusimple (NMEA data; TxD@AS, RxD@USR)
 
 The connection to the Ardusimple board can also be made by [the plugable Pixhawk connectors using 0V, 5V and the two communication lines.](https://www.ardusimple.com/simplertk2b-hookup-guide/) In that case, connecting the 3.3V line is not needed, but I would put a 100 Ohms resistor in series with the com lines.
 
-[Here](central_unit_2.0/code/) is is a replacement for the standard AgIO.exe. Just replace it by this file and work with the data directly.
+The BNO085 is difficult to buy these days, so it’s worth having a look at the Arduino Nano RP2040 Connect board with its integrated IMU. A prototype implementation using this one for AgOpenGPS can be found in [this Github repo](https://github.com/GormR/HW_for_AgOpenGPS/central_unit_2.0/code/Arduino_nano_connect_as_IMU/). The IMU itself is as good the the Bosch sensor of the BNO, but there is no magnetic sensor and so a continuous calibration of the heading isn’t possible so far. A certain drift is remaining, but may be eliminated in combination with AgIO one day.
+
+With the Python script, the sensor emulated an BNO085 in RVC mode being compatible with the AgIO mod. [Here](central_unit_2.0/code/) is the replacement for the standard AgIO.exe. Just replace it by this file and work with the data of the BNO or Arduino Connect directly.
 
 ----
 # Projects within the repository
@@ -447,7 +449,9 @@ weiss: vom Ardusimple (NMEA data; TxD@AS, RxD@USR)
 
 Alternativ zu einer Lötverbindung kann die Verbindung auch steckbar über die [Pixhawk Stecker unter Verwendung von 0V, 5V und den beiden RX- und TX-Drähten erfolgen.](https://www.ardusimple.com/simplertk2b-hookup-guide/) Eine Versorgung mit 3,3V ist in diesem Fall nicht notwendig, aber ich würde sicherheitshalber je einen 100Ohm-Widerstand in Serie zum Signal einlöten.
 
-[Hier](central_unit_2.0/code/) kann man die AgIO.exe mit direktem USB-Support für IMU und F9P/Ardusimple herunterladen. Einfach die Originaldatei damit ersetzen.
+Leider ist der BNO085 egal in welcher Form derzeit schwer zu beschaffen, aber ein Arduino Nano RP2040 Connect-Board hat auch ein IMU und bietet sich so als Ersatz an. Eine prototypische Implementierung gibt für AgOpenGPS gibt es [hier in diesem Github Repo](https://github.com/GormR/HW_for_AgOpenGPS/central_unit_2.0/code/Arduino_nano_connect_as_IMU/). Die IMU selbst ist sicherlich nicht schlechter als die von Bosch des BNO085, aber da kein magnetischer Sensor mit verbaut ist, ist eine Nachführung des Headingdrifts nicht unmittelbar möglich. Mittelbar geht das sicherlich irgendwass einmal über AgIO, aber auch so ist die Drift ersten Versuchen nach sehr gering.
+
+Mit dem hinterlegten Python(!)-Script simuliert das Board einen BNO085 im RVC-Mode. Dazu wird die erweiterte AgIO benötigt. [Hier](central_unit_2.0/code/) kann man die AgIO.exe mit direktem USB-Support für IMU und F9P/Ardusimple herunterladen. Einfach die Originaldatei damit ersetzen.
 
 ----
 # Projekte in diesem Repository

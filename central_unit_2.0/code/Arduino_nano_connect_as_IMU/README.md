@@ -19,12 +19,12 @@ instead of using an BNO085 or CMPS14
 **Quick calibration of rotation only**
 After a time, the heading might slightly start to drift. In that case, just switch on and off in a situation when you're not driving
 
-Please leave a feedback in the forum.
+There is a short video about this implementation on [youtube](https://youtu.be/Ajrhde_ie0Q) as well. [And please leave a feedback in the forum.](https://discourse.agopengps.com/t/agio-autoconnect-usb-sensor-fusion-dual-heading-w-o-arduino-esp32/8479/18?u=goronb)
 
 PS:
 Please forget all, what you've done the the Arduino IDE before - the board is just like an USB stick. The Python script itself may be edited by any text editor. Thonny or any other Python IDE makes it more comfortable.
 
-
+----
 ### Arduino Nano RP2040 Connect als IMU für AgOpenGPS
 anstatt eines BNO085 oder CMPS14
 
@@ -44,7 +44,7 @@ anstatt eines BNO085 oder CMPS14
 **Schnellkalibrierung der Rotation**
 Nach einer Zeit beginnt das Heading, leicht zu driften. In dem Fall kurz anhalten und den Schalter ein- und gleich wieder ausschalten.
 
-Gerne ein Feedback im Forum hinterlassen!
+Auf [youtube](https://youtu.be/Ajrhde_ie0Q) gibt es acuh noch ein Video hierzu. Und natürlich gerne ein Feedback [im Forum](https://discourse.agopengps.com/t/agio-autoconnect-usb-sensor-fusion-dual-heading-w-o-arduino-esp32/8479/18?u=goronb) hinterlassen!
 
 PS:
 Die Programmierung ist viel einfacher als mit der Arduino-IDE. Das board bindet sich als USB-Stick ein. Das Python-Script selbst kann mit jedem Texteditor modifiziert werden. Leichter geht es z. B. mit Thonny oder irgendeiner anderen Python-IDE.
