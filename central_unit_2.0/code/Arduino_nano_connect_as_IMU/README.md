@@ -24,7 +24,7 @@ There is a short video about this implementation on [youtube](https://youtu.be/A
 PS:
 Please forget all, what you've done the the Arduino IDE before - the board is just like an USB stick. The Python script itself may be edited by any text editor. Thonny or any other Python IDE makes it more comfortable.
 
-
+----
 ### Arduino Nano RP2040 Connect als IMU für AgOpenGPS
 anstatt eines BNO085 oder CMPS14
 
