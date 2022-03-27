@@ -34,7 +34,6 @@ debug = False
 time.sleep(1) # wait for all power and IMU stable
 
 try: # to read config values from setup file
-    #os.chdir("/")
     f = open('IMU.cfg',"r")
     zero_x = float(f.readline())
     zero_y = float(f.readline())
@@ -190,16 +189,8 @@ while (True):
         Csum = (counter + yaw_low + yaw_high + roll_low + roll_high) & 0xff
 
         if not debug:
-            #sys.stdout.write(chr(170)+chr(170)+chr(counter)+chr(yaw_low)+chr(yaw_high)+chr(0)+chr(0)+chr(roll_low)+chr(roll_high)+chr(0)+chr(0)+chr(0)+chr(0)+chr(0)+chr(0)+chr(0)+chr(0)+chr(0)+chr(Csum))
             data = [170, 170, counter, yaw_low, yaw_high, 0, 0, roll_low, roll_high, 0, 0, 0, 0, 0, 0, 0, 0, 0, Csum]
             sys.stdout.buffer.write(bytes(data))
-#        else:
-#            if counter == 128:
-#                print(yaw_low)
-#                print(yaw_high)
-#                print(roll_low)
-#                print(roll_high)
-#                print(Csum)
 
         if (counter & 0x0f) == 0 and setup_pin.value() == 0:
             led.on()
