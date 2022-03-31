@@ -49,7 +49,7 @@ All blocks but the antennas may be integrated into one PCB - see "Central Units"
 
 A tablet/notebook/convertable computer running Windows and an RTK-enabled GNSS (GPS) receiver is needed. Read [the posts in the forum](https://discourse.agopengps.com/search?q=which%20tablet) to find a suitable tablet. The screen and its brightness is of highest importance. Other helpful features, you may need, are GSM (mobile data) for the reception of NTRIP data for real-time correction of the GNSS data (instead of using the mobile phone), easy charging for 12V or Ethernet, if USB is not used.
 
-The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module from ublox](https://www.u-blox.com/en/product/zed-f9p-module), if you don't have an onboard receiver in the tractor. Ready-to-use boards ship from [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) for less than 200€ or $. This is the only option where you can start with a single antenna and migrate to dual-antenna later one. Even two Ardusimple boards are by far less expensive than dual-receivers from [Serpentrio](https://www.septentrio.com) or [Bynav](https://www.bynav.com/). There is no noteworthy difference in precision between these receivers. The Ardusimple board is the de-facto standard for AgOpenGPS. [Here](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) is a good introduction in German.
+The "standard" RTK GNSS receiver for AgOpenGPS is based on the [ZED-F9P module from ublox](https://www.u-blox.com/en/product/zed-f9p-module), if you don't have an onboard receiver in the tractor. Ready-to-use boards ship from [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) for less than 200€ or $. This is the only option where you can start with a single antenna and migrate to dual-antenna later one. Even two Ardusimple boards are by far less expensive than dual-receivers from [Serpentrio](https://www.septentrio.com) or [Bynav](https://www.bynav.com/). There is no noteworthy difference in precision between these receivers. The Ardusimple board is the de-facto standard for AgOpenGPS. [Here](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) is a good introduction in German. For details of the technology see [J. M. Olivart i Llop, D. Moreno-Salinas and J. Sánchez: Full Real-Time Positioning and Attitude System Based on GNSS-RTK Technology](https://www.mdpi.com/2071-1050/12/23/9796/htm).
 
 **Parts list**
 - tablet/notebook/convertable computer for Windows 7 or higher
@@ -297,7 +297,7 @@ Für den Einstieg wird ein Tablet, Notebook oder Convertable mit dem Betriebssyt
 
 Die Mehrzahl der RTK-GNSS-Empfänger für AgOpenGPS basieren auf einem [ZED-F9P-Module von ublox](https://www.u-blox.com/en/product/zed-f9p-module), aber auch bereits vorhandene Systeme der Traktorhersteller können verwendet werden. Fertige Empfängerplatinen gibt es z. B. bei [Ardusimple](https://www.ardusimple.com/product/simplertk2b/) für weniger als 200€. Das ist auch die einzige Möglichkeit, zunächst mit einem Ein-Antennen-System zu starten und später auf zwei Antennen aufzurüsten. Dabei sind zwei Ardusimples + zwei Antennen immer noch deutlich günstiger als Dual-Receiver von  [Serpentrio](https://www.septentrio.com) oder [Bynav](https://www.bynav.com/). Nennenswerte Genauigkeitsunterschiede haben die Systeme nicht. Das  Ardusimple-Board ist deshalb nicht umsonst der de-facto-Standard bei AgOpenGPS. 
 
-[Hier](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) gibt es eine guten Anleitung zur Konfiguration.
+[Hier](https://www.optimalsystem.de/os/docs/u-blox-gnss-konfigurationsanleitung.pdf) gibt es eine guten Anleitung zur Konfiguration. Grundlagen zur RTK-Technologie finden sich in [J. M. Olivart i Llop, D. Moreno-Salinas and J. Sánchez: Full Real-Time Positioning and Attitude System Based on GNSS-RTK Technology](https://www.mdpi.com/2071-1050/12/23/9796/htm) ein englischer Sprache.
 
 **Einkaufsliste**
 - Tablet/Notebook/Convertable-Computer mit Windows 7 oder höher
@@ -349,7 +349,7 @@ Für die Steuerung gibt es nun drei verschiedene Ansätze:
 
 In jedem Fall muss natürlich die Software auf den µC aufgespielt werden. Eine Beschreibung dazu befindet sich bei den einzelnen Leiterplatten.
 
-Aus aktuellem Anlass muss aber leider gesagt werden, dass die letztgenannte Möglichkeit aktuell (Frühjahr 2022) sehr mühselig ist, da Schlüsselbauteile wie µC und Leistungstreiber nicht ab Lager verfügbar sind und somit anderweitig beschafft und selbst aufgelötet werden müssen. Leider kein Spaß für viele und erst einmal keine Besserung in Sicht
+Aus aktuellem Anlass muss aber leider gesagt werden, dass die letztgenannte Möglichkeit aktuell (Frühjahr 2022) sehr mühselig ist, da Schlüsselbauteile wie µC und Leistungstreiber nicht ab Lager verfügbar sind und somit anderweitig beschafft und selbst aufgelötet werden müssen. Leider kein Spaß für viele und erst einmal keine Besserung in Sicht.
 
 **Einkaufsliste**
 - Tablet/Notebook/Convertable-Computer für Windows 7 oder höher
