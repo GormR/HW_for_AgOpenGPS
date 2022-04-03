@@ -1,8 +1,21 @@
+# keys:
+# C starts calibration
+# c terminates calibration
+# 0 sets rotation = 0
+# + trims IMU rotation
+# - trims IMU rotation
+
 import time
 import machine
+import uselect
 from lsm6dsox import LSM6DSOX
 import os
 import sys
+
+debug = False                      # either human-readable or BNO085-RVC emulator
+correction_factor = 0.1            # steps on +/- trim of rotation
+
+def sign(x): return 1 if x >= 0 else -1
 
 heading_x = 0
 heading_y = 0
@@ -11,29 +24,24 @@ heading_z = 0
 counter = 0
 last_setup_pin = 1
 
-def imu_int_handler(pin):
-    global heading
-
-    led.on()
-
-
-def sign(x): return 1 if x >= 0 else -1
+spoll = uselect.poll()
+spoll.register(sys.stdin, uselect.POLLIN)
 
 led       = machine.Pin( 6, machine.Pin.OUT, value=0)
 int_pin   = machine.Pin(24, machine.Pin.IN,  machine.Pin.PULL_DOWN)       # int of IMU
 setup_pin = machine.Pin(25, machine.Pin.IN,  machine.Pin.PULL_UP)         # D2
 adc_pin   = machine.Pin(29)                                               # A3
 
-int_pin.irq(handler = imu_int_handler, trigger = machine.Pin.IRQ_RISING)
 adc = machine.ADC(adc_pin)
 i2c = machine.I2C(0, scl=machine.Pin(13), sda=machine.Pin(12))
 imu = LSM6DSOX(i2c, gyro_odr = 104, accel_odr = 104, gyro_scale = 250, accel_scale = 2)
 
-debug = False
-
 time.sleep(1) # wait for all power and IMU stable
+cmd = ""
+calibrate = 0;
 
 try: # to read config values from setup file
+    #os.chdir("/")
     f = open('IMU.cfg',"r")
     zero_x = float(f.readline())
     zero_y = float(f.readline())
@@ -52,51 +60,54 @@ except:
 
 while (True):
 
-    # self-learning mounting orientation
-    if last_setup_pin == 1 and setup_pin.value() == 0: # someone pressed the botton to set zero
-        last_setup_pin = 0
+    # self-learning mounting orientation: starts with pulling SETUP pin low, termintates on SETUP high again
+    if calibrate != 1 and (setup_pin.value() == 0 or cmd == "C"): # someone pressed the botton to set zero
+        calibrate = 1
+        if cmd == "C":
+            calibrate = 2
+            cmd = ""
         print("setting zero position")
         this_zero_x, this_zero_y, this_zero_z = imu.read_accel()
         cal_turnrate_x, cal_turnrate_y, cal_turnrate_z = imu.read_gyro()  # init rotation as well
 
-    if last_setup_pin == 0 and setup_pin.value() == 1: # someone pressed the botton to set zero
-        last_setup_pin = 1
+    if calibrate == 1 and setup_pin.value() == 1 or calibrate == 2 and cmd == "c": # someone pressed the botton to set zero
+        calibrate = 0
         print("setting correct axis")
         
         front_up_x, front_up_y, front_up_z = imu.read_accel()
 
         modify_roll = False
-        if abs(this_zero_z) > 0.9 and abs(front_up_x - this_zero_x) > 0.2:
+        if abs(this_zero_z) > 0.9 and abs(front_up_x - this_zero_x) > 0.1:
             my_roll_axis = 1
             my_roll_sign = sign(front_up_x - this_zero_x) * sign(this_zero_z)
             print("PCB longside horrizontally")
             modify_roll = True
 
-        if abs(this_zero_z) > 0.9 and abs(front_up_y - this_zero_y) > 0.2:
+        if abs(this_zero_z) > 0.9 and abs(front_up_y - this_zero_y) > 0.1:
             my_roll_axis = 0
             my_roll_sign = - sign(front_up_y - this_zero_y) * sign(this_zero_z)
             print("PCB longside horrizontally")
             modify_roll = True
 
-        if abs(this_zero_x) > 0.9 and abs(front_up_y - this_zero_y) > 0.2:
+        if abs(this_zero_x) > 0.9 and abs(front_up_y - this_zero_y) > 0.1:
             my_roll_axis = 2
             my_roll_sign = sign(front_up_y - this_zero_y) * sign(this_zero_x)
             print("PCB longside horrizontally")
             modify_roll = True
 
-        if abs(this_zero_x) > 0.9 and abs(front_up_z - this_zero_z) > 0.2:
+        if abs(this_zero_x) > 0.9 and abs(front_up_z - this_zero_z) > 0.1:
             my_roll_axis = 1
             my_roll_sign = -sign(front_up_z - this_zero_z) * sign(this_zero_x)
             print("PCB longside horrizontally")
             modify_roll = True
 
-        if abs(this_zero_y) > 0.9 and abs(front_up_z - this_zero_z) > 0.2:
+        if abs(this_zero_y) > 0.9 and abs(front_up_z - this_zero_z) > 0.1:
             my_roll_axis = 0
             my_roll_sign = sign(front_up_z - this_zero_z) * sign(this_zero_y)
             print("PCB longside horrizontally")
             modify_roll = True
 
-        if abs(this_zero_y) > 0.9 and abs(front_up_x - this_zero_x) > 0.2:
+        if abs(this_zero_y) > 0.9 and abs(front_up_x - this_zero_x) > 0.1:
             my_roll_axis = 2
             my_roll_sign = -sign(front_up_x - this_zero_x) * sign(this_zero_y)
             print("PCB longside horrizontally")
@@ -122,7 +133,13 @@ while (True):
             print("written to file.")
         else:
             print("only rot calibrated. did you lift?")
+    # end of setup
 
+#    try:
+#        data = sys.stdin.read(1)
+#    except:
+#        pass
+    
     turnrate_x, turnrate_y, turnrate_z = imu.read_gyro()
     try:
         last_turnrate_x
@@ -133,7 +150,11 @@ while (True):
     # check for new gyro values (rate: 104 times per second)
     if last_turnrate_x != turnrate_x or last_turnrate_y != turnrate_y or last_turnrate_z != turnrate_z:
         counter += 1
-        counter &= 0xff        
+        counter &= 0xff
+        
+        cmd = (sys.stdin.read(1) if spoll.poll(0) else "")
+        if cmd == "0":
+            cal_turnrate_x, cal_turnrate_y, cal_turnrate_z = turnrate_x, turnrate_y, turnrate_z   # init rotation
 
         last_turnrate_x, last_turnrate_y, last_turnrate_z = turnrate_x, turnrate_y, turnrate_z
 
@@ -161,12 +182,24 @@ while (True):
         
         if abs(accel_z) > 0.8:
             my_heading = (int) (-heading_z * sign(accel_z))
+            if cmd == "+":
+                cal_turnrate_z += correction_factor * sign(accel_z)
+            if cmd == "-":
+                cal_turnrate_z -= correction_factor * sign(accel_z)
         
         if abs(accel_x) > 0.8:
             my_heading = (int) (-heading_x * sign(accel_x))
+            if cmd == "+":
+                cal_turnrate_x += correction_factor * sign(accel_x)
+            if cmd == "-":
+                cal_turnrate_x -= correction_factor * sign(accel_x)
 
         if abs(accel_y) > 0.8:
             my_heading = (int) (-heading_y * sign(accel_y))
+            if cmd == "+":
+                cal_turnrate_y += correction_factor * sign(accel_y)
+            if cmd == "-":
+                cal_turnrate_y -= correction_factor * sign(accel_y)
 
         try:
             if my_roll_axis == 0:
@@ -192,8 +225,8 @@ while (True):
             data = [170, 170, counter, yaw_low, yaw_high, 0, 0, roll_low, roll_high, 0, 0, 0, 0, 0, 0, 0, 0, 0, Csum]
             sys.stdout.buffer.write(bytes(data))
 
-        if (counter & 0x0f) == 0 and setup_pin.value() == 0:
-            led.on()
+        if (counter & 0x0f) == 0 and calibrate != 0:
+            led.off()
         
         if (counter & 0x1f)== 0:
             led.on()
@@ -208,6 +241,7 @@ while (True):
                 #print('Accelerometer: x:{:>8.3f} y:{:>8.3f} z:{:>8.3f}'.format(accel_x, accel_y, accel_z))
                 #print('Gyroscope:     x:{:>8.3f} y:{:>8.3f} z:{:>8.3f}'.format(turnrate_x, turnrate_y, turnrate_z))
                 #print('Headings:      x:{:>8.1f} y:{:>8.1f} z:{:>8.1f}'.format(heading_x/100, heading_y/100, heading_z/100))
+                
                 try:
                     print('Heading: {:>8.1f}'.format(my_heading/100))
                     my_roll_axis
